@@ -1,0 +1,32 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    ignore:
+      - dependency-name: eslint
+      - dependency-name: eslint-config-prettier
+      - dependency-name: eslint-plugin-prettier
+      - dependency-name: eslint-plugin-react
+      - dependency-name: "@babel/core"
+      - dependency-name: "@babel/preset-typescript"
+      - dependency-name: react
+      - dependency-name: react-dom
+      - dependency-name: styled-components
+      - dependency-name: next
+      - dependency-name: next-pwa
+      - dependency-name: husky
+      - dependency-name: "@testing-library/react"
+      - dependency-name: "@testing-library/jest-dom"
+      - dependency-name: jest-styled-components
+      - dependency-name: typescript
+      - dependency-name: "@types/node"
+      - dependency-name: "@types/jest"
+      - dependency-name: "@types/react"
+      - dependency-name: "@types/styled-components"
+      - dependency-name: "@storybook/addon-essentials"
+      - dependency-name: "@storybook/react"
+      - dependency-name: "@typescript-eslint/parser"
+      - dependency-name: "@typescript-eslint/eslint-plugin"
