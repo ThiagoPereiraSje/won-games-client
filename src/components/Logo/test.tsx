@@ -23,4 +23,20 @@ describe('<Logo />', () => {
 
     expect(element).toHaveStyle({ color: '#030517' })
   })
+
+  it('should render a normal logo when size is default', () => {
+    renderWithTheme(<Logo />)
+
+    const element = screen.getByLabelText(/won games/i).parentElement
+
+    expect(element).toHaveStyle({ width: '11rem' })
+  })
+
+  it('should render a bigger logo', () => {
+    renderWithTheme(<Logo size="large" />)
+
+    const element = screen.getByLabelText(/won games/i).parentElement
+
+    expect(element).toHaveStyle({ width: '20rem' })
+  })
 })
