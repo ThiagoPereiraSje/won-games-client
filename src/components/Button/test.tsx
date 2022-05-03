@@ -1,10 +1,11 @@
 import { screen } from '@testing-library/react'
+import { AddShoppingCart } from '@styled-icons/material-sharp/AddShoppingCart'
 import { renderWithTheme } from 'utils/tests/helpers'
 import Button from '.'
 
 describe('<Button />', () => {
   it('should render the medium size by default', () => {
-    renderWithTheme(<Button>By now</Button>)
+    const { container } = renderWithTheme(<Button>By now</Button>)
 
     const element = screen.getByRole('button', { name: /by now/i })
 
@@ -13,6 +14,8 @@ describe('<Button />', () => {
       padding: '0.8rem 3.2rem',
       'font-size': '1.4rem'
     })
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render the small size', () => {
@@ -46,5 +49,17 @@ describe('<Button />', () => {
     expect(element).toHaveStyle({
       width: '100%'
     })
+  })
+
+  it('should render an icon version', () => {
+    renderWithTheme(
+      <Button icon={<AddShoppingCart data-testid="icon" />}>By now</Button>
+    )
+
+    const element = screen.getByText(/by now/i)
+    const icon = screen.getByTestId('icon')
+
+    expect(element).toBeInTheDocument()
+    expect(icon).toBeInTheDocument()
   })
 })
