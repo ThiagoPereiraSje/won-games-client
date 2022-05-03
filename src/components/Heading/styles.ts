@@ -18,7 +18,7 @@ const modifiers = {
       bottom: -1rem;
       content: '';
       width: 5rem;
-      border: 0.4rem solid ${theme.colors.primary};
+      border-bottom: 0.5rem solid ${theme.colors.primary};
     }
   `
 }
