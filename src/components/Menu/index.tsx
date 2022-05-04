@@ -11,7 +11,11 @@ import * as S from './styles'
 import { useState } from 'react'
 import Button from 'components/Button'
 
-const Menu = () => {
+type MenuProps = {
+  username?: string
+}
+
+const Menu = ({ username }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -40,17 +44,26 @@ const Menu = () => {
         <S.MenuNav>
           <S.MenuLink href="#">Home</S.MenuLink>
           <S.MenuLink href="#">Explore</S.MenuLink>
+
+          {!!username && (
+            <>
+              <S.MenuLink href="#">My account</S.MenuLink>
+              <S.MenuLink href="#">Whishlist</S.MenuLink>
+            </>
+          )}
         </S.MenuNav>
 
-        <S.RegisterBox>
-          <Button size="large" fullWidth>
-            Log in Now
-          </Button>
-          <span>or</span>
-          <S.CreateAccount href="#" title="Sign UP">
-            Sign Up
-          </S.CreateAccount>
-        </S.RegisterBox>
+        {!username && (
+          <S.RegisterBox>
+            <Button size="large" fullWidth>
+              Log in Now
+            </Button>
+            <span>or</span>
+            <S.CreateAccount href="#" title="Sign UP">
+              Sign Up
+            </S.CreateAccount>
+          </S.RegisterBox>
+        )}
       </S.MenuFull>
     </S.Wrapper>
   )

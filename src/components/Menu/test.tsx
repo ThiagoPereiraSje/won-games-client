@@ -44,4 +44,36 @@ describe('<Menu />', () => {
     expect(menuFull.getAttribute('aria-hidden')).toBe('true')
     expect(menuFull).toHaveStyle({ opacity: 0 })
   })
+
+  it('should show register box when logged out', () => {
+    renderWithTheme(<Menu />)
+
+    const loginButton = screen.getByText(/log in now/i)
+    const signUpButton = screen.getByText(/sign up/i)
+
+    expect(loginButton).toBeInTheDocument()
+    expect(signUpButton).toBeInTheDocument()
+
+    const myAccountLink = screen.queryByText(/my account/i)
+    const whishlistLink = screen.queryByText(/whishlist/i)
+
+    expect(myAccountLink).not.toBeInTheDocument()
+    expect(whishlistLink).not.toBeInTheDocument()
+  })
+
+  it('should show My account and Wishlist when logged in', () => {
+    renderWithTheme(<Menu username="thiago" />)
+
+    const loginButton = screen.queryByText(/log in now/i)
+    const signUpButton = screen.queryByText(/sign up/i)
+
+    expect(loginButton).not.toBeInTheDocument()
+    expect(signUpButton).not.toBeInTheDocument()
+
+    const myAccountLink = screen.getByText(/my account/i)
+    const whishlistLink = screen.getByText(/whishlist/i)
+
+    expect(myAccountLink).toBeInTheDocument()
+    expect(whishlistLink).toBeInTheDocument()
+  })
 })
