@@ -9,6 +9,7 @@ import Logo from 'components/Logo'
 
 import * as S from './styles'
 import { useState } from 'react'
+import Button from 'components/Button'
 
 const Menu = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -35,6 +36,21 @@ const Menu = () => {
 
       <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
         <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
+
+        <S.MenuNav>
+          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="#">Explore</S.MenuLink>
+        </S.MenuNav>
+
+        <S.RegisterBox>
+          <Button size="large" fullWidth>
+            Log in Now
+          </Button>
+          <span>or</span>
+          <S.CreateAccount href="#" title="Sign UP">
+            Sign Up
+          </S.CreateAccount>
+        </S.RegisterBox>
       </S.MenuFull>
     </S.Wrapper>
   )
