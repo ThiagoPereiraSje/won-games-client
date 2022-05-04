@@ -1,17 +1,21 @@
 import { Menu2 as MenuIcon } from 'styled-icons/remix-fill/index'
 import {
   ShoppingCart as ShoppingCartIcon,
-  Search as SearchIcon
+  Search as SearchIcon,
+  Close as CloseIcon
 } from 'styled-icons/material-outlined/index'
 
 import Logo from 'components/Logo'
 
 import * as S from './styles'
+import { useState } from 'react'
 
 const Menu = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <S.Wrapper>
-      <S.IconWrapper>
+      <S.IconWrapper onClick={() => setIsOpen(true)}>
         <MenuIcon aria-label="Open Menu" />
       </S.IconWrapper>
 
@@ -28,6 +32,10 @@ const Menu = () => {
           <ShoppingCartIcon aria-label="Open Shopping Cart" />
         </S.IconWrapper>
       </S.MenuGroup>
+
+      <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
+        <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
+      </S.MenuFull>
     </S.Wrapper>
   )
 }
