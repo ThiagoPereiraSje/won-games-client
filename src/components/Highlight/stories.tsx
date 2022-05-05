@@ -17,5 +17,17 @@ export default {
 } as ComponentMeta<typeof Highlight>
 
 export const Basic: ComponentStory<typeof Highlight> = (args) => (
-  <Highlight {...args} />
+  <div style={{ maxWidth: '104rem' }}>
+    <Highlight {...args} />
+  </div>
 )
+
+export const WithFloatImage: ComponentStory<typeof Highlight> = (args) => (
+  <div style={{ maxWidth: '104rem' }}>
+    <Highlight {...args} />
+  </div>
+)
+
+WithFloatImage.args = {
+  floatImage: '/img/red-dead-float.png'
+}
