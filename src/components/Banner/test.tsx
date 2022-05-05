@@ -4,7 +4,7 @@ import Banner from '.'
 
 describe('<Banner />', () => {
   it('should render correctly', () => {
-    renderWithTheme(
+    const { container } = renderWithTheme(
       <Banner
         img="/image"
         title="My title"
@@ -32,5 +32,7 @@ describe('<Banner />', () => {
     // verificar se o link foi renderizado e tem href='link'
     expect(buttonLink).toBeInTheDocument()
     expect(buttonLink).toHaveAttribute('href', '/link')
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
