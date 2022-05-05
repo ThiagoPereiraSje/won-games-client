@@ -17,5 +17,19 @@ export default {
 } as ComponentMeta<typeof Banner>
 
 export const Basic: ComponentStory<typeof Banner> = (args) => (
-  <Banner {...args} />
+  <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
+    <Banner {...args} />
+  </div>
 )
+
+export const WithRibbon: ComponentStory<typeof Banner> = (args) => (
+  <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
+    <Banner {...args} />
+  </div>
+)
+
+WithRibbon.args = {
+  ribbon: '20% OFF',
+  ribbonSize: 'normal',
+  ribbonColor: 'primary'
+}
