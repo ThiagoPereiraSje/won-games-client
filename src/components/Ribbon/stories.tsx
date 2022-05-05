@@ -3,7 +3,15 @@ import Ribbon from '.'
 
 export default {
   title: 'Ribbon',
-  component: Ribbon
+  component: Ribbon,
+  args: {
+    children: 'Best Seller'
+  },
+  argTypes: {
+    children: {
+      type: 'string'
+    }
+  }
 } as ComponentMeta<typeof Ribbon>
 
 export const Basic: ComponentStory<typeof Ribbon> = (args) => (
