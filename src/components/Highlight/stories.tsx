@@ -31,3 +31,14 @@ export const WithFloatImage: ComponentStory<typeof Highlight> = (args) => (
 WithFloatImage.args = {
   floatImage: '/img/red-dead-float.png'
 }
+
+export const WithAlignLeft: ComponentStory<typeof Highlight> = (args) => (
+  <div style={{ maxWidth: '104rem' }}>
+    <Highlight {...args} />
+  </div>
+)
+
+WithAlignLeft.args = {
+  floatImage: '/img/red-dead-float.png',
+  align: 'left'
+}

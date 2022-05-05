@@ -41,4 +41,26 @@ describe('<Highlight />', () => {
     expect(floatImage).toBeInTheDocument()
     expect(floatImage).toHaveAttribute('src', '/float-image.png')
   })
+
+  it('should render align right by default', () => {
+    const { container } = renderWithTheme(
+      <Highlight {...props} floatImage="/float-image.png" />
+    )
+
+    expect(container.firstChild).toHaveStyleRule(
+      'grid-template-areas',
+      "'floatimage content'"
+    )
+  })
+
+  it('should render align left', () => {
+    const { container } = renderWithTheme(
+      <Highlight {...props} floatImage="/float-image.png" align="left" />
+    )
+
+    expect(container.firstChild).toHaveStyleRule(
+      'grid-template-areas',
+      "'content floatimage'"
+    )
+  })
 })
