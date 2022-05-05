@@ -62,4 +62,26 @@ describe('<Button />', () => {
     expect(element).toBeInTheDocument()
     expect(icon).toBeInTheDocument()
   })
+
+  it('should render Button as a link', () => {
+    // Como fazer o debug de um componente (Imprimir o componente no console)
+    // const { debug, container } = renderWithTheme(
+    //   <Button as="a" href="/link">
+    //     By now
+    //   </Button>
+    // )
+
+    // debug(container)
+
+    renderWithTheme(
+      <Button as="a" href="/link">
+        By now
+      </Button>
+    )
+
+    const element = screen.getByRole('link', { name: /by now/i })
+
+    expect(element).toBeInTheDocument()
+    expect(element).toHaveAttribute('href', '/link')
+  })
 })

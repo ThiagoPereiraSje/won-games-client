@@ -11,6 +11,9 @@ export default {
     },
     icon: {
       type: 'symbol'
+    },
+    as: {
+      type: 'symbol'
     }
   }
 } as ComponentMeta<typeof Button>
