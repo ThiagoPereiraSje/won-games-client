@@ -32,13 +32,16 @@ WithFloatImage.args = {
   floatImage: '/img/red-dead-float.png'
 }
 
-export const WithAlignLeft: ComponentStory<typeof Highlight> = (args) => (
+export const BorderlandsSample: ComponentStory<typeof Highlight> = (args) => (
   <div style={{ maxWidth: '104rem' }}>
     <Highlight {...args} />
   </div>
 )
 
-WithAlignLeft.args = {
-  floatImage: '/img/red-dead-float.png',
-  align: 'left'
+BorderlandsSample.args = {
+  align: 'left',
+  title: 'Borderlands 3',
+  subtitle: "Borderlands it's back",
+  backgroundImage: '/img/borderlands-background.png',
+  floatImage: '/img/borderlands-float-img.png'
 }
