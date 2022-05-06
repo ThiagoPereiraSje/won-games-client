@@ -10,6 +10,16 @@ export default {
     img: '/img/population-zero.png',
     price: 'R$ 251,00',
     promotionalPrice: 'R$ 200,00'
+  },
+  argTypes: {
+    onFav: {
+      action: 'onFav'
+    }
+  },
+  parameters: {
+    backgrounds: {
+      default: 'dark'
+    }
   }
 } as ComponentMeta<typeof GameCard>
 
@@ -18,3 +28,13 @@ export const Basic: ComponentStory<typeof GameCard> = (args) => (
     <GameCard {...args} />
   </div>
 )
+
+export const WithRibbon: ComponentStory<typeof GameCard> = (args) => (
+  <div style={{ width: '30rem' }}>
+    <GameCard {...args} />
+  </div>
+)
+
+WithRibbon.args = {
+  ribbon: '20% OFF'
+}

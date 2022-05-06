@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 import GameCard from '.'
 
@@ -93,5 +93,34 @@ describe('<GameCard />', () => {
     const favicon = screen.getByLabelText(/remove from wishlist/i)
 
     expect(favicon).toBeInTheDocument()
+  })
+
+  it('should call onFav method when favorite icon is clicked', () => {
+    const onFav = jest.fn()
+
+    renderWithTheme(<GameCard {...props} onFav={onFav} />)
+
+    const favicon = screen.getAllByRole('button')[0]
+
+    fireEvent.click(favicon)
+
+    expect(onFav).toBeCalled()
+  })
+
+  it('should render a ribbon with small size by default', () => {
+    renderWithTheme(<GameCard {...props} ribbon="20% OFF" />)
+
+    const ribbon = screen.getByText(/20% off/i)
+
+    // should have be rendered
+    expect(ribbon).toBeInTheDocument()
+
+    // should have background color primary by default
+    // should have small size by default
+    expect(ribbon).toHaveStyle({
+      backgroundColor: '#F231A5',
+      height: '2.6rem',
+      fontSize: '1.2rem'
+    })
   })
 })

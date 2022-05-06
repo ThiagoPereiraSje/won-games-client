@@ -1,4 +1,7 @@
 import styled, { css, DefaultTheme } from 'styled-components'
+import media from 'styled-media-query'
+
+import * as RibbonStyles from 'components/Ribbon/styles'
 
 export const Wrapper = styled.article`
   ${({ theme }) => css`
@@ -8,6 +11,16 @@ export const Wrapper = styled.article`
     width: 100%;
     height: 100%;
     background-color: ${theme.colors.white};
+
+    ${media.lessThan('medium')`
+      ${RibbonStyles.Wrapper} {
+        right: 5px;
+
+        &::before {
+          display: none;
+        }
+      }
+    `}
   `}
 `
 
