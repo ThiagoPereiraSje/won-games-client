@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css, DefaultTheme } from 'styled-components'
 
 export const Wrapper = styled.article``
 
@@ -89,17 +89,33 @@ export const BuyBox = styled.div`
   `}
 `
 
-export const Price = styled.div`
-  ${({ theme }) => css`
-    display: inline-flex;
-    font-weight: ${theme.font.bold};
-    height: 3rem;
-    align-items: center;
+type PriceProps = {
+  isLegacy?: boolean
+}
 
+const priceModifiers = {
+  default: (theme: DefaultTheme) => css`
     color: ${theme.colors.white};
     padding: 0 ${theme.spacings.xxsmall};
     background-color: ${theme.colors.secondary};
     border-radius: ${theme.border.radius};
     margin-right: calc(${theme.spacings.xxsmall} / 2);
+  `,
+
+  isLegacy: (theme: DefaultTheme) => css`
+    color: ${theme.colors.gray};
+    text-decoration: line-through;
+    margin-right: ${theme.spacings.xsmall};
+  `
+}
+
+export const Price = styled.div<PriceProps>`
+  ${({ theme, isLegacy }) => css`
+    display: inline-flex;
+    font-weight: ${theme.font.bold};
+    height: 3rem;
+    align-items: center;
+
+    ${isLegacy ? priceModifiers.isLegacy(theme) : priceModifiers.default(theme)}
   `}
 `

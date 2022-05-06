@@ -8,7 +8,8 @@ export default {
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: '/img/population-zero.png',
-    price: 'R$ 251,00'
+    price: 'R$ 251,00',
+    promotionalPrice: 'R$ 200,00'
   }
 } as ComponentMeta<typeof GameCard>
 

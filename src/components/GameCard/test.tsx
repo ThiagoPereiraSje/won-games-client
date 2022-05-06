@@ -39,4 +39,52 @@ describe('<GameCard />', () => {
     expect(addToShoopingCartButton).toBeInTheDocument()
     expect(addToShoopingCartButton.firstChild).not.toBe(null)
   })
+
+  it('should render the normal price by default', () => {
+    renderWithTheme(<GameCard {...props} />)
+
+    const price = screen.getByText(/251,00/i)
+
+    // should have white color
+    // should have background color secondary
+    expect(price).toHaveStyle({
+      color: '#FAFAFA',
+      backgroundColor: '#3CD3C1'
+    })
+
+    // should not have text-decoration line-through
+    expect(price).not.toHaveStyle({
+      textDecoration: 'line-through'
+    })
+  })
+
+  it('should render the promotional price', () => {
+    renderWithTheme(<GameCard {...props} promotionalPrice="200,00" />)
+
+    const legacyPrice = screen.getByText(/251,00/i)
+    const promotionalPrice = screen.getByText(/200,00/i)
+
+    // should have gray color
+    // should not have background color
+    // should have text-decoration line-through
+    expect(legacyPrice).toHaveStyle({
+      color: '#8F8F8F',
+      textDecoration: 'line-through',
+      backgroundColor: 'unset'
+    })
+
+    // shoud have be rendered
+    // should have white color
+    // should have background color secondary
+    expect(promotionalPrice).toBeInTheDocument()
+    expect(promotionalPrice).toHaveStyle({
+      color: '#FAFAFA',
+      backgroundColor: '#3CD3C1'
+    })
+
+    // should not have text-decoration line-through
+    expect(promotionalPrice).not.toHaveStyle({
+      textDecoration: 'line-through'
+    })
+  })
 })
