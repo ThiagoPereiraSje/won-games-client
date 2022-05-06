@@ -17,7 +17,7 @@ describe('<GameCard />', () => {
     const developer = screen.getByRole('heading', { name: /rockstar games/i })
     const price = screen.getByText(/251,00/i)
     const img = screen.getByRole('img', { name: /population zero/i })
-    const favbutton = screen.getByRole('button', { name: /add to wishlist/i })
+    const favicon = screen.getByLabelText(/add to wishlist/i)
     const addToShoopingCartButton = screen.getByRole('button', {
       name: /add to shoppingcart/i
     })
@@ -31,9 +31,8 @@ describe('<GameCard />', () => {
     expect(img).toHaveAttribute('src', 'population-zero.png')
     expect(img).toHaveAttribute('alt', 'Population Zero')
 
-    // assert favbutton
-    expect(favbutton).toBeInTheDocument()
-    expect(favbutton.firstChild).not.toBe(null)
+    // assert favicon
+    expect(favicon).toBeInTheDocument()
 
     // assert add to shopping cart button
     expect(addToShoopingCartButton).toBeInTheDocument()
@@ -86,5 +85,13 @@ describe('<GameCard />', () => {
     expect(promotionalPrice).not.toHaveStyle({
       textDecoration: 'line-through'
     })
+  })
+
+  it('should render a filled favorite icon when favorite is true', () => {
+    renderWithTheme(<GameCard {...props} favorite />)
+
+    const favicon = screen.getByLabelText(/remove from wishlist/i)
+
+    expect(favicon).toBeInTheDocument()
   })
 })
