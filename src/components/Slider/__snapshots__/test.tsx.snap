@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Slider /> should render correctly 1`] = `
+<main
+  class=""
+>
+  <h1>
+    Hello Slider
+  </h1>
+</main>
+`;
