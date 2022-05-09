@@ -10,11 +10,11 @@ export type GameCardSliderColors = 'white' | 'black'
 
 export type GameCardSliderProps = {
   items: GameCardProps[]
-  color: GameCardSliderColors
+  color?: GameCardSliderColors
 }
 
 const settings: SliderSettings = {
-  dots: true,
+  dots: false,
   infinite: false,
   slidesToShow: 4,
   slidesToScroll: 1,
@@ -26,7 +26,7 @@ const settings: SliderSettings = {
     {
       breakpoint: 1375,
       settings: {
-        arrows: false,
+        arrows: true,
         slidesToShow: 4.2
       }
     },
@@ -65,7 +65,7 @@ const settings: SliderSettings = {
   ]
 }
 
-const GameCardSlider = ({ items, color = 'black' }: GameCardSliderProps) => {
+const GameCardSlider = ({ items, color = 'white' }: GameCardSliderProps) => {
   return (
     <S.Wrapper color={color}>
       <Slider settings={settings}>
