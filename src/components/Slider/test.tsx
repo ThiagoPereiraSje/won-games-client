@@ -1,18 +1,27 @@
+import 'match-media-mock'
 import { render, screen } from '@testing-library/react'
-import Slider from '.'
+import Slider, { SliderSettings } from '.'
+
+const props: SliderSettings = {
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  infinite: false
+}
 
 describe('<Slider />', () => {
-  it('should render the heading', () => {
-    render(<Slider />)
+  it('should render children as slider item', () => {
+    const { container } = render(
+      <Slider settings={props}>
+        <p>Item 1</p>
+        <p>Item 2</p>
+      </Slider>
+    )
 
-    const element = screen.getByRole('heading', { name: /Slider/i })
+    const item1 = screen.getByText(/item 1/i)
+    const item2 = screen.getByText(/item 2/i)
 
-    expect(element).toBeInTheDocument()
-  })
-
-  it('should render correctly', () => {
-    const { container } = render(<Slider />)
-
+    expect(item1.parentElement?.parentElement).toHaveClass('slick-slide')
+    expect(item2.parentElement?.parentElement).toHaveClass('slick-slide')
     expect(container.firstChild).toMatchSnapshot()
   })
 })
