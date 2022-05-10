@@ -1,17 +1,25 @@
-import Home from 'templates/Home'
+import Home, { HomeTemplateProps } from 'templates/Home'
 
-type Props = {
-  heading: string
-}
+import banners from 'components/BannerSlider/mock'
+import newGames from 'components/GameCardSlider/mock'
+import highlistData from 'components/Highlight/mock'
 
-export default function Index(props: Props) {
+export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
 }
 
 export function getStaticProps() {
   return {
     props: {
-      heading: 'olá'
+      banners,
+      newGames,
+      mostPopularHighlight: highlistData[0],
+      mostPopularGames: newGames,
+      upcommingGames: newGames,
+      upcommingHighlight: highlistData[1],
+      upcommingMoreGames: newGames,
+      freeHighlight: highlistData[2],
+      freeGames: newGames
     }
   }
 }
