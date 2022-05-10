@@ -5,7 +5,7 @@ import theme from 'styles/theme';
 const withGlobalStyles = (Story) => {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
+      <GlobalStyles removeBg />
       <Story />
     </ThemeProvider>
   )
