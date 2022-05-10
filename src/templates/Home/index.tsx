@@ -3,7 +3,11 @@ import Footer from 'components/Footer'
 import Heading from 'components/Heading'
 import Menu from 'components/Menu'
 
-const Home = () => {
+type Props = {
+  heading?: string
+}
+
+const Home = ({ heading }: Props) => {
   return (
     <section>
       <Container>
@@ -18,7 +22,7 @@ const Home = () => {
 
       <Container>
         <Heading lineLeft lineColor="secondary" color="white">
-          Most Popular
+          Most Popular {heading}
         </Heading>
       </Container>
 
