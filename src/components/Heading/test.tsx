@@ -3,20 +3,20 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import Heading from '.'
 
 describe('<Heading />', () => {
-  it('should render a black heading by default', () => {
+  it('should render a white heading by default', () => {
     renderWithTheme(<Heading>Won Games</Heading>)
 
     const element = screen.getByRole('heading')
 
-    expect(element).toHaveStyle({ color: '#030517' })
+    expect(element).toHaveStyle({ color: '#FAFAFA' })
   })
 
-  it('should render a white heading when color is passed', () => {
-    renderWithTheme(<Heading color="white">Won Games</Heading>)
+  it('should render a black heading when color is passed', () => {
+    renderWithTheme(<Heading color="black">Won Games</Heading>)
 
     const element = screen.getByRole('heading')
 
-    expect(element).toHaveStyle({ color: '#fafafa' })
+    expect(element).toHaveStyle({ color: '#030517' })
   })
 
   it('should render a black heading with a line to the left side', () => {

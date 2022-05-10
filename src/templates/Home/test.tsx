@@ -8,29 +8,29 @@ import highlistData from 'components/Highlight/mock'
 
 const props: HomeTemplateProps = {
   banners,
-  newGames,
+  newGames: [newGames[0]],
   mostPopularHighlight: highlistData[0],
-  mostPopularGames: newGames,
-  upcommingGames: newGames,
+  mostPopularGames: [newGames[0]],
+  upcommingGames: [newGames[0]],
   upcommingHighlight: highlistData[1],
-  upcommingMoreGames: newGames,
+  upcommingMoreGames: [newGames[0]],
   freeHighlight: highlistData[2],
-  freeGames: newGames
+  freeGames: [newGames[0]]
 }
 
 describe('<Home />', () => {
   it('should render menu and footer', () => {
     renderWithTheme(<Home {...props} />)
 
+    // Menu
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
+
+    // Footer
     expect(
       screen.getByRole('heading', { name: /contact/i })
     ).toBeInTheDocument()
-  })
 
-  it('should render the sections', () => {
-    renderWithTheme(<Home {...props} />)
-
+    // Sections
     expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument()
 
     expect(
@@ -44,15 +44,12 @@ describe('<Home />', () => {
     expect(
       screen.getByRole('heading', { name: /free games/i })
     ).toBeInTheDocument()
-  })
 
-  it('should render section elements', () => {
-    renderWithTheme(<Home {...props} />)
-    // banner
+    // Banner
     expect(screen.getAllByText(/defy death 1/i)).toHaveLength(1)
-    // card game ( 5 sections com 4 cards cada = 5x4 = 20)
-    expect(screen.getAllByText(/population zero/i)).toHaveLength(20)
-    // highlight
+    // Card game ( 5 sections com 4 cards cada = 5x1 = 5)
+    expect(screen.getAllByText(/population zero/i)).toHaveLength(5)
+    // Highlight
     expect(screen.getAllByText(/read dead is back!/i)).toHaveLength(1)
   })
 })
