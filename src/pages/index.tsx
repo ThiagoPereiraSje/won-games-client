@@ -1,36 +1,28 @@
 import Home, { HomeTemplateProps } from 'templates/Home'
 
-import banners from 'components/BannerSlider/mock'
-import newGames from 'components/GameCardSlider/mock'
-import highlistData from 'components/Highlight/mock'
+import bannersMock from 'components/BannerSlider/mock'
+import gamesMock from 'components/GameCardSlider/mock'
+import highlightMock from 'components/Highlight/mock'
 
 export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
 }
 
-export function getStaticProps() {
+export function getServerSideProps() {
   return {
     props: {
-      banners,
-      newGames,
-      mostPopularHighlight: highlistData[0],
-      mostPopularGames: newGames,
-      upcommingGames: newGames,
-      upcommingHighlight: highlistData[1],
-      upcommingMoreGames: newGames,
-      freeHighlight: highlistData[2],
-      freeGames: newGames
+      banners: bannersMock,
+      newGames: gamesMock,
+      mostPopularHighlight: highlightMock[0],
+      mostPopularGames: gamesMock,
+      upcommingGames: gamesMock,
+      upcommingHighlight: highlightMock[1],
+      upcommingMoreGames: gamesMock,
+      freeHighlight: highlightMock[2],
+      freeGames: gamesMock
     }
   }
 }
-
-// export function getServerSideProps() {
-//   return {
-//     props: {
-//       heading: 'olá com ssr'
-//     }
-//   }
-// }
 
 /*
 Atenção:

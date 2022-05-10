@@ -19,7 +19,7 @@ const items: HighlightProps[] = [
     floatImage: '/img/borderlands-float-img.png'
   },
   {
-    title: 'CS:GO',
+    title: 'CS: GO',
     subtitle: 'The most classic game',
     buttonLabel: 'Buy now',
     buttonLink: '/rdr2',
