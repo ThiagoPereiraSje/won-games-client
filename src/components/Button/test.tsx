@@ -84,4 +84,23 @@ describe('<Button />', () => {
     expect(element).toBeInTheDocument()
     expect(element).toHaveAttribute('href', '/link')
   })
+
+  it('should render a minimal version', () => {
+    renderWithTheme(
+      <Button icon={<AddShoppingCart data-testid="icon" />} minimal>
+        By now
+      </Button>
+    )
+
+    const button = screen.getByRole('button', { name: /by now/i })
+
+    expect(button).toHaveStyle({
+      background: 'none',
+      color: '#F231A5'
+    })
+
+    expect(button).toHaveStyleRule('background', 'none', {
+      modifier: ':hover'
+    })
+  })
 })

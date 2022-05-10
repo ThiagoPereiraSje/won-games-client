@@ -1,7 +1,10 @@
 import styled, { css, DefaultTheme } from 'styled-components'
 import { ButtonProps } from '.'
 
-type Props = { hasIcon: boolean } & Pick<ButtonProps, 'size' | 'fullWidth'>
+type Props = { hasIcon: boolean } & Pick<
+  ButtonProps,
+  'size' | 'fullWidth' | 'minimal'
+>
 
 const modifiers = {
   small: (theme: DefaultTheme) => css`
@@ -33,11 +36,16 @@ const modifiers = {
         margin-left: ${theme.spacings.xxsmall};
       }
     }
+  `,
+
+  minimal: (theme: DefaultTheme) => css`
+    background: none;
+    color: ${theme.colors.primary};
   `
 }
 
 export const Wrapper = styled.button<Props>`
-  ${({ theme, size, fullWidth, hasIcon }) => css`
+  ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -51,11 +59,14 @@ export const Wrapper = styled.button<Props>`
     text-decoration: none;
 
     &:hover {
-      background: linear-gradient(180deg, #e35565 0%, #d958a6 50%);
+      background: ${minimal
+        ? 'none'
+        : 'linear-gradient(180deg, #e35565 0%, #d958a6 50%)'};
     }
 
-    ${!!size && modifiers[size](theme)}
-    ${!!fullWidth && modifiers.fullWidth}
-    ${!!hasIcon && modifiers.withIcon(theme)}
+    ${!!size && modifiers[size](theme)};
+    ${!!fullWidth && modifiers.fullWidth};
+    ${!!hasIcon && modifiers.withIcon(theme)};
+    ${!!minimal && modifiers.minimal(theme)};
   `}
 `
