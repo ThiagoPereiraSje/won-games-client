@@ -1,16 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import Highlight from '.'
+import items from './mock'
 
 export default {
   title: 'Highlight',
   component: Highlight,
-  args: {
-    title: "Read Dead it's back",
-    subtitle: "Come see John's new adventures",
-    buttonLabel: 'Buy now',
-    buttonLink: '/rdr2',
-    backgroundImage: '/img/red-dead-img.jpg'
-  },
   parameters: {
     layout: 'fullscreen'
   }
@@ -22,15 +16,15 @@ export const Basic: ComponentStory<typeof Highlight> = (args) => (
   </div>
 )
 
+Basic.args = items[0]
+
 export const WithFloatImage: ComponentStory<typeof Highlight> = (args) => (
   <div style={{ maxWidth: '104rem' }}>
     <Highlight {...args} />
   </div>
 )
 
-WithFloatImage.args = {
-  floatImage: '/img/red-dead-float.png'
-}
+WithFloatImage.args = items[1]
 
 export const BorderlandsSample: ComponentStory<typeof Highlight> = (args) => (
   <div style={{ maxWidth: '104rem' }}>
@@ -38,10 +32,4 @@ export const BorderlandsSample: ComponentStory<typeof Highlight> = (args) => (
   </div>
 )
 
-BorderlandsSample.args = {
-  align: 'left',
-  title: 'Borderlands 3',
-  subtitle: "Borderlands it's back",
-  backgroundImage: '/img/borderlands-background.png',
-  floatImage: '/img/borderlands-float-img.png'
-}
+BorderlandsSample.args = items[2]
