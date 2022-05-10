@@ -2,7 +2,7 @@ import { HighlightProps } from '.'
 
 const items: HighlightProps[] = [
   {
-    title: "Read Dead it's back",
+    title: 'Read Dead is back!',
     subtitle: "Come see John's new adventures",
     buttonLabel: 'Buy now',
     buttonLink: '/rdr2',
@@ -14,7 +14,7 @@ const items: HighlightProps[] = [
     buttonLink: '/rdr2',
     align: 'left',
     title: 'Borderlands 3',
-    subtitle: "Borderlands it's back",
+    subtitle: 'Borderlands is back!',
     backgroundImage: '/img/borderlands-background.png',
     floatImage: '/img/borderlands-float-img.png'
   },
