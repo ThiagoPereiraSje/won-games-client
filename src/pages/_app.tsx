@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <Head>
-        <title>React Avançado - Boilerplate</title>
+        <title>Won Games</title>
         <link rel="manifest" href="/manifest.json" />
 
         <link
@@ -25,10 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
           sizes="32x32"
         />
 
-        <meta
-          name="description"
-          content="A simple project starter to work with Typescript, React, NextJS and Styled Components"
-        />
+        <meta name="description" content="The Best Game Store in the World!" />
         <meta name="theme-color" content="#317EFB" />
       </Head>
       <GlobalStyles />
