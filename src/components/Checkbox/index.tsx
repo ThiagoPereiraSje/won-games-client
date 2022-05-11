@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, useState } from 'react'
+import { InputHTMLAttributes, useEffect, useState } from 'react'
 import * as S from './styles'
 
 export type CheckboxLabelColors = 'black' | 'white'
@@ -21,6 +21,10 @@ const Checkbox = ({
 }: CheckboxProps) => {
   // Controlled component (state)
   const [checked, setChecked] = useState(isChecked)
+
+  useEffect(() => {
+    setChecked(isChecked)
+  }, [isChecked])
 
   const onChange = () => {
     const status = !checked

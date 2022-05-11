@@ -4,10 +4,6 @@ import Checkbox from '.'
 export default {
   title: 'Checkbox',
   component: Checkbox,
-  args: {
-    label: 'Buy now',
-    labelFor: 'buy-now'
-  },
   argTypes: {
     onCheck: { action: 'Checked' }
   },
@@ -19,9 +15,23 @@ export default {
 } as ComponentMeta<typeof Checkbox>
 
 export const Basic: ComponentStory<typeof Checkbox> = (args) => (
-  <Checkbox {...args} />
-)
+  <>
+    <div style={{ padding: 10 }}>
+      <Checkbox
+        name="category"
+        label="Action"
+        labelFor="1"
+        isChecked
+        {...args}
+      />
+    </div>
 
-export const Checked: ComponentStory<typeof Checkbox> = (args) => (
-  <Checkbox {...args} isChecked />
+    <div style={{ padding: 10 }}>
+      <Checkbox name="category" label="Adventure" labelFor="2" {...args} />
+    </div>
+
+    <div style={{ padding: 10 }}>
+      <Checkbox name="category" label="Strategy" labelFor="3" {...args} />
+    </div>
+  </>
 )
