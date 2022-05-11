@@ -7,6 +7,9 @@ export default {
   args: {
     label: 'Buy now',
     labelFor: 'buy-now'
+  },
+  argTypes: {
+    onCheck: { action: 'Checked' }
   }
 } as ComponentMeta<typeof Checkbox>
 
