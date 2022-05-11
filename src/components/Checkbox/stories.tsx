@@ -10,9 +10,18 @@ export default {
   },
   argTypes: {
     onCheck: { action: 'Checked' }
+  },
+  parameters: {
+    backgrounds: {
+      default: 'won-dark'
+    }
   }
 } as ComponentMeta<typeof Checkbox>
 
 export const Basic: ComponentStory<typeof Checkbox> = (args) => (
   <Checkbox {...args} />
+)
+
+export const Checked: ComponentStory<typeof Checkbox> = (args) => (
+  <Checkbox {...args} isChecked />
 )
