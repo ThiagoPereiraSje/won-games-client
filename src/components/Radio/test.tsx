@@ -5,7 +5,9 @@ import Radio from '.'
 
 describe('<Radio />', () => {
   it('should render a input radio with label', () => {
-    renderWithTheme(<Radio label="Radio label" labelFor="radio" />)
+    const { container } = renderWithTheme(
+      <Radio label="Radio label" labelFor="radio" />
+    )
 
     const radio = screen.getByRole('radio')
     const label = screen.getByText(/radio label/i)
@@ -18,6 +20,8 @@ describe('<Radio />', () => {
 
     // label should have attribute for='radio'
     expect(label).toHaveAttribute('for', 'radio')
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   it('should render without label', () => {
