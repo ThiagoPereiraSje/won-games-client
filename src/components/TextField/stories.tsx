@@ -3,7 +3,7 @@ import { MailOutline } from '@styled-icons/material-outlined'
 import TextField from '.'
 
 export default {
-  title: 'TextField',
+  title: 'Form/TextField',
   args: {
     label: 'E-mail',
     labelFor: 'Email',
