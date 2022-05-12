@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { MailOutline, Chat } from '@styled-icons/material-outlined'
+import { MailOutline } from '@styled-icons/material-outlined'
 import TextField from '.'
 
 export default {
@@ -13,24 +13,14 @@ export default {
   },
   argTypes: {
     onInput: { action: 'Changed' },
-    iconLeft: { type: 'symbol' },
-    iconRight: { type: 'symbol' }
+    icon: { type: 'symbol' },
+    value: { type: 'string' }
   },
   component: TextField
 } as ComponentMeta<typeof TextField>
 
 export const Basic: ComponentStory<typeof TextField> = (args) => (
-  <>
-    <div style={{ maxWidth: 300, padding: 15 }}>
-      <TextField {...args} iconLeft={<MailOutline />} />
-    </div>
-
-    <div style={{ maxWidth: 300, padding: 15 }}>
-      <TextField {...args} iconRight={<MailOutline />} />
-    </div>
-
-    <div style={{ maxWidth: 300, padding: 15 }}>
-      <TextField {...args} iconLeft={<MailOutline />} iconRight={<Chat />} />
-    </div>
-  </>
+  <div style={{ maxWidth: 300, padding: 15 }}>
+    <TextField {...args} icon={<MailOutline />} />
+  </div>
 )

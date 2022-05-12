@@ -63,25 +63,40 @@ describe('<TextField />', () => {
     expect(onInput).toHaveBeenCalledWith(text)
   })
 
-  it('should render with one icon on left', () => {
-    renderWithTheme(<TextField iconLeft={<MailOutline data-testid="icon" />} />)
+  it('should render with one icon on left by default', () => {
+    renderWithTheme(<TextField icon={<MailOutline data-testid="icon" />} />)
 
     const input = screen.getByRole('textbox')
     const icon = screen.getByTestId('icon')
 
-    expect(input).toBeInTheDocument()
+    expect(input).toHaveStyle({
+      paddingLeft: '1.6rem'
+    })
+
     expect(icon).toBeInTheDocument()
+    expect(icon.parentElement).toHaveStyle({
+      order: 0
+    })
   })
 
   it('should render with one icon on right', () => {
     renderWithTheme(
-      <TextField iconRight={<MailOutline data-testid="icon" />} />
+      <TextField
+        icon={<MailOutline data-testid="icon" />}
+        iconPosition="right"
+      />
     )
 
     const input = screen.getByRole('textbox')
     const icon = screen.getByTestId('icon')
 
-    expect(input).toBeInTheDocument()
+    expect(input).toHaveStyle({
+      paddingRight: '1.6rem'
+    })
+
     expect(icon).toBeInTheDocument()
+    expect(icon.parentElement).toHaveStyle({
+      order: 1
+    })
   })
 })
