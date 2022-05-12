@@ -1,5 +1,6 @@
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { MailOutline } from '@styled-icons/material-outlined'
 import { renderWithTheme } from 'utils/tests/helpers'
 import TextField from '.'
 
@@ -60,5 +61,27 @@ describe('<TextField />', () => {
     })
 
     expect(onInput).toHaveBeenCalledWith(text)
+  })
+
+  it('should render with one icon on left', () => {
+    renderWithTheme(<TextField iconLeft={<MailOutline data-testid="icon" />} />)
+
+    const input = screen.getByRole('textbox')
+    const icon = screen.getByTestId('icon')
+
+    expect(input).toBeInTheDocument()
+    expect(icon).toBeInTheDocument()
+  })
+
+  it('should render with one icon on right', () => {
+    renderWithTheme(
+      <TextField iconRight={<MailOutline data-testid="icon" />} />
+    )
+
+    const input = screen.getByRole('textbox')
+    const icon = screen.getByTestId('icon')
+
+    expect(input).toBeInTheDocument()
+    expect(icon).toBeInTheDocument()
   })
 })

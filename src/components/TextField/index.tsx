@@ -6,6 +6,8 @@ export type TextFieldProps = {
   label?: string
   labelFor?: string
   initialValue?: string
+  iconLeft?: JSX.Element
+  iconRight?: JSX.Element
 } & InputHTMLAttributes<HTMLInputElement>
 
 const TextField = ({
@@ -13,6 +15,8 @@ const TextField = ({
   labelFor = '',
   initialValue = '',
   onInput,
+  iconLeft,
+  iconRight,
   ...props
 }: TextFieldProps) => {
   const [value, setValue] = useState(initialValue)
@@ -28,7 +32,9 @@ const TextField = ({
     <S.Wrapper>
       {!!label && <S.Label htmlFor={labelFor}>{label}</S.Label>}
       <S.InputWrapper>
+        {!!iconLeft && <S.Icon>{iconLeft}</S.Icon>}
         <S.Input type="text" onChange={onChange} value={value} {...props} />
+        {!!iconRight && <S.Icon>{iconRight}</S.Icon>}
       </S.InputWrapper>
     </S.Wrapper>
   )
