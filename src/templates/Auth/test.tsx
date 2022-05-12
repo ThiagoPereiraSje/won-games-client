@@ -11,7 +11,7 @@ describe('<Auth />', () => {
     )
 
     // logos
-    expect(screen.getAllByLabelText(/won games/i)).toHaveLength(2)
+    expect(screen.getAllByRole('img', { name: /won games/i })).toHaveLength(2)
 
     // title
     expect(
@@ -37,6 +37,7 @@ describe('<Auth />', () => {
       screen.getByRole('heading', { name: /sign in/i })
     ).toBeInTheDocument()
 
+    // children
     expect(screen.getByRole('textbox')).toBeInTheDocument()
   })
 })
