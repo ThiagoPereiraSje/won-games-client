@@ -151,4 +151,39 @@ describe('<TextField />', () => {
       order: 1
     })
   })
+
+  it('should render a red label, icon, border and message when it has error', () => {
+    const { container } = renderWithTheme(
+      <TextField
+        label="TextField"
+        labelFor="TextField"
+        icon={<MailOutline data-testid="icon" />}
+        error="Oops.. something is wrong"
+      />
+    )
+
+    const label = screen.getByText(/textfield/i)
+    const icon = screen.getByTestId('icon')
+    const input = screen.getByRole('textbox')
+    const message = screen.getByText(/oops.. something is wrong/i)
+
+    expect(label).toHaveStyle({
+      color: '#FF6347'
+    })
+
+    expect(icon.parentElement).toHaveStyle({
+      color: '#FF6347'
+    })
+
+    expect(input.parentElement).toHaveStyle({
+      borderColor: '#FF6347'
+    })
+
+    expect(message).toBeInTheDocument()
+    expect(message).toHaveStyle({
+      color: '#FF6347'
+    })
+
+    expect(container.firstChild).toMatchSnapshot()
+  })
 })

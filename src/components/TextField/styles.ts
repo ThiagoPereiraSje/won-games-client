@@ -53,7 +53,16 @@ export const Icon = styled.div<IconPositionProps>`
   `}
 `
 
-type WrapperProps = Pick<TextFieldProps, 'disabled'>
+export const Error = styled.span`
+  ${({ theme }) => css`
+    color: ${theme.colors.red};
+    font-size: ${theme.font.sizes.small};
+  `}
+`
+
+type WrapperProps = Pick<TextFieldProps, 'disabled'> & {
+  error: boolean
+}
 
 const wrapperModifiers = {
   disabled: (theme: DefaultTheme) => css`
@@ -67,11 +76,22 @@ const wrapperModifiers = {
         color: currentColor;
       }
     }
+  `,
+
+  error: (theme: DefaultTheme) => css`
+    ${Label}, ${Icon} {
+      color: ${theme.colors.red};
+    }
+
+    ${InputWrapper} {
+      border-color: ${theme.colors.red};
+    }
   `
 }
 
 export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, disabled }) => css`
+  ${({ theme, disabled, error }) => css`
     ${disabled && wrapperModifiers.disabled(theme)}
+    ${error && wrapperModifiers.error(theme)}
   `}
 `
