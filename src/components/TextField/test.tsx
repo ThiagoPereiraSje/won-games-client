@@ -31,6 +31,25 @@ describe('<TextField />', () => {
     expect(input).toHaveFocus()
   })
 
+  it('should not be accessible by tab when disable', () => {
+    renderWithTheme(
+      <TextField
+        label="TextField"
+        labelFor="TextField"
+        id="TextField"
+        disabled
+      />
+    )
+
+    const input = screen.getByLabelText(/textfield/i)
+
+    expect(document.body).toHaveFocus()
+
+    userEvent.tab()
+
+    expect(input).not.toHaveFocus()
+  })
+
   it('should render with placeholder', () => {
     renderWithTheme(<TextField placeholder="Hey You" />)
 
@@ -79,6 +98,8 @@ describe('<TextField />', () => {
     const input = screen.getByRole('textbox')
     const text = 'This is my new text'
     const label = screen.getByText(/textfield/i)
+
+    expect(input).toBeDisabled()
 
     userEvent.type(input, text)
 
