@@ -14,7 +14,8 @@ export default {
   argTypes: {
     onInput: { action: 'Changed' },
     icon: { type: 'symbol' },
-    value: { type: 'string' }
+    value: { type: 'string' },
+    disabled: { type: 'boolean' }
   },
   component: TextField
 } as ComponentMeta<typeof TextField>

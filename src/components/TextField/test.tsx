@@ -63,6 +63,37 @@ describe('<TextField />', () => {
     expect(onInput).toHaveBeenCalledWith(text)
   })
 
+  it('should not change your value when the user types', async () => {
+    const onInput = jest.fn()
+
+    renderWithTheme(
+      <TextField
+        onInput={onInput}
+        label="TextField"
+        labelFor="TextField"
+        id="TextField"
+        disabled
+      />
+    )
+
+    const input = screen.getByRole('textbox')
+    const text = 'This is my new text'
+    const label = screen.getByText(/textfield/i)
+
+    userEvent.type(input, text)
+
+    // waitFor is needed because of useState
+    await waitFor(() => {
+      expect(input).not.toHaveValue(text)
+    })
+
+    expect(onInput).not.toHaveBeenCalled()
+
+    expect(label).toHaveStyle({
+      color: '#8F8F8F'
+    })
+  })
+
   it('should render with one icon on left by default', () => {
     renderWithTheme(<TextField icon={<MailOutline data-testid="icon" />} />)
 

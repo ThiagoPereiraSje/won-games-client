@@ -4,9 +4,10 @@ import { TextFieldProps } from '.'
 export const Wrapper = styled.div``
 
 type IconPositionProps = Pick<TextFieldProps, 'iconPosition'>
+type InputProps = Pick<TextFieldProps, 'disabled'>
 
-export const InputWrapper = styled.div`
-  ${({ theme }) => css`
+export const InputWrapper = styled.div<InputProps>`
+  ${({ theme, disabled }) => css`
     display: flex;
     background: ${theme.colors.lightGray};
     border-radius: 0.2rem;
@@ -15,7 +16,8 @@ export const InputWrapper = styled.div`
     border-color: ${theme.colors.lightGray};
 
     &:focus-within {
-      box-shadow: 0 0 0.5rem ${theme.colors.primary};
+      box-shadow: 0 0 0.5rem
+        ${disabled ? theme.colors.gray : theme.colors.primary};
     }
   `}
 `
@@ -34,10 +36,10 @@ export const Input = styled.input<IconPositionProps>`
   `}
 `
 
-export const Label = styled.label`
-  ${({ theme }) => css`
+export const Label = styled.label<InputProps>`
+  ${({ theme, disabled }) => css`
     font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.black};
+    color: ${disabled ? theme.colors.gray : theme.colors.black};
     cursor: pointer;
   `}
 `

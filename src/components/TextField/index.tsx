@@ -17,6 +17,7 @@ const TextField = ({
   onInput,
   icon,
   iconPosition = 'left',
+  disabled,
   ...props
 }: TextFieldProps) => {
   const [value, setValue] = useState(initialValue)
@@ -30,8 +31,12 @@ const TextField = ({
 
   return (
     <S.Wrapper>
-      {!!label && <S.Label htmlFor={labelFor}>{label}</S.Label>}
-      <S.InputWrapper>
+      {!!label && (
+        <S.Label htmlFor={labelFor} disabled={disabled}>
+          {label}
+        </S.Label>
+      )}
+      <S.InputWrapper disabled={disabled}>
         {!!icon && <S.Icon iconPosition={iconPosition}>{icon}</S.Icon>}
         <S.Input
           type="text"
