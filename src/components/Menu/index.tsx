@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Menu2 as MenuIcon } from 'styled-icons/remix-fill/index'
 import {
   ShoppingCart as ShoppingCartIcon,
@@ -49,7 +50,10 @@ const Menu = ({ username }: MenuProps) => {
 
         {!username && (
           <MediaMatch greaterThan="medium">
-            <Button>Sign in</Button>
+            {/* Quando for um componente funcional deve-se usar passHref (e forwardRef no componente) */}
+            <Link href="/sign-in" passHref>
+              <Button as="a">Sign in</Button>
+            </Link>
           </MediaMatch>
         )}
       </S.MenuGroup>
@@ -71,15 +75,17 @@ const Menu = ({ username }: MenuProps) => {
 
         {!username && (
           <S.RegisterBox>
-            <Button size="large" fullWidth>
-              Log in Now
-            </Button>
+            <Link href="/sign-in" passHref>
+              <Button as="a" size="large" fullWidth>
+                Log in now
+              </Button>
+            </Link>
 
             <span>or</span>
 
-            <S.CreateAccount href="#" title="Sign UP">
-              Sign Up
-            </S.CreateAccount>
+            <Link href="/sign-up" passHref>
+              <S.CreateAccount title="Sign UP">Sign Up</S.CreateAccount>
+            </Link>
           </S.RegisterBox>
         )}
       </S.MenuFull>

@@ -126,6 +126,7 @@ export const MenuFull = styled.nav<MenuFullProps>`
     transition: opacity ${theme.transition.default};
     opacity: ${isOpen ? 1 : 0};
     pointer-events: ${isOpen ? 'all' : 'none'};
+    z-index: ${theme.layers.menu};
 
     > svg {
       position: absolute;
