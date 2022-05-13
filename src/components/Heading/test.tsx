@@ -39,7 +39,7 @@ describe('<Heading />', () => {
     })
   })
 
-  it('should render a black heading with a small size', () => {
+  it('should render a heading with a small size', () => {
     renderWithTheme(<Heading size="small">Won Games</Heading>)
 
     const element = screen.getByRole('heading')
@@ -50,6 +50,16 @@ describe('<Heading />', () => {
 
     expect(element).toHaveStyleRule('width', '3rem', {
       modifier: '::after'
+    })
+  })
+
+  it('should render a heading with a huge size', () => {
+    renderWithTheme(<Heading size="huge">Won Games</Heading>)
+
+    const element = screen.getByRole('heading')
+
+    expect(element).toHaveStyle({
+      'font-size': '5.2rem'
     })
   })
 
