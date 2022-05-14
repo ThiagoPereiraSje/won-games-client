@@ -5,19 +5,15 @@ export const Input = styled.input`
   opacity: 0;
 
   /* altera o tamanho do elemento */
-  width: 1.5em;
-  height: 1.5em;
-  left: 19%;
-  bottom: 50%;
-
-  /*
-    sometimes you may need to add z-index
-    z-index: ...;
-  */
+  width: 1.8em;
+  height: 1.8em;
 `
 
 export const Wrapper = styled.label`
+  display: flex;
+  align-items: center;
   position: relative;
+  margin: 0.8rem 0;
 
   ${Input}:focus + svg {
     outline: 3px solid #e55360;
@@ -29,12 +25,15 @@ export const Wrapper = styled.label`
   }
 
   svg {
-    width: 1.5em;
-    height: 1.5em;
+    ${({ theme }) => css`
+      width: 1.5em;
+      height: 1.5em;
+      margin-right: ${theme.spacings.xxsmall};
 
-    * {
-      transition: all 0.1s linear;
-    }
+      * {
+        transition: all 0.1s linear;
+      }
+    `}
   }
 
   ${Input}:checked + svg {
