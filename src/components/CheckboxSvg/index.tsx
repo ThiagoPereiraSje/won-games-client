@@ -13,7 +13,7 @@ const CheckboxSvg = ({
 }: CheckboxSvgProps) => {
   return (
     <S.Wrapper htmlFor={labelFor}>
-      <input type="checkbox" id={id} />
+      <S.Input type="checkbox" id={id} />
 
       <svg
         role="img"
