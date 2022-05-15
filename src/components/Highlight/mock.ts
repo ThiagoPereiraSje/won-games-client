@@ -1,6 +1,6 @@
 import { HighlightProps } from '.'
 
-const items: HighlightProps[] = [
+const highlightsMock: HighlightProps[] = [
   {
     title: 'Read Dead is back!',
     subtitle: "Come see John's new adventures",
@@ -28,4 +28,4 @@ const items: HighlightProps[] = [
   }
 ]
 
-export default items
+export default highlightsMock
