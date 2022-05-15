@@ -27,9 +27,7 @@ describe('<CheckboxSvg />', () => {
     // the checkout should have id attribute of 'c-checkbox'
     expect(checkbox).toHaveAttribute('id', 'c-checkbox')
 
-    // should have a image with label 'the checkmark'
-    expect(
-      screen.getByRole('img', { name: /the checkmark/i })
-    ).toBeInTheDocument()
+    // should have a image with aria-hidden=true
+    expect(screen.getByRole('img', { hidden: true })).toBeInTheDocument()
   })
 })

@@ -21,7 +21,7 @@ const CheckboxSvg = ({
         width="32"
         height="32"
         viewBox="-4 -4 39 39"
-        aria-hidden="false"
+        aria-hidden="true"
         focusable="false"
       >
         <rect
