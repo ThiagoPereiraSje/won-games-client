@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import Highlight from '.'
-import items from './mock'
+import highlightsMock from './mock'
 
 export default {
   title: 'Highlight',
@@ -16,7 +16,7 @@ export const Basic: ComponentStory<typeof Highlight> = (args) => (
   </div>
 )
 
-Basic.args = items[0]
+Basic.args = highlightsMock[0]
 
 export const WithFloatImage: ComponentStory<typeof Highlight> = (args) => (
   <div style={{ maxWidth: '104rem' }}>
@@ -24,7 +24,7 @@ export const WithFloatImage: ComponentStory<typeof Highlight> = (args) => (
   </div>
 )
 
-WithFloatImage.args = items[1]
+WithFloatImage.args = highlightsMock[1]
 
 export const BorderlandsSample: ComponentStory<typeof Highlight> = (args) => (
   <div style={{ maxWidth: '104rem' }}>
@@ -32,4 +32,4 @@ export const BorderlandsSample: ComponentStory<typeof Highlight> = (args) => (
   </div>
 )
 
-BorderlandsSample.args = items[2]
+BorderlandsSample.args = highlightsMock[2]

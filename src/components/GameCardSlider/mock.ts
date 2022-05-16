@@ -1,4 +1,6 @@
-export default [
+import { GameCardProps } from 'components/GameCard'
+
+const gameCardsMock: GameCardProps[] = [
   {
     title: 'Population Zero',
     developer: 'Rockstar Games',
@@ -49,3 +51,5 @@ export default [
     promotionalPrice: 'R$ 215,00'
   }
 ]
+
+export default gameCardsMock
