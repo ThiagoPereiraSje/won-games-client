@@ -36,35 +36,38 @@ jest.mock('components/Footer', () => {
   }
 })
 
+jest.mock('components/Showcase', () => {
+  return {
+    __esModule: true,
+    default: () => {
+      return <div data-testid="Mock Showcase"></div>
+    }
+  }
+})
+
+jest.mock('components/BannerSlider', () => {
+  return {
+    __esModule: true,
+    default: () => {
+      return <div data-testid="Mock BannerSlide"></div>
+    }
+  }
+})
+
 describe('<Home />', () => {
   it('should render menu and footer', () => {
     renderWithTheme(<Home {...props} />)
 
-    // Menu
+    // should have a Menu
     expect(screen.getByTestId(/mock menu/i)).toBeInTheDocument()
-    // Footer
+
+    // should have a Banner
+    expect(screen.getByTestId(/mock bannerslide/i)).toBeInTheDocument()
+
+    // should have 5 showcases
+    expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(5)
+
+    // should have a Footer
     expect(screen.getByTestId(/mock footer/i)).toBeInTheDocument()
-
-    // Sections
-    expect(screen.getByRole('heading', { name: /news/i })).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('heading', { name: /most popular/i })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('heading', { name: /upcoming/i })
-    ).toBeInTheDocument()
-
-    expect(
-      screen.getByRole('heading', { name: /free games/i })
-    ).toBeInTheDocument()
-
-    // Banner
-    expect(screen.getAllByText(/defy death 1/i)).toHaveLength(1)
-    // Card game ( 5 sections com 4 cards cada = 5x1 = 5)
-    expect(screen.getAllByText(/population zero/i)).toHaveLength(5)
-    // Highlight
-    expect(screen.getAllByText(/read dead is back!/i)).toHaveLength(1)
   })
 })
