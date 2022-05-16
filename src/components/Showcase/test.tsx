@@ -1,18 +1,13 @@
 import 'match-media-mock'
 import { screen } from '@testing-library/react'
-import { HeadingProps } from 'components/Heading'
 import { renderWithTheme } from 'utils/tests/helpers'
 import highlihtsMock from 'components/Highlight/mock'
 import gameCardsMock from 'components/GameCardSlider/mock'
 import Showcase from '.'
 
-const headingProps: HeadingProps = {
-  children: 'Showcase heading'
-}
-
 describe('<Showcase />', () => {
   it('should render the heading', () => {
-    renderWithTheme(<Showcase heading={headingProps} />)
+    renderWithTheme(<Showcase title="Showcase heading" />)
 
     expect(
       screen.getByRole('heading', { name: /showcase heading/i })
@@ -28,7 +23,7 @@ describe('<Showcase />', () => {
   })
 
   it('should render one game card', () => {
-    renderWithTheme(<Showcase gameCards={[gameCardsMock[0]]} />)
+    renderWithTheme(<Showcase games={[gameCardsMock[0]]} />)
 
     expect(
       screen.getByRole('heading', { name: /population zero/i })
