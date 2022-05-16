@@ -21,7 +21,7 @@ describe('<GameInfo />', () => {
     expect(screen.getByText(/game description/i)).toBeInTheDocument()
 
     // must to have a price
-    expect(screen.getByText(/210.00/i)).toBeInTheDocument()
+    expect(screen.getByText(/\$210.00/)).toBeInTheDocument()
   })
 
   it('should render buttons', () => {
