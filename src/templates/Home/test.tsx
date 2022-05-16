@@ -18,24 +18,6 @@ const props: HomeTemplateProps = {
   freeGames: [newGames[0]]
 }
 
-jest.mock('components/Menu', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="Mock Menu"></div>
-    }
-  }
-})
-
-jest.mock('components/Footer', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="Mock Footer"></div>
-    }
-  }
-})
-
 jest.mock('components/Showcase', () => {
   return {
     __esModule: true,
@@ -58,16 +40,10 @@ describe('<Home />', () => {
   it('should render menu and footer', () => {
     renderWithTheme(<Home {...props} />)
 
-    // should have a Menu
-    expect(screen.getByTestId(/mock menu/i)).toBeInTheDocument()
-
     // should have a Banner
     expect(screen.getByTestId(/mock bannerslide/i)).toBeInTheDocument()
 
     // should have 5 showcases
     expect(screen.getAllByTestId(/mock showcase/i)).toHaveLength(5)
-
-    // should have a Footer
-    expect(screen.getByTestId(/mock footer/i)).toBeInTheDocument()
   })
 })
