@@ -11,9 +11,9 @@ const props: HomeTemplateProps = {
   newGames: [newGames[0]],
   mostPopularHighlight: highlistData[0],
   mostPopularGames: [newGames[0]],
-  upcommingGames: [newGames[0]],
-  upcommingHighlight: highlistData[1],
-  upcommingMoreGames: [newGames[0]],
+  upcomingGames: [newGames[0]],
+  upcomingHighlight: highlistData[1],
+  upcomingMoreGames: [newGames[0]],
   freeHighlight: highlistData[2],
   freeGames: [newGames[0]]
 }
@@ -38,7 +38,7 @@ describe('<Home />', () => {
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /upcomming/i })
+      screen.getByRole('heading', { name: /upcoming/i })
     ).toBeInTheDocument()
 
     expect(
