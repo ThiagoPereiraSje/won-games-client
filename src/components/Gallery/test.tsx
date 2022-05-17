@@ -18,7 +18,7 @@ describe('<Gallery />', () => {
     ).toHaveAttribute('src', mockGalleryImage[1].src)
   })
 
-  it('should handle open modal when click on thumbnails', () => {
+  it('should handle open/close modal', () => {
     renderWithTheme(<Gallery items={mockGalleryImage.slice(0, 2)} />)
 
     // selecionar o nosso modal
@@ -35,8 +35,16 @@ describe('<Gallery />', () => {
 
     fireEvent.click(thumb1)
 
-    // verificar se o modal abriu
+    // verificar se o modal foi aberto
     expect(modal.getAttribute('aria-hidden')).toBe('false')
     expect(modal).toHaveStyle({ opacity: 1 })
+
+    // clicar no overlay/botão para fechar
+    const closeButton = screen.getByRole('button', { name: /close modal/i })
+    fireEvent.click(closeButton)
+
+    // verificar se foi fechado
+    expect(modal.getAttribute('aria-hidden')).toBe('true')
+    expect(modal).toHaveStyle({ opacity: 0 })
   })
 })
