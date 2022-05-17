@@ -39,9 +39,17 @@ export const Description = styled.div`
     font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.bold};
     color: ${theme.colors.white};
+  `}
+`
 
-    svg {
-      width: 2.5rem;
-    }
+export const IconsWrapper = styled.div`
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+  `}
+`
+
+export const Icon = styled.span`
+  ${({ theme }) => css`
+    margin-right: ${theme.spacings.xxsmall};
   `}
 `

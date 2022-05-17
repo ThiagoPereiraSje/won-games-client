@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import { Menu2 as MenuIcon } from 'styled-icons/remix-fill/index'
+import { Menu2 as MenuIcon } from '@styled-icons/remix-fill'
 import {
   ShoppingCart as ShoppingCartIcon,
   Search as SearchIcon,
   Close as CloseIcon
-} from 'styled-icons/material-outlined/index'
+} from '@styled-icons/material-outlined'
 
 import * as S from './styles'
 import { useState } from 'react'

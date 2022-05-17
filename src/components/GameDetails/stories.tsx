@@ -18,4 +18,10 @@ export default {
   }
 } as ComponentMeta<typeof GameDetails>
 
-export const Basic: ComponentStory<typeof GameDetails> = () => <GameDetails />
+export const Basic: ComponentStory<typeof GameDetails> = (args) => (
+  <GameDetails {...args} />
+)
+
+Basic.args = {
+  platforms: ['windows', 'linux', 'mac']
+}
