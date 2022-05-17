@@ -4,15 +4,47 @@ import TextContent from '.'
 
 const props = {
   title: 'Description',
-  content: 'Content text'
+  content: `<h1>Content</h1>`
 }
 
 describe('<TextContent />', () => {
-  it('should render the heading', () => {
+  it('should render the title and content', () => {
     renderWithTheme(<TextContent {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /description/i })
     ).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('heading', { name: /content/i })
+    ).toBeInTheDocument()
+  })
+
+  it('should render without title', () => {
+    renderWithTheme(<TextContent content={props.content} />)
+
+    expect(
+      screen.getByRole('heading', { name: /content/i })
+    ).toBeInTheDocument()
+
+    expect(
+      screen.queryByRole('heading', { name: /description/i })
+    ).not.toBeInTheDocument()
+  })
+
+  it('should render white text on mobile and black on the desktop', () => {
+    renderWithTheme(<TextContent {...props} />)
+
+    const wrapper = screen.getByRole('heading', {
+      name: /description/i
+    }).parentElement
+
+    expect(wrapper).toHaveStyle({
+      color: '#fafafa'
+    })
+
+    expect(wrapper).toHaveStyleRule('color', '#030517', {
+      media: '(min-width: 768px)'
+    })
   })
 })
