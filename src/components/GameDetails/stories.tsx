@@ -4,6 +4,17 @@ import GameDetails from '.'
 export default {
   title: 'Game/GameDetails',
   component: GameDetails,
+  args: {
+    platforms: ['windows', 'linux', 'mac']
+  },
+  argTypes: {
+    platforms: {
+      control: {
+        type: 'inline-check',
+        options: ['windows', 'linux', 'mac']
+      }
+    }
+  },
   decorators: [
     (Story) => (
       <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
@@ -21,7 +32,3 @@ export default {
 export const Basic: ComponentStory<typeof GameDetails> = (args) => (
   <GameDetails {...args} />
 )
-
-Basic.args = {
-  platforms: ['windows', 'linux', 'mac']
-}
