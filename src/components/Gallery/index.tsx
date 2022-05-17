@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   ArrowBackIos as ArrowLeft,
   ArrowForwardIos as ArrowRight
@@ -54,6 +55,8 @@ export type GalleryProps = {
 }
 
 const Gallery = ({ items }: GalleryProps) => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <S.Wrapper>
       <Slider settings={settings}>
@@ -63,9 +66,16 @@ const Gallery = ({ items }: GalleryProps) => {
             role="button"
             src={item.src}
             alt={`Thumb - ${item.label}`}
+            onClick={() => setIsOpen(true)}
           />
         ))}
       </Slider>
+
+      <S.Modal
+        aria-label="modal"
+        aria-hidden={!isOpen}
+        isOpen={isOpen}
+      ></S.Modal>
     </S.Wrapper>
   )
 }
