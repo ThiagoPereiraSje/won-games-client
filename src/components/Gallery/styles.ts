@@ -90,3 +90,9 @@ export const Close = styled.div`
     text-align: right;
   `}
 `
+
+export const Content = styled.div`
+  margin: auto;
+  max-width: min(110rem, 100%);
+  max-height: 80rem;
+`
