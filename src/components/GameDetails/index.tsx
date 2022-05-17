@@ -4,22 +4,36 @@ import * as S from './styles'
 import MediaMatch from 'components/MediaMatch'
 
 export type GamePlatform = 'windows' | 'linux' | 'mac'
+export type GameRating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18'
 
 export type GameDetailsProps = {
   developer: string
   releaseDate: string
   platforms: GamePlatform[]
+  rating: GameRating
+  genres: string[]
 }
 
 const GameDetails = ({
   developer,
   releaseDate,
-  platforms = []
+  platforms = [],
+  rating,
+  genres = []
 }: GameDetailsProps) => {
   const platfrmIcons = {
     linux: <Linux title="Linux" size={18} />,
     windows: <Windows title="Windows" size={18} />,
     mac: <Apple title="Mac" size={18} />
+  }
+
+  const ratingOptions = {
+    BR0: 'FREE',
+    BR10: '10+',
+    BR12: '12+',
+    BR14: '14+',
+    BR16: '16+',
+    BR18: '18+'
   }
 
   return (
@@ -59,11 +73,11 @@ const GameDetails = ({
         </S.Block>
         <S.Description>
           <S.Label>Rating</S.Label>
-          <S.Description>18 +</S.Description>
+          <S.Description>{ratingOptions[rating]}</S.Description>
         </S.Description>
         <S.Block>
           <S.Label>Genres</S.Label>
-          <S.Description>Action / Adventure</S.Description>
+          <S.Description>{genres.join(' / ')}</S.Description>
         </S.Block>
       </S.Content>
     </S.Wrapper>
