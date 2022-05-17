@@ -47,4 +47,27 @@ describe('<Gallery />', () => {
     expect(modal.getAttribute('aria-hidden')).toBe('true')
     expect(modal).toHaveStyle({ opacity: 0 })
   })
+
+  it('should handle close modal when ESC button is pressed', () => {
+    const { container } = renderWithTheme(
+      <Gallery items={mockGalleryImage.slice(0, 2)} />
+    )
+
+    // selecionar o nosso modal
+    const modal = screen.getByLabelText('modal')
+
+    // abrir o nosso modal
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /thumb - gallery image 1/i
+      })
+    )
+
+    // usar a tecla ESC para fechar
+    fireEvent.keyUp(container, { key: 'Escape' })
+
+    // verificar se foi fechado
+    expect(modal.getAttribute('aria-hidden')).toBe('true')
+    expect(modal).toHaveStyle({ opacity: 0 })
+  })
 })
