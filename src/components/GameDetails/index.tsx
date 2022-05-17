@@ -6,10 +6,16 @@ import MediaMatch from 'components/MediaMatch'
 export type GamePlatform = 'windows' | 'linux' | 'mac'
 
 export type GameDetailsProps = {
+  developer: string
+  releaseDate: string
   platforms: GamePlatform[]
 }
 
-const GameDetails = ({ platforms = [] }: GameDetailsProps) => {
+const GameDetails = ({
+  developer,
+  releaseDate,
+  platforms = []
+}: GameDetailsProps) => {
   const platfrmIcons = {
     linux: <Linux title="Linux" size={18} />,
     windows: <Windows title="Windows" size={18} />,
@@ -27,11 +33,17 @@ const GameDetails = ({ platforms = [] }: GameDetailsProps) => {
       <S.Content>
         <S.Block>
           <S.Label>Developer</S.Label>
-          <S.Description>Gearbox Software</S.Description>
+          <S.Description>{developer}</S.Description>
         </S.Block>
         <S.Block>
           <S.Label>Release date</S.Label>
-          <S.Description>Nov 16, 2019</S.Description>
+          <S.Description>
+            {new Intl.DateTimeFormat('en-US', {
+              day: 'numeric',
+              month: 'short',
+              year: 'numeric'
+            }).format(new Date(releaseDate))}
+          </S.Description>
         </S.Block>
         <S.Block>
           <S.Label>Platforms</S.Label>
@@ -50,7 +62,7 @@ const GameDetails = ({ platforms = [] }: GameDetailsProps) => {
           <S.Description>18 +</S.Description>
         </S.Description>
         <S.Block>
-          <S.Label>Genre</S.Label>
+          <S.Label>Genres</S.Label>
           <S.Description>Action / Adventure</S.Description>
         </S.Block>
       </S.Content>
