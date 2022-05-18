@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { AddShoppingCart } from '@styled-icons/material-sharp/AddShoppingCart'
+import { AddShoppingCart } from '@styled-icons/material-outlined'
 import Button from '.'
 
 export default {
