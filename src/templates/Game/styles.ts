@@ -53,3 +53,26 @@ export const SectionGallery = styled(Section)`
     display: block;
   `}
 `
+
+export const SectionDescription = styled(Section)`
+  ${({ theme }) => css`
+    .banner__header {
+      display: none;
+    }
+
+    .welcome-offer-banner__description {
+      display: none;
+    }
+
+    .welcome-offer-banner__timer {
+      display: none;
+    }
+
+    .description__copyrights {
+      text-align: center;
+      color: ${theme.colors.gray};
+      font-size: ${theme.font.sizes.xsmall};
+      margin-top: ${theme.spacings.medium};
+    }
+  `}
+`
