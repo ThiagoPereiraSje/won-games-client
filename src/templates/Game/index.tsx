@@ -1,12 +1,12 @@
 import Base from 'templates/Base'
 import GameInfo, { GameInfoProps } from 'components/GameInfo'
-import * as S from './styles'
 import Gallery, { GalleryImageProps } from 'components/Gallery'
 import TextContent from 'components/TextContent'
 import GameDetails, { GameDetailsProps } from 'components/GameDetails'
 import { GameCardProps } from 'components/GameCard'
 import { HighlightProps } from 'components/Highlight'
 import Showcase from 'components/Showcase'
+import * as S from './styles'
 
 export type GameTemplateProps = {
   cover: string
