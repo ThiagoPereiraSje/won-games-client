@@ -70,4 +70,21 @@ describe('<Gallery />', () => {
     expect(modal.getAttribute('aria-hidden')).toBe('true')
     expect(modal).toHaveStyle({ opacity: 0 })
   })
+
+  // testar a referencia dos slides
+
+  it('should open modal with selected image', async () => {
+    renderWithTheme(<Gallery items={mockGalleryImage.slice(0, 2)} />)
+
+    // clicar no thumbnail 2
+    const thumb2 = screen.getByRole('button', {
+      name: /thumb - gallery image 2/i
+    })
+
+    fireEvent.click(thumb2)
+
+    // espero que a imagem 2 seja mostrada
+    const img = await screen.findByRole('img', { name: /gallery Image 2/i })
+    expect(img.parentElement?.parentElement).toHaveClass('slick-active')
+  })
 })
