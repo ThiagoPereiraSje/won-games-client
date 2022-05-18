@@ -1,5 +1,7 @@
 import Game, { GameTemplateProps } from 'templates/Game'
 import mockGallery from 'components/Gallery/mock'
+import mockHighLight from 'components/Highlight/mock'
+import mockGames from 'components/GameCardSlider/mock'
 
 const descriptionHtml = `
 <div class="banner welcome-offer-banner ng-scope ng-hide" welcome-offer-banner="" timer="0" ng-show="welcomeOfferBanner.isCounterReady &amp;&amp; !timer.finished"><div class="banner__header">
@@ -65,7 +67,10 @@ export async function getStaticProps() {
         publisher: 'CD PROJECT RED',
         rating: 'BR18',
         genres: ['Action', 'Role-playing']
-      }
+      },
+      upcomingHighlight: mockHighLight[2],
+      upcomingGames: mockGames,
+      recommendedGames: mockGames
     }
   }
 }
