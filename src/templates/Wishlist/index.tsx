@@ -4,6 +4,7 @@ import GameCard, { GameCardProps } from 'components/GameCard'
 import Heading from 'components/Heading'
 import { HighlightProps } from 'components/Highlight'
 import Showcase from 'components/Showcase'
+import Grid from 'components/Grid'
 // import * as S from './styles'
 
 export type WishlistTempalteProps = {
@@ -23,9 +24,11 @@ const Wishlist = ({
         <Heading lineColor="secondary" lineLeft>
           Wishlist
         </Heading>
-        {games?.map((game, index) => (
-          <GameCard key={`wishlist-${index}`} {...game} />
-        ))}
+        <Grid>
+          {games?.map((game, index) => (
+            <GameCard key={`wishlist-${index}`} {...game} />
+          ))}
+        </Grid>
       </Container>
 
       <Showcase
