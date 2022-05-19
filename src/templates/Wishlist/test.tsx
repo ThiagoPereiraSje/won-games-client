@@ -15,14 +15,13 @@ jest.mock('components/Showcase', () => {
 })
 
 const props = {
-  games: mockGames,
   recommendedHighlight: mockHighlights[0],
   recommendedGames: mockGames.slice(0, 2)
 }
 
 describe('<Wishlist />', () => {
   it('should render correctly', () => {
-    renderWithTheme(<Wishlist {...props} />)
+    renderWithTheme(<Wishlist {...props} games={mockGames} />)
 
     expect(
       screen.getByRole('heading', { name: /wishlist/i })
@@ -31,5 +30,15 @@ describe('<Wishlist />', () => {
     expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument()
 
     expect(screen.getAllByText(/population zero/i)).toHaveLength(7)
+  })
+
+  it('should render empty when there are no games', () => {
+    renderWithTheme(<Wishlist {...props} />)
+
+    expect(screen.queryByText(/population zero/i)).not.toBeInTheDocument()
+
+    expect(
+      screen.getByRole('heading', { name: /your wishlist is empty/i })
+    ).toBeInTheDocument()
   })
 })
