@@ -1,11 +1,14 @@
+import Button from 'components/Button'
+import Link from 'next/link'
 import * as S from './styles'
 
 export type EmptyProps = {
   title: string
   description: string
+  hasLink?: boolean
 }
 
-const Empty = ({ title, description }: EmptyProps) => {
+const Empty = ({ title, description, hasLink }: EmptyProps) => {
   return (
     <S.Wrapper>
       <S.Image
@@ -16,6 +19,12 @@ const Empty = ({ title, description }: EmptyProps) => {
 
       <S.Title>{title}</S.Title>
       <S.Description>{description}</S.Description>
+
+      {hasLink && (
+        <Link href="/" passHref>
+          <Button as="a">Go back to store</Button>
+        </Link>
+      )}
     </S.Wrapper>
   )
 }

@@ -9,7 +9,7 @@ const props = {
 
 describe('<Empty />', () => {
   it('should render correctly', () => {
-    renderWithTheme(<Empty {...props} />)
+    renderWithTheme(<Empty {...props} hasLink />)
 
     expect(
       screen.getByRole('image', {
@@ -22,5 +22,17 @@ describe('<Empty />', () => {
     ).toBeInTheDocument()
 
     expect(screen.getByText(/a simple description/i)).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('link', { name: /go back to store/i })
+    ).toHaveAttribute('href', '/')
+  })
+
+  it('should not render link when hasLink is not passed', () => {
+    renderWithTheme(<Empty {...props} />)
+
+    expect(
+      screen.queryByRole('link', { name: /go back to store/i })
+    ).not.toBeInTheDocument()
   })
 })
