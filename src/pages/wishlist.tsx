@@ -9,6 +9,7 @@ export default function WishlistPage(props: WishlistTempalteProps) {
 
 export async function getStaticProps() {
   const props: WishlistTempalteProps = {
+    games: mockGames,
     recommendedGames: mockGames,
     recommendedHighlight: mockHighlights[2]
   }
