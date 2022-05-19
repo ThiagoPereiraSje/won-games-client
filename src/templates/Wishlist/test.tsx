@@ -1,6 +1,9 @@
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
-import Wishlist from '.'
+import Wishlist, { WishlistTempalteProps } from '.'
+
+import mockHighlights from 'components/Highlight/mock'
+import mockGames from 'components/GameCardSlider/mock'
 
 jest.mock('components/Showcase', () => {
   return {
@@ -11,12 +14,18 @@ jest.mock('components/Showcase', () => {
   }
 })
 
+const props: WishlistTempalteProps = {
+  recommendedHighlight: mockHighlights[0],
+  recommendedGames: mockGames.slice(0, 2)
+}
+
 describe('<Wishlist />', () => {
-  it('should render the heading', () => {
-    renderWithTheme(<Wishlist />)
+  it('should render correctly', () => {
+    renderWithTheme(<Wishlist {...props} />)
 
-    const element = screen.getByRole('heading', { name: /Wishlist/i })
-
-    expect(element).toBeInTheDocument()
+    expect(
+      screen.getByRole('heading', { name: /wishlist/i })
+    ).toBeInTheDocument()
+    expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument()
   })
 })
