@@ -14,3 +14,11 @@ export default {
 export const Basic: ComponentStory<typeof GameItem> = (args) => (
   <GameItem {...args} />
 )
+
+export const WithPayment: ComponentStory<typeof GameItem> = (args) => (
+  <GameItem {...args} />
+)
+
+WithPayment.args = {
+  downloadLink: '#'
+}
