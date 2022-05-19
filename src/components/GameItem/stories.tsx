@@ -20,5 +20,11 @@ export const WithPayment: ComponentStory<typeof GameItem> = (args) => (
 )
 
 WithPayment.args = {
-  downloadLink: '#'
+  downloadLink: '#',
+  paymentInfo: {
+    flag: 'mastercard',
+    number: '**** **** **** 4326',
+    img: '/img/master-card.png',
+    purchaseDate: 'Purchase made on 07/20/2020 at 20:32'
+  }
 }
