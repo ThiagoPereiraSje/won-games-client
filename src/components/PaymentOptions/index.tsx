@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Add, ShoppingCart } from '@styled-icons/material-outlined'
 import Button from 'components/Button'
 import Heading from 'components/Heading'
@@ -17,6 +18,8 @@ export type PaymentOptionsProps = {
 }
 
 const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
+  const [checked, setChecked] = useState(false)
+
   return (
     <S.Wrapper>
       <S.Body>
@@ -35,7 +38,7 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
                 name="credit-card"
                 id={card.number}
                 value={card.number}
-                onCheck={() => ({})}
+                onCheck={() => setChecked(true)}
               />
             </S.CardItem>
           ))}
@@ -52,7 +55,12 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
             Continue shopping
           </Button>
         </Link>
-        <Button onClick={handlePayment} icon={<ShoppingCart />} fullWidth>
+        <Button
+          fullWidth
+          icon={<ShoppingCart />}
+          onClick={handlePayment}
+          disabled={!checked}
+        >
           Buy now
         </Button>
       </S.Footer>
