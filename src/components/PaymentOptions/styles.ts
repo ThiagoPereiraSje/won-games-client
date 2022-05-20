@@ -1,4 +1,5 @@
 import styled, { css, DefaultTheme } from 'styled-components'
+import media from 'styled-media-query'
 import { tint } from 'polished'
 
 import * as ButtonStyles from 'components/Button/styles'
@@ -24,10 +25,20 @@ export const Footer = styled.div`
     display: flex;
     align-items: center;
 
+    ${media.lessThan('small')`
+      flex-direction: column;
+    `}
+
     ${ButtonStyles.Wrapper} {
       padding-left: ${theme.spacings.xxsmall};
       padding-right: ${theme.spacings.xxsmall};
       outline: 0;
+
+      ${media.lessThan('small')`
+          &:not(:last-child) {
+            margin-bottom: ${theme.spacings.xxsmall};
+          }
+      `}
     }
   `}
 `
