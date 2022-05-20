@@ -103,4 +103,16 @@ describe('<Button />', () => {
       modifier: ':hover'
     })
   })
+
+  it('should render a disabled Button', () => {
+    renderWithTheme(<Button disabled>By now</Button>)
+
+    expect(screen.getByRole('button', { name: /by now/i })).toHaveStyleRule(
+      'cursor',
+      'not-allowed',
+      {
+        modifier: ':disabled'
+      }
+    )
+  })
 })
