@@ -9,15 +9,17 @@ export default function CartPage(props: CartTemplateProps) {
   return <Cart {...props} />
 }
 
-export async function getStaticProps() {
+/*
+  A página do carrinho vai mudar de acordo com usuário e
+  por isso não faz sentido ser uma página estática
+*/
+export async function getServerSideProps() {
   const props: CartTemplateProps = {
-    cartList: {
-      items: mockCartItems,
-      total: 'R$ 430,00'
-    },
+    items: mockCartItems,
+    total: 'R$ 430,00',
     cards: mockPaymentOptions,
-    highlight: mockHighlights[2],
-    games: mockGames
+    recommendedHighlight: mockHighlights[2],
+    recommendedGame: mockGames
   }
 
   return {

@@ -53,10 +53,8 @@ jest.mock('components/Showcase', () => {
 })
 
 const props: CartTemplateProps = {
-  cartList: {
-    items: mockCartItems,
-    total: 'R$ 430,00'
-  }
+  items: mockCartItems,
+  total: 'R$ 430,00'
 }
 
 describe('<Cart />', () => {
@@ -65,8 +63,8 @@ describe('<Cart />', () => {
       <Cart
         {...props}
         cards={mockPaymentOptions}
-        highlight={mockHighlights[2]}
-        games={mockGames}
+        recommendedHighlight={mockHighlights[2]}
+        recommendedGame={mockGames}
       />
     )
 
