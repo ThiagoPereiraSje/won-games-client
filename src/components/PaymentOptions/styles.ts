@@ -29,12 +29,22 @@ export const Footer = styled.div`
       flex-direction: column;
     `}
 
+    ${media.between('medium', 'large')`
+      flex-direction: column;
+    `}
+
     ${ButtonStyles.Wrapper} {
       padding-left: ${theme.spacings.xxsmall};
       padding-right: ${theme.spacings.xxsmall};
       outline: 0;
 
       ${media.lessThan('small')`
+          &:not(:last-child) {
+            margin-bottom: ${theme.spacings.xxsmall};
+          }
+      `}
+
+      ${media.between('medium', 'large')`
           &:not(:last-child) {
             margin-bottom: ${theme.spacings.xxsmall};
           }
