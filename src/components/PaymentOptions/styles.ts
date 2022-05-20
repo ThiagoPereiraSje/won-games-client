@@ -64,6 +64,7 @@ export const CardItem = styled.label`
 
     justify-content: space-between;
 
+    /* Não adicinar margem ao último elemento */
     &:not(:last-child) {
       margin-bottom: ${theme.spacings.xxsmall};
     }
