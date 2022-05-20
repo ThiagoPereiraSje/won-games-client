@@ -26,4 +26,34 @@ describe('<PaymentOptions />', () => {
       expect(screen.getByRole('radio', { name: /4325/ })).toBeChecked()
     })
   })
+
+  it('should not call handlePayment when button is disabled', () => {
+    const handlePayment = jest.fn()
+
+    renderWithTheme(
+      <PaymentOptions cards={mockCards} handlePayment={handlePayment} />
+    )
+
+    userEvent.click(screen.getByRole('button', { name: /buy now/i }))
+
+    expect(handlePayment).not.toHaveBeenCalled()
+  })
+
+  it('should call handlePayment when credit card is selected', async () => {
+    const handlePayment = jest.fn()
+
+    renderWithTheme(
+      <PaymentOptions cards={mockCards} handlePayment={handlePayment} />
+    )
+
+    // select credit card
+    userEvent.click(screen.getByLabelText(/4325/))
+
+    // click on buy now
+    userEvent.click(screen.getByRole('button', { name: /buy now/i }))
+
+    await waitFor(() => {
+      expect(handlePayment).toHaveBeenCalled()
+    })
+  })
 })

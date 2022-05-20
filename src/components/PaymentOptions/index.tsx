@@ -3,7 +3,6 @@ import { Add, ShoppingCart } from '@styled-icons/material-outlined'
 import Button from 'components/Button'
 import Heading from 'components/Heading'
 import Radio from 'components/Radio'
-import Link from 'next/link'
 import * as S from './styles'
 
 export type PaymentCard = {
@@ -50,11 +49,9 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
         </S.CardsList>
       </S.Body>
       <S.Footer>
-        <Link href="/">
-          <Button as="a" fullWidth minimal>
-            Continue shopping
-          </Button>
-        </Link>
+        <Button as="a" fullWidth minimal>
+          Continue shopping
+        </Button>
         <Button
           fullWidth
           icon={<ShoppingCart />}
