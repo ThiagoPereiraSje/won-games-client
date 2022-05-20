@@ -7,23 +7,12 @@ import mockPaymentOptions from 'components/PaymentOptions/mock'
 import mockHighlights from 'components/Highlight/mock'
 import mockGames from 'components/GameCardSlider/mock'
 
-jest.mock('components/Menu', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="Mock Menu"></div>
-    }
+jest.mock('templates/Base', () => ({
+  __esModule: true,
+  default: function Mock({ children }: { children: React.ReactNode }) {
+    return <div data-testid="Mock Base">{children}</div>
   }
-})
-
-jest.mock('components/Footer', () => {
-  return {
-    __esModule: true,
-    default: () => {
-      return <div data-testid="Mock Footer"></div>
-    }
-  }
-})
+}))
 
 jest.mock('components/CartList', () => {
   return {
@@ -52,6 +41,15 @@ jest.mock('components/Showcase', () => {
   }
 })
 
+jest.mock('components/Empty', () => {
+  return {
+    __esModule: true,
+    default: () => {
+      return <div data-testid="Mock Empty"></div>
+    }
+  }
+})
+
 const props: CartTemplateProps = {
   items: mockCartItems,
   total: 'R$ 430,00'
@@ -68,10 +66,8 @@ describe('<Cart />', () => {
       />
     )
 
-    // should have a menu
-    expect(screen.getByTestId('Mock Menu')).toBeInTheDocument()
-    // should have a footer
-    expect(screen.getByTestId('Mock Footer')).toBeInTheDocument()
+    // should have the template base
+    expect(screen.getByTestId('Mock Base')).toBeInTheDocument()
 
     // should have a heading 'My Cart'
     expect(
@@ -84,20 +80,23 @@ describe('<Cart />', () => {
     // should have a payment options
     expect(screen.getByTestId('Mock PaymentOptions')).toBeInTheDocument()
 
-    // should have a text 'your purchase is protected by a secure connection'
-    expect(
-      screen.getByText(/your purchase is protected by a secure connection/i)
-    ).toBeInTheDocument()
-
     // should have a divider
     expect(screen.getByRole('divider')).toBeInTheDocument()
 
     // should have a showcase
     expect(screen.getByTestId('Mock Showcase')).toBeInTheDocument()
+
+    expect(screen.queryByTestId('Mock Empty')).not.toBeInTheDocument()
+  })
+
+  it('should render empty section if there are no items', () => {
+    renderWithTheme(<Cart {...props} items={[]} />)
+
+    // should have the Empty component
+    expect(screen.getByTestId('Mock Empty')).toBeInTheDocument()
   })
 
   // should render payment options without credit cards
   // should render cart page without highlight
   // should render cart page without games
-  // should render cart page without games or highlight
 })
