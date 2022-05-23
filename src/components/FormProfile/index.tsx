@@ -5,7 +5,7 @@ import * as S from './styles'
 
 const FormProfile = () => {
   return (
-    <S.Wrapper>
+    <>
       <Heading lineBottom color="black" size="small">
         My Profile
       </Heading>
@@ -39,7 +39,7 @@ const FormProfile = () => {
 
         <Button size="large">Save</Button>
       </S.Form>
-    </S.Wrapper>
+    </>
   )
 }
 

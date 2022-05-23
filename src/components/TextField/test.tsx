@@ -107,7 +107,7 @@ describe('<TextField />', () => {
     const icon = screen.getByTestId('icon')
 
     expect(input).toHaveStyle({
-      paddingLeft: '1.6rem'
+      paddingLeft: '0.8rem'
     })
 
     expect(icon).toBeInTheDocument()
@@ -128,7 +128,7 @@ describe('<TextField />', () => {
     const icon = screen.getByTestId('icon')
 
     expect(input).toHaveStyle({
-      paddingRight: '1.6rem'
+      paddingRight: '0.8rem'
     })
 
     expect(icon).toBeInTheDocument()

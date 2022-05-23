@@ -8,7 +8,7 @@ export const InputWrapper = styled.div`
     display: flex;
     background: ${theme.colors.lightGray};
     border-radius: 0.2rem;
-    padding: 0 ${theme.spacings.xsmall};
+    padding: 0 ${theme.spacings.xxsmall};
     border: 0.2rem solid;
     border-color: ${theme.colors.lightGray};
 
@@ -24,7 +24,7 @@ export const Input = styled.input<IconPositionProps>`
     font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.medium};
     padding: ${theme.spacings.xxsmall} 0;
-    padding-${iconPosition}: ${theme.spacings.xsmall};
+    padding-${iconPosition}: ${theme.spacings.xxsmall};
     background: transparent;
     border: 0;
     outline: none;
