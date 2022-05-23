@@ -4,6 +4,16 @@ import ProfileMenu from '.'
 export default {
   title: 'ProfileMenu',
   component: ProfileMenu,
+  args: {
+    activeLink: '/profile/me'
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 300 }}>
+        <Story />
+      </div>
+    )
+  ],
   parameters: {
     backgrounds: {
       default: 'won-dark'
@@ -11,4 +21,6 @@ export default {
   }
 } as ComponentMeta<typeof ProfileMenu>
 
-export const Basic: ComponentStory<typeof ProfileMenu> = () => <ProfileMenu />
+export const Basic: ComponentStory<typeof ProfileMenu> = (args) => (
+  <ProfileMenu {...args} />
+)
