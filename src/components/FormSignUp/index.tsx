@@ -8,10 +8,14 @@ const FormSignUp = () => {
   return (
     <FormWrapper>
       <form>
-        <TextField placeholder="Name" icon={<AccountCircle />} />
-        <TextField placeholder="Email" icon={<Email />} />
-        <TextField placeholder="Password" icon={<Lock />} />
-        <TextField placeholder="Confirm password" icon={<Lock />} />
+        <TextField name="name" placeholder="Name" icon={<AccountCircle />} />
+        <TextField name="email" placeholder="Email" icon={<Email />} />
+        <TextField name="password" placeholder="Password" icon={<Lock />} />
+        <TextField
+          name="confirmpassword"
+          placeholder="Confirm password"
+          icon={<Lock />}
+        />
         <Button size="large" fullWidth>
           Sign up now
         </Button>
