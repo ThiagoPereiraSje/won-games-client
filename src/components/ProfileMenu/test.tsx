@@ -4,7 +4,7 @@ import ProfileMenu from '.'
 
 describe('<ProfileMenu />', () => {
   it('should render the profile menu', () => {
-    renderWithTheme(<ProfileMenu />)
+    const { container } = renderWithTheme(<ProfileMenu />)
 
     expect(screen.getByRole('link', { name: /my profile/i })).toHaveAttribute(
       'href',
@@ -25,5 +25,7 @@ describe('<ProfileMenu />', () => {
       'href',
       '/logout'
     )
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
