@@ -14,6 +14,13 @@ export default {
       type: 'symbol'
     }
   },
+  decorators: [
+    (Story) => (
+      <div style={{ width: 300 }}>
+        <Story />
+      </div>
+    )
+  ],
   parameters: {
     backgrounds: {
       default: 'won-dark'
@@ -24,3 +31,11 @@ export default {
 export const Basic: ComponentStory<typeof ExploreSidebar> = (args) => (
   <ExploreSidebar {...args} />
 )
+
+export const WithInitialValues: ComponentStory<typeof ExploreSidebar> = (
+  args
+) => <ExploreSidebar {...args} />
+
+WithInitialValues.args = {
+  initialValues: { windows: true, sort_by: 'low-to-high' }
+}
