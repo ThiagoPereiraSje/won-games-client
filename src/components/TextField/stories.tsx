@@ -6,8 +6,7 @@ export default {
   title: 'Form/TextField',
   args: {
     label: 'E-mail',
-    labelFor: 'Email',
-    id: 'Email',
+    name: 'email',
     initialValue: '',
     placeholder: 'thiago@gmail.com'
   },

@@ -6,7 +6,7 @@ import TextField from '.'
 
 describe('<TextField />', () => {
   it('should render with label', () => {
-    renderWithTheme(<TextField label="Label" labelFor="Field" id="Field" />)
+    renderWithTheme(<TextField label="Label" name="Field" />)
 
     expect(screen.getByLabelText(/label/i)).toBeInTheDocument()
   })
@@ -18,9 +18,7 @@ describe('<TextField />', () => {
   })
 
   it('should be accessible by tab', () => {
-    renderWithTheme(
-      <TextField label="TextField" labelFor="TextField" id="TextField" />
-    )
+    renderWithTheme(<TextField label="TextField" name="TextField" />)
 
     const input = screen.getByLabelText(/textfield/i)
 
@@ -32,14 +30,7 @@ describe('<TextField />', () => {
   })
 
   it('should not be accessible by tab when disable', () => {
-    renderWithTheme(
-      <TextField
-        label="TextField"
-        labelFor="TextField"
-        id="TextField"
-        disabled
-      />
-    )
+    renderWithTheme(<TextField label="TextField" name="TextField" disabled />)
 
     const input = screen.getByLabelText(/textfield/i)
 
@@ -60,12 +51,7 @@ describe('<TextField />', () => {
     const onInput = jest.fn()
 
     renderWithTheme(
-      <TextField
-        onInput={onInput}
-        label="TextField"
-        labelFor="TextField"
-        id="TextField"
-      />
+      <TextField onInput={onInput} label="TextField" name="TextField" />
     )
 
     const input = screen.getByRole('textbox')
@@ -89,8 +75,7 @@ describe('<TextField />', () => {
       <TextField
         onInput={onInput}
         label="TextField"
-        labelFor="TextField"
-        id="TextField"
+        name="TextField"
         disabled
       />
     )
@@ -122,7 +107,7 @@ describe('<TextField />', () => {
     const icon = screen.getByTestId('icon')
 
     expect(input).toHaveStyle({
-      paddingLeft: '1.6rem'
+      paddingLeft: '0.8rem'
     })
 
     expect(icon).toBeInTheDocument()
@@ -143,7 +128,7 @@ describe('<TextField />', () => {
     const icon = screen.getByTestId('icon')
 
     expect(input).toHaveStyle({
-      paddingRight: '1.6rem'
+      paddingRight: '0.8rem'
     })
 
     expect(icon).toBeInTheDocument()
@@ -156,7 +141,7 @@ describe('<TextField />', () => {
     const { container } = renderWithTheme(
       <TextField
         label="TextField"
-        labelFor="TextField"
+        name="TextField"
         icon={<MailOutline data-testid="icon" />}
         error="Oops.. something is wrong"
       />
