@@ -2,6 +2,10 @@ import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 import Profile from '.'
 
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(() => ({ asPath: '/profile/me' }))
+}))
+
 jest.mock('templates/Base', () => ({
   __esModule: true,
   default: function Mock({ children }: { children: React.ReactNode }) {
