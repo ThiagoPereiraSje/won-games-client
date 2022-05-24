@@ -11,7 +11,7 @@ const OrdersList = ({ items }: OrdersListProps) => {
   return (
     <S.Wrapper>
       <Heading lineBottom size="small" color="black">
-        My Orders
+        My orders
       </Heading>
 
       {!!items && items.length ? (

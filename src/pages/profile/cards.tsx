@@ -12,8 +12,8 @@ export default function Cards(props: CardsListProps) {
 }
 
 /*
-  A página do profile vai mudar de acordo com usuário e
-  por isso não faz sentido ser uma página estática
+  O profile vai mudar de acordo com usuário e
+  por isso não faz sentido ser estático
 */
 export async function getServerSideProps() {
   const props: CardsListProps = {

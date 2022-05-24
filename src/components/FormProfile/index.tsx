@@ -7,7 +7,7 @@ const FormProfile = () => {
   return (
     <>
       <Heading lineBottom color="black" size="small">
-        My Profile
+        My profile
       </Heading>
       <S.Form>
         <TextField

@@ -10,7 +10,7 @@ const CardsList = ({ cards }: CardsListProps) => {
   return (
     <>
       <Heading lineBottom color="black" size="small">
-        My Cards
+        My cards
       </Heading>
       {cards?.map((card) => (
         <S.Card key={card.number}>
