@@ -1,8 +1,9 @@
+import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined'
 import Base from 'templates/Base'
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
 import GameCard, { GameCardProps } from 'components/GameCard'
-import Button from 'components/Button'
-// import * as S from './styles'
+import Grid from 'components/Grid'
+import * as S from './styles'
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[]
@@ -10,16 +11,32 @@ export type GamesTemplateProps = {
 }
 
 const Games = ({ filterItems, games }: GamesTemplateProps) => {
+  const handleFilter = () => {
+    return
+  }
+
+  const handleShowMore = () => {
+    return
+  }
+
   return (
     <Base>
-      <ExploreSidebar items={filterItems} onFilter={() => ({})} />
-      {games.map((game, index) => (
-        <div key={index}>
-          <GameCard {...game} />
-        </div>
-      ))}
+      <S.Main>
+        <ExploreSidebar items={filterItems} onFilter={handleFilter} />
 
-      <Button>Show more</Button>
+        <section>
+          <Grid>
+            {games.map((game, index) => (
+              <GameCard key={index} {...game} />
+            ))}
+          </Grid>
+
+          <S.ShowMore role="button" onClick={handleShowMore}>
+            <p>Show More</p>
+            <ArrowDown size={35} />
+          </S.ShowMore>
+        </section>
+      </S.Main>
     </Base>
   )
 }
