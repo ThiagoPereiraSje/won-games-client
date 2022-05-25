@@ -7,7 +7,7 @@ import * as S from './styles'
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[]
-  games: GameCardProps[]
+  games?: GameCardProps[]
 }
 
 const Games = ({ filterItems, games }: GamesTemplateProps) => {
@@ -26,7 +26,7 @@ const Games = ({ filterItems, games }: GamesTemplateProps) => {
 
         <section>
           <Grid>
-            {games.map((game, index) => (
+            {games?.map((game, index) => (
               <GameCard key={index} {...game} />
             ))}
           </Grid>
