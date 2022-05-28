@@ -1,5 +1,6 @@
-import { ShoppingCart } from '@styled-icons/material-outlined'
-
+import CartIcon from 'components/CartIcon'
+import Dropdown from 'components/Dropdown'
+import CartList from 'components/CartList'
 import { GameItemProps } from 'components/GameItem'
 import * as S from './styles'
 
@@ -11,15 +12,9 @@ export type CartDropdownProps = {
 const CartDropdown = ({ items, total }: CartDropdownProps) => {
   return (
     <S.Wrapper>
-      <ShoppingCart aria-label="shopping cart" size={20} />
-      <span>{items.length}</span>
-      <span>{total}</span>
-
-      <div>
-        {items.map((item) => (
-          <div key={item.title}>{item.title}</div>
-        ))}
-      </div>
+      <Dropdown title={<CartIcon quantity={items.length} />}>
+        <CartList items={items} total={total} hasButton />
+      </Dropdown>
     </S.Wrapper>
   )
 }
