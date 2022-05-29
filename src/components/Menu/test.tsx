@@ -1,79 +1,54 @@
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
+
 import Menu from '.'
 
 describe('<Menu />', () => {
-  it('should render the Menu', () => {
+  it('should render the menu', () => {
     renderWithTheme(<Menu />)
 
-    const menuIcon = screen.getByLabelText(/open menu/i)
-    const searchIcon = screen.getByLabelText(/search/i)
-    const shoppingCartIcon = screen.getByLabelText(/open shopping cart/i)
-    const menuLogo = screen.getByRole('img', { name: /won games/i })
-
-    expect(menuIcon).toBeInTheDocument()
-    expect(searchIcon).toBeInTheDocument()
-    expect(shoppingCartIcon).toBeInTheDocument()
-    expect(menuLogo).toBeInTheDocument()
+    expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: /won games/i })).toBeInTheDocument()
+    expect(screen.getByLabelText(/search/i)).toBeInTheDocument()
+    expect(screen.getAllByLabelText(/shopping cart/i)).toHaveLength(2)
   })
 
   it('should handle the open/close mobile menu', () => {
     renderWithTheme(<Menu />)
 
-    // selecionar o menu
-    // para recuperar um elemento que está oculto na RTL passamos { hidden: true }
-    const menuFull = screen.getByRole('navigation', { hidden: true })
+    // selecionar o nosso MenuFull
+    const fullMenuElement = screen.getByRole('navigation', { hidden: true })
 
-    // verificar se o menu está escondido
-    expect(menuFull.getAttribute('aria-hidden')).toBe('true') // testa acessibilidade
-    expect(menuFull).toHaveStyle({ opacity: 0 })
+    // verificar se o menu tá escondido
+    expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true')
+    expect(fullMenuElement).toHaveStyle({ opacity: 0 })
 
-    // clicar no botão de abrir o menu
-    const menuIcon = screen.getByLabelText(/open menu/i)
-    fireEvent.click(menuIcon)
+    // clicar no botão de abrir o menu e verificar se ele abriu
+    fireEvent.click(screen.getByLabelText(/open menu/i))
+    expect(fullMenuElement.getAttribute('aria-hidden')).toBe('false')
+    expect(fullMenuElement).toHaveStyle({ opacity: 1 })
 
-    // verificar se o menu abriu
-    expect(menuFull.getAttribute('aria-hidden')).toBe('false')
-    expect(menuFull).toHaveStyle({ opacity: 1 })
-
-    // clicar no botão de fechar menu
-    const closeIcon = screen.getByLabelText(/close menu/i)
-    fireEvent.click(closeIcon)
-
-    // verificar se o menu fechou
-    expect(menuFull.getAttribute('aria-hidden')).toBe('true')
-    expect(menuFull).toHaveStyle({ opacity: 0 })
+    // clicar no botão de fechar o menu e verificar se ele fechou
+    fireEvent.click(screen.getByLabelText(/close menu/i))
+    expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true')
+    expect(fullMenuElement).toHaveStyle({ opacity: 0 })
   })
 
   it('should show register box when logged out', () => {
     renderWithTheme(<Menu />)
 
-    const loginButton = screen.getByText(/log in now/i)
-    const signUpButton = screen.getByText(/sign up/i)
-
-    expect(loginButton).toBeInTheDocument()
-    expect(signUpButton).toBeInTheDocument()
-
-    const myAccountLink = screen.queryByText(/my account/i)
-    const whishlistLink = screen.queryByText(/whishlist/i)
-
-    expect(myAccountLink).not.toBeInTheDocument()
-    expect(whishlistLink).not.toBeInTheDocument()
+    expect(screen.queryByText(/my profile/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/wishlist/i)).not.toBeInTheDocument()
+    expect(screen.getByText(/sign up/i)).toBeInTheDocument()
+    expect(screen.getAllByText(/sign in/i)).toHaveLength(2)
   })
 
-  it('should show My account and Wishlist when logged in', () => {
-    renderWithTheme(<Menu username="thiago" />)
+  it('should show wishlight and account when logged in', () => {
+    renderWithTheme(<Menu username="will" />)
 
-    const loginButton = screen.queryByText(/log in now/i)
-    const signUpButton = screen.queryByText(/sign up/i)
-
-    expect(loginButton).not.toBeInTheDocument()
-    expect(signUpButton).not.toBeInTheDocument()
-
-    const myAccountLink = screen.getByText(/my account/i)
-    const whishlistLink = screen.getByText(/whishlist/i)
-
-    expect(myAccountLink).toBeInTheDocument()
-    expect(whishlistLink).toBeInTheDocument()
+    expect(screen.getAllByText(/my profile/i)).toHaveLength(2)
+    expect(screen.getAllByText(/wishlist/i)).toHaveLength(2)
+    expect(screen.queryByText(/sign in/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/sign up/i)).not.toBeInTheDocument()
   })
 })
