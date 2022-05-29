@@ -57,7 +57,7 @@ export const Wrapper = styled.div<WrapperProps>`
     width: max-content;
 
     ${Content} {
-      transition: transform 0.2s ease-in, opacity: ${theme.transition.default};
+      transition: transform 0.2s ease-in, opacity ${theme.transition.default};
 
       ${isOpen ? contentModifiers.open() : contentModifiers.close()}
     }
