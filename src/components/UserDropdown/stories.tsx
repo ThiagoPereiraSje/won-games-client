@@ -16,3 +16,7 @@ export const Basic: ComponentStory<typeof UserDropdown> = (args) => (
     <UserDropdown {...args} />
   </div>
 )
+
+Basic.args = {
+  username: 'Thiago'
+}

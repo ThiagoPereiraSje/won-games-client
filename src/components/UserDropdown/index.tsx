@@ -4,7 +4,7 @@ import {
   FavoriteBorder,
   ExitToApp
 } from '@styled-icons/material-outlined'
-import { ChevronDown } from '@styled-icons/boxicons-solid'
+import { ChevronDown } from '@styled-icons/boxicons-regular'
 
 import Dropdown from 'components/Dropdown'
 
