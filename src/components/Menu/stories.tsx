@@ -3,14 +3,19 @@ import Menu from '.'
 
 export default {
   title: 'Menu',
-  component: Menu
+  component: Menu,
+  parameters: {
+    layout: 'fullscreen',
+    backgrounds: {
+      default: 'won-dark'
+    }
+  }
 } as ComponentMeta<typeof Menu>
 
 export const Basic: ComponentStory<typeof Menu> = (args) => <Menu {...args} />
 
-Basic.parameters = {
-  layout: 'fullscreen',
-  backgrounds: {
-    default: 'won-dark'
-  }
+export const Logeed: ComponentStory<typeof Menu> = (args) => <Menu {...args} />
+
+Logeed.args = {
+  username: 'John Doe'
 }
