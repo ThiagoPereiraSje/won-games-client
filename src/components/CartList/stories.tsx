@@ -35,3 +35,5 @@ export const Basic: ComponentStory<typeof CartList> = (args) => (
 export const WithButton: ComponentStory<typeof CartList> = (args) => (
   <CartList {...args} hasButton />
 )
+
+export const Empty: ComponentStory<typeof CartList> = () => <CartList />
