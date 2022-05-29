@@ -29,3 +29,5 @@ export default {
 export const Basic: ComponentStory<typeof CartDropdown> = (args) => (
   <CartDropdown {...args} />
 )
+
+export const Empty: ComponentStory<typeof CartDropdown> = () => <CartDropdown />
