@@ -10,12 +10,10 @@ const Dropdown = ({ title, children }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <S.Wrapper>
+    <S.Wrapper isOpen={isOpen}>
       <S.Title onClick={() => setIsOpen(!isOpen)}>{title}</S.Title>
 
-      <S.Content isOpen={isOpen} aria-hidden={!isOpen}>
-        {children}
-      </S.Content>
+      <S.Content aria-hidden={!isOpen}>{children}</S.Content>
     </S.Wrapper>
   )
 }

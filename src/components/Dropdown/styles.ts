@@ -11,10 +11,6 @@ export const Title = styled.div`
   `}
 `
 
-type ContentProps = {
-  isOpen: boolean
-}
-
 const contentModifiers = {
   open: () => css`
     opacity: 1;
@@ -29,14 +25,13 @@ const contentModifiers = {
   `
 }
 
-export const Content = styled.div<ContentProps>`
-  ${({ theme, isOpen }) => css`
+export const Content = styled.div`
+  ${({ theme }) => css`
     display: flex;
     flex-direction: column;
     background: ${theme.colors.white};
     color: ${theme.colors.black};
     margin-top: ${theme.spacings.small};
-    transition: transform 0.2s ease-in, opacity: ${theme.transition.default};
     position: absolute;
     right: 0;
 
@@ -49,12 +44,22 @@ export const Content = styled.div<ContentProps>`
       top: -1.2rem;
       right: 2.4rem;
     }
-
-    ${isOpen ? contentModifiers.open() : contentModifiers.close()}
   `}
 `
 
-export const Wrapper = styled.div`
-  position: relative;
-  width: max-content;
+type WrapperProps = {
+  isOpen: boolean
+}
+
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, isOpen }) => css`
+    position: relative;
+    width: max-content;
+
+    ${Content} {
+      transition: transform 0.2s ease-in, opacity: ${theme.transition.default};
+
+      ${isOpen ? contentModifiers.open() : contentModifiers.close()}
+    }
+  `}
 `
