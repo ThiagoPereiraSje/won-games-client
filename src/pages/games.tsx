@@ -34,17 +34,20 @@ export async function getStaticProps() {
     query: QUERY_GAMES
   })
 
-  // console.log('GAMES: ', data.games)
+  const games = data.games.map((game: any) => {
+    const developer = game?.developers[0]
+    const developerName = developer ? developer?.name : 'None'
 
-  const games = data.games.map((game: any) => ({
-    title: game.name,
-    // developer: game.developers[0]?.name,
-    img: `http://localhost:1337${game.cover.url}`,
-    price: new Intl.NumberFormat('en', {
-      style: 'currency',
-      currency: 'USD'
-    }).format(game.price)
-  }))
+    return {
+      title: game.name,
+      developer: developerName,
+      img: `http://localhost:1337${game.cover.url}`,
+      price: new Intl.NumberFormat('en', {
+        style: 'currency',
+        currency: 'USD'
+      }).format(game.price)
+    }
+  })
 
   const props: GamesTemplateProps = {
     filterItems: mockExploreSidebarItems,
@@ -58,15 +61,3 @@ export async function getStaticProps() {
     }
   }
 }
-
-/*
-data.games.map((game: any) => ({
-      title: game.name,
-      developer: game.developers[0]?.name,
-      img: `http://localhost:1337${game.cover.url}`,
-      price: new Intl.NumberFormat('en', {
-        style: 'currency',
-        currency: 'USD'
-      }).format(game.price)
-    }))
-*/
