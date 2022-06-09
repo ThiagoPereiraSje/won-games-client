@@ -3,30 +3,12 @@ import Home, { HomeTemplateProps } from 'templates/Home'
 import bannersMock from 'components/BannerSlider/mock'
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
-import { gql } from '@apollo/client'
-import { initializeApollo } from 'utils/graphql/apolloClient'
 
-const GET_GAMES = gql`
-  query getGames {
-    games {
-      name
-    }
-  }
-`
-
-export default function Index(props: HomeTemplateProps & { data: any }) {
-  if (props.data)
-    return (
-      <p style={{ backgroundColor: 'white' }}>
-        {JSON.stringify(props.data, null, 2)}
-      </p>
-    )
-
+export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
 }
 
 export async function getServerSideProps() {
-  const apolloClient = initializeApollo()
   const props: HomeTemplateProps = {
     banners: bannersMock,
     newGames: gamesMock,
@@ -39,13 +21,8 @@ export async function getServerSideProps() {
     freeGames: gamesMock
   }
 
-  const { data } = await apolloClient.query({ query: GET_GAMES })
-
   return {
-    props: {
-      ...props,
-      data
-    }
+    props
   }
 }
 
