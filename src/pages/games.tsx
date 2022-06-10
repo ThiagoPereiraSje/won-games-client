@@ -2,23 +2,7 @@ import GamesTempalte, { GamesTemplateProps } from 'templates/Games'
 
 import mockExploreSidebarItems from 'components/ExploreSidebar/mock'
 import { initializeApollo } from 'utils/graphql/apolloClient'
-import { gql } from '@apollo/client'
-
-const QUERY_GAMES = gql`
-  query QueryGames {
-    games {
-      name
-      slug
-      cover {
-        url
-      }
-      developers {
-        name
-      }
-      price
-    }
-  }
-`
+import { QUERY_GAMES } from 'graphql/queries/games'
 
 export default function GamesPage(props: GamesTemplateProps) {
   return <GamesTempalte {...props} />
