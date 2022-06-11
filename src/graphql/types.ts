@@ -1847,6 +1847,33 @@ export type GetGamesQuery = {
   } | null> | null
 }
 
+export type GetGameBySlugQueryVariables = Exact<{
+  slug: Scalars['String']
+}>
+
+export type GetGameBySlugQuery = {
+  __typename?: 'Query'
+  games?: Array<{
+    __typename?: 'Game'
+    name: string
+    short_description: string
+    description: string
+    price: number
+    rating: Enum_Game_Rating
+    release_date?: any | null
+    gallery?: Array<{
+      __typename?: 'UploadFile'
+      src: string
+      label?: string | null
+    } | null> | null
+    cover?: { __typename?: 'UploadFile'; src: string } | null
+    developers?: Array<{ __typename?: 'Developer'; name: string } | null> | null
+    publisher?: { __typename?: 'Publisher'; name: string } | null
+    categories?: Array<{ __typename?: 'Category'; name: string } | null> | null
+    platforms?: Array<{ __typename?: 'Platform'; name: string } | null> | null
+  } | null> | null
+}
+
 export const GetGamesDocument = gql`
   query GetGames($limit: Int!) {
     games(limit: $limit) {
@@ -1907,4 +1934,86 @@ export type GetGamesLazyQueryHookResult = ReturnType<
 export type GetGamesQueryResult = Apollo.QueryResult<
   GetGamesQuery,
   GetGamesQueryVariables
+>
+export const GetGameBySlugDocument = gql`
+  query GetGameBySlug($slug: String!) {
+    games(where: { slug: $slug }) {
+      name
+      short_description
+      description
+      price
+      rating
+      release_date
+      gallery {
+        src: url
+        label: alternativeText
+      }
+      cover {
+        src: url
+      }
+      developers {
+        name
+      }
+      publisher {
+        name
+      }
+      categories {
+        name
+      }
+      platforms {
+        name
+      }
+    }
+  }
+`
+
+/**
+ * __useGetGameBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetGameBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetGameBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetGameBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetGameBySlugQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetGameBySlugQuery,
+    GetGameBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetGameBySlugQuery, GetGameBySlugQueryVariables>(
+    GetGameBySlugDocument,
+    options
+  )
+}
+export function useGetGameBySlugLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetGameBySlugQuery,
+    GetGameBySlugQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetGameBySlugQuery, GetGameBySlugQueryVariables>(
+    GetGameBySlugDocument,
+    options
+  )
+}
+export type GetGameBySlugQueryHookResult = ReturnType<
+  typeof useGetGameBySlugQuery
+>
+export type GetGameBySlugLazyQueryHookResult = ReturnType<
+  typeof useGetGameBySlugLazyQuery
+>
+export type GetGameBySlugQueryResult = Apollo.QueryResult<
+  GetGameBySlugQuery,
+  GetGameBySlugQueryVariables
 >
