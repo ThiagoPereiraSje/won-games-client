@@ -50,6 +50,8 @@ module.exports = {
               ['^(next|@next)'],
               // Packages `react` related packages come seconds.
               ['^(react|@react)'],
+              // GraphQl packages.
+              ['^(graphql|@graphql)(/.*|$)'],
               // Packages `@` related packages come seconds.
               ['^@?\\w'],
               // Template packages.
