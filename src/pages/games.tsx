@@ -1,10 +1,10 @@
-import GamesTempalte, { GamesTemplateProps } from 'templates/Games'
-import { GetGamesQuery, GetGamesQueryVariables } from 'graphql/types'
-
-import { GET_GAMES } from 'graphql/queries/games'
-import { GameCardProps } from 'components/GameCard'
 import { initializeApollo } from 'graphql/apolloClient'
+import { GET_GAMES } from 'graphql/queries/games'
+import { GetGamesQuery, GetGamesQueryVariables } from 'graphql/types'
+import GamesTempalte, { GamesTemplateProps } from 'templates/Games'
+
 import mockExploreSidebarItems from 'components/ExploreSidebar/mock'
+import { GameCardProps } from 'components/GameCard'
 
 export default function GamesPage(props: GamesTemplateProps) {
   return <GamesTempalte {...props} />
@@ -28,6 +28,7 @@ export async function getStaticProps() {
 
   const games: GameCardProps[] | undefined = data
     ? data?.games?.map((game) => ({
+        slug: game?.slug || '',
         title: game?.name || '',
         developer: game?.developers
           ? game.developers[0]?.name || 'Unknown'

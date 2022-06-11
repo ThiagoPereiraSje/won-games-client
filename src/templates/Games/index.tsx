@@ -1,8 +1,10 @@
 import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined'
 import Base from 'templates/Base'
+
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
 import GameCard, { GameCardProps } from 'components/GameCard'
 import Grid from 'components/Grid'
+
 import * as S from './styles'
 
 export type GamesTemplateProps = {

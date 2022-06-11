@@ -1,3 +1,5 @@
+import Base from 'templates/Base'
+
 import CartList, { CartListProps } from 'components/CartList'
 import { Container } from 'components/Container'
 import Divider from 'components/Divider'
@@ -7,7 +9,6 @@ import Heading from 'components/Heading'
 import { HighlightProps } from 'components/Highlight'
 import PaymentOptions, { PaymentOptionsProps } from 'components/PaymentOptions'
 import Showcase from 'components/Showcase'
-import Base from 'templates/Base'
 
 import * as S from './styles'
 

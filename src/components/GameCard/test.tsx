@@ -1,8 +1,10 @@
 import { fireEvent, screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
+
 import GameCard from '.'
 
 const props = {
+  slug: 'population-zero',
   title: 'Population Zero',
   developer: 'Rockstar Games',
   img: 'population-zero.png',
@@ -37,6 +39,12 @@ describe('<GameCard />', () => {
     // assert add to shopping cart button
     expect(addToShoopingCartButton).toBeInTheDocument()
     expect(addToShoopingCartButton.firstChild).not.toBe(null)
+
+    // assert slug link
+    expect(screen.getByRole('link', { name: props.title })).toHaveAttribute(
+      'href',
+      `/game/${props.slug}`
+    )
   })
 
   it('should render the normal price by default', () => {
