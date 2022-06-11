@@ -6,7 +6,7 @@ import { ApolloProvider } from '@apollo/client'
 
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
-import { useApollo } from 'utils/graphql/apolloClient'
+import { useApollo } from 'graphql/apolloClient'
 
 export default function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initialApolloState)

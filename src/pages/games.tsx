@@ -1,8 +1,10 @@
 import GamesTempalte, { GamesTemplateProps } from 'templates/Games'
+import { GetGamesQuery, GetGamesQueryVariables } from 'graphql/types'
 
+import { GET_GAMES } from 'graphql/queries/games'
+import { GameCardProps } from 'components/GameCard'
+import { initializeApollo } from 'graphql/apolloClient'
 import mockExploreSidebarItems from 'components/ExploreSidebar/mock'
-import { initializeApollo } from 'utils/graphql/apolloClient'
-import { QUERY_GAMES } from 'graphql/queries/games'
 
 export default function GamesPage(props: GamesTemplateProps) {
   return <GamesTempalte {...props} />
@@ -14,37 +16,35 @@ export default function GamesPage(props: GamesTemplateProps) {
 */
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
-  const { data } = await apolloClient.query({
-    query: QUERY_GAMES,
+  const { data } = await apolloClient.query<
+    GetGamesQuery,
+    GetGamesQueryVariables
+  >({
+    query: GET_GAMES,
     variables: {
       limit: 9
     }
   })
 
-  const games = data.games.map((game: any) => {
-    const developer = game?.developers[0]
-    const developerName = developer ? developer?.name : 'None'
-
-    return {
-      title: game.name,
-      developer: developerName,
-      img: `http://localhost:1337${game.cover.url}`,
-      price: new Intl.NumberFormat('en', {
-        style: 'currency',
-        currency: 'USD'
-      }).format(game.price)
-    }
-  })
-
-  const props: GamesTemplateProps = {
-    filterItems: mockExploreSidebarItems,
-    games
-  }
+  const games: GameCardProps[] | undefined = data
+    ? data?.games?.map((game) => ({
+        title: game?.name || '',
+        developer: game?.developers
+          ? game.developers[0]?.name || 'Unknown'
+          : 'Unknown',
+        img: game?.cover?.url ? `http://localhost:1337${game?.cover?.url}` : '',
+        price: new Intl.NumberFormat('en', {
+          style: 'currency',
+          currency: 'USD'
+        }).format(game?.price || 0)
+      }))
+    : undefined
 
   return {
     props: {
-      ...props,
-      revalidate: 60
+      revalidate: 60,
+      filterItems: mockExploreSidebarItems,
+      games
     }
   }
 }
