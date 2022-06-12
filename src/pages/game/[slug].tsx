@@ -77,6 +77,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       )
     : []
 
+  const genres: string[] = game?.categories
+    ? game.categories.map((category) => category?.name || 'Unknown')
+    : []
+
   const gameTemplateProps: GameTemplateProps = {
     cover: `http://localhost:1337${game?.cover?.src}`,
     gameInfo: {
@@ -94,7 +98,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       platforms,
       publisher: game?.publisher?.name || 'Unknown',
       rating: game?.rating || 'BR0',
-      genres: []
+      genres
     },
     upcomingGames: mockGames,
     upcomingHighlight: mockHighLight[2],
