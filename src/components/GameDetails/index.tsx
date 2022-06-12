@@ -1,7 +1,9 @@
-import { Linux, Windows, Apple } from '@styled-icons/fa-brands'
+import { Apple, Linux, Windows } from '@styled-icons/fa-brands'
+
 import Heading from 'components/Heading'
-import * as S from './styles'
 import MediaMatch from 'components/MediaMatch'
+
+import * as S from './styles'
 
 export type GamePlatform = 'windows' | 'linux' | 'mac'
 export type GameRating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18'

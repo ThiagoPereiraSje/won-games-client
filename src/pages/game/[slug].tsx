@@ -13,8 +13,8 @@ import {
 import Game, { GameTemplateProps } from 'templates/Game'
 
 import { GalleryImageProps } from 'components/Gallery'
-// import mockGallery from 'components/Gallery/mock'
 import mockGames from 'components/GameCardSlider/mock'
+import { GamePlatform } from 'components/GameDetails'
 import mockHighLight from 'components/Highlight/mock'
 
 const apolloClient = initializeApollo()
@@ -63,11 +63,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   const game = data.games[0]
+
   const gallery: GalleryImageProps[] = game?.gallery
     ? game.gallery.map((img) => ({
         src: img?.src ? `http://localhost:1337${img?.src}` : '',
         label: img?.label || ''
       }))
+    : []
+
+  const platforms: GamePlatform[] = game?.platforms
+    ? game.platforms.map(
+        (platform) => (platform?.name as GamePlatform) || 'windows'
+      )
     : []
 
   const gameTemplateProps: GameTemplateProps = {
@@ -84,7 +91,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         ? game?.developers[0]?.name || 'Unknown'
         : 'Unknown',
       releaseDate: game?.release_date,
-      platforms: [],
+      platforms,
       publisher: game?.publisher?.name || 'Unknown',
       rating: game?.rating || 'BR0',
       genres: []
