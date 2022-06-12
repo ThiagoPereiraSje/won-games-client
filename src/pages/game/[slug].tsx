@@ -12,6 +12,7 @@ import {
 
 import Game, { GameTemplateProps } from 'templates/Game'
 
+import { GalleryImageProps } from 'components/Gallery'
 // import mockGallery from 'components/Gallery/mock'
 import mockGames from 'components/GameCardSlider/mock'
 import mockHighLight from 'components/Highlight/mock'
@@ -62,6 +63,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 
   const game = data.games[0]
+  const gallery: GalleryImageProps[] = game?.gallery
+    ? game.gallery.map((img) => ({
+        src: img?.src ? `http://localhost:1337${img?.src}` : '',
+        label: img?.label || ''
+      }))
+    : []
 
   const gameTemplateProps: GameTemplateProps = {
     cover: `http://localhost:1337${game?.cover?.src}`,
@@ -70,7 +77,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       price: game?.price || 0,
       description: game?.short_description || ''
     },
-    gallery: [],
+    gallery,
     description: game?.description || '',
     details: {
       developer: game?.developers
