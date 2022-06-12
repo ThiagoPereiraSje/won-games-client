@@ -1,6 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import GameInfo from '.'
+
 import gameInfoMock from './mock'
+import GameInfo from '.'
 
 export default {
   title: 'Game/GameInfo',

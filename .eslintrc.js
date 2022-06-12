@@ -46,24 +46,26 @@ module.exports = {
           'error',
           {
             groups: [
-              // Packages `next` related packages come first.
+              // Packages `next` related packages.
               ['^(next|@next)'],
-              // Packages `react` related packages come seconds.
+              // Packages `react` related packages.
               ['^(react|@react)'],
               // GraphQl packages.
               ['^(graphql|@graphql)(/.*|$)'],
-              // Packages `@` related packages come seconds.
+              // Packages `@` related packages.
               ['^@?\\w'],
               // Template packages.
-              ['^(template)(/.*|$)'],
+              ['^(template|@template)(/.*|$)'],
               // Component packages.
-              ['^(components)(/.*|$)'],
+              ['^(components|@components)(/.*|$)'],
+              // Utils packages.
+              ['^(utils|@utils)(/.*|$)'],
               // Parent imports. Put `..` last.
               ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
               // Other relative imports. Put same-folder imports and `.` last.
               ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
               // Style imports.
-              ['^(style)(/.*|$)']
+              ['^(style|@style)(/.*|$)']
             ]
           }
         ]

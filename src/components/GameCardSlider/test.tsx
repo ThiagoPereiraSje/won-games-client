@@ -1,11 +1,13 @@
+// eslint-disable-next-line simple-import-sort/imports
+import 'match-media-mock'
+
 import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
 
 import { GameCardProps } from 'components/GameCard'
 
-import GameCardSlider from '.'
+import { renderWithTheme } from 'utils/tests/helpers'
 
-import 'match-media-mock'
+import GameCardSlider from '.'
 
 const items: GameCardProps[] = [
   {
@@ -13,48 +15,48 @@ const items: GameCardProps[] = [
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x140',
-    price: 'R$ 235,00',
-    promotionalPrice: 'R$ 215,00'
+    price: 235,
+    promotionalPrice: 215
   },
   {
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x141',
-    price: 'R$ 235,00',
-    promotionalPrice: 'R$ 215,00'
+    price: 235,
+    promotionalPrice: 215
   },
   {
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x142',
-    price: 'R$ 235,00',
-    promotionalPrice: 'R$ 215,00'
+    price: 235,
+    promotionalPrice: 215
   },
   {
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x142',
-    price: 'R$ 235,00',
-    promotionalPrice: 'R$ 215,00'
+    price: 235,
+    promotionalPrice: 215
   },
   {
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x142',
-    price: 'R$ 235,00',
-    promotionalPrice: 'R$ 215,00'
+    price: 235,
+    promotionalPrice: 215
   },
   {
     slug: 'population-zero',
     title: 'Population Zero',
     developer: 'Rockstar Games',
     img: 'https://source.unsplash.com/user/willianjusten/300x142',
-    price: 'R$ 235,00',
-    promotionalPrice: 'R$ 215,00'
+    price: 235,
+    promotionalPrice: 215
   }
 ]
 

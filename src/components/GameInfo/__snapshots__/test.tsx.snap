@@ -7,22 +7,6 @@ exports[`<GameInfo /> should render game informations 1`] = `
   overflow: hidden;
 }
 
-.c1 {
-  color: #030517;
-  position: relative;
-  margin-bottom: 3.2rem;
-  font-size: 2.0rem;
-}
-
-.c1::after {
-  position: absolute;
-  left: 0;
-  bottom: -1rem;
-  content: '';
-  width: 5rem;
-  border-bottom: 0.5rem solid #F231A5;
-}
-
 .c6 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -103,6 +87,22 @@ exports[`<GameInfo /> should render game informations 1`] = `
 
 .c8:hover {
   color: #e20e8d;
+}
+
+.c1 {
+  color: #030517;
+  position: relative;
+  margin-bottom: 3.2rem;
+  font-size: 2.0rem;
+}
+
+.c1::after {
+  position: absolute;
+  left: 0;
+  bottom: -1rem;
+  content: '';
+  width: 5rem;
+  border-bottom: 0.5rem solid #F231A5;
 }
 
 .c3 {
@@ -294,4 +294,4 @@ exports[`<GameInfo /> should render game informations 1`] = `
     </button>
   </div>
 </div>
-`
+`;

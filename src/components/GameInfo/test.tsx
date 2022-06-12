@@ -1,11 +1,13 @@
 import { screen } from '@testing-library/react'
+
 import { renderWithTheme } from 'utils/tests/helpers'
+
 import GameInfo from '.'
 
 const props = {
   title: 'Game Title',
   description: 'Game Description',
-  price: '210.00'
+  price: 210
 }
 
 describe('<GameInfo />', () => {
@@ -21,7 +23,7 @@ describe('<GameInfo />', () => {
     expect(screen.getByText(/game description/i)).toBeInTheDocument()
 
     // must to have a price
-    expect(screen.getByText(/\$210.00/)).toBeInTheDocument()
+    expect(screen.getByText(/\$210\.00/)).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
   })

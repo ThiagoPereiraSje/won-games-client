@@ -1,6 +1,7 @@
 import { initializeApollo } from 'graphql/apolloClient'
 import { GET_GAMES } from 'graphql/queries/games'
 import { GetGamesQuery, GetGamesQueryVariables } from 'graphql/types'
+
 import GamesTempalte, { GamesTemplateProps } from 'templates/Games'
 
 import mockExploreSidebarItems from 'components/ExploreSidebar/mock'
@@ -34,10 +35,7 @@ export async function getStaticProps() {
           ? game.developers[0]?.name || 'Unknown'
           : 'Unknown',
         img: game?.cover?.url ? `http://localhost:1337${game?.cover?.url}` : '',
-        price: new Intl.NumberFormat('en', {
-          style: 'currency',
-          currency: 'USD'
-        }).format(game?.price || 0)
+        price: game?.price || 0
       }))
     : undefined
 
