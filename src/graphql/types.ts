@@ -2079,6 +2079,24 @@ export type UpdateUserPayload = {
   user: Maybe<UsersPermissionsUser>
 }
 
+export type BannerFragmentFragment = {
+  __typename?: 'Banner'
+  title: string
+  subtitle: string
+  image: { __typename?: 'UploadFile'; url: string } | null
+  button: {
+    __typename?: 'ComponentPageButton'
+    label: string
+    link: string
+  } | null
+  ribbon: {
+    __typename?: 'ComponentPageRibbon'
+    text: string | null
+    color: Enum_Componentpageribbon_Color | null
+    size: Enum_Componentpageribbon_Size | null
+  } | null
+}
+
 export type GetGamesQueryVariables = Exact<{
   limit: Scalars['Int']
 }>
@@ -2145,6 +2163,24 @@ export type GetHomeQuery = {
   } | null> | null
 }
 
+export const BannerFragmentFragmentDoc = gql`
+  fragment bannerFragment on Banner {
+    image {
+      url
+    }
+    title
+    subtitle
+    button {
+      label
+      link
+    }
+    ribbon {
+      text
+      color
+      size
+    }
+  }
+`
 export const GetGamesDocument = gql`
   query GetGames($limit: Int!) {
     games(limit: $limit) {
@@ -2291,22 +2327,10 @@ export type GetGameBySlugQueryResult = Apollo.QueryResult<
 export const GetHomeDocument = gql`
   query GetHome {
     banners {
-      image {
-        url
-      }
-      title
-      subtitle
-      button {
-        label
-        link
-      }
-      ribbon {
-        text
-        color
-        size
-      }
+      ...bannerFragment
     }
   }
+  ${BannerFragmentFragmentDoc}
 `
 
 /**
