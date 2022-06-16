@@ -1,3 +1,5 @@
+import { GetStaticProps } from 'next'
+
 import { initializeApollo } from 'graphql/apolloClient'
 import { GET_GAMES } from 'graphql/queries/games'
 import { GetGamesQuery, GetGamesQueryVariables } from 'graphql/types'
@@ -15,8 +17,9 @@ export default function GamesPage(props: GamesTemplateProps) {
  Como o conteúdo da página explore será modificado de acordo
  com a consulta realizada não faz sentido ser uma página estática
 */
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps<GamesTemplateProps> = async () => {
   const apolloClient = initializeApollo()
+
   const { data } = await apolloClient.query<
     GetGamesQuery,
     GetGamesQueryVariables
@@ -40,10 +43,10 @@ export async function getStaticProps() {
     : undefined
 
   return {
+    revalidate: 60,
     props: {
-      revalidate: 60,
-      filterItems: mockExploreSidebarItems,
-      games
+      games,
+      filterItems: mockExploreSidebarItems
     }
   }
 }

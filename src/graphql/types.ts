@@ -39,13 +39,117 @@ export type AdminUser = {
   firstname: Scalars['String']
   id: Scalars['ID']
   lastname: Scalars['String']
-  username?: Maybe<Scalars['String']>
+  username: Maybe<Scalars['String']>
+}
+
+export type Banner = {
+  __typename?: 'Banner'
+  button: Maybe<ComponentPageButton>
+  created_at: Scalars['DateTime']
+  id: Scalars['ID']
+  image: Maybe<UploadFile>
+  published_at: Maybe<Scalars['DateTime']>
+  ribbon: Maybe<ComponentPageRibbon>
+  subtitle: Scalars['String']
+  title: Scalars['String']
+  updated_at: Scalars['DateTime']
+}
+
+export type BannerAggregator = {
+  __typename?: 'BannerAggregator'
+  count: Maybe<Scalars['Int']>
+  totalCount: Maybe<Scalars['Int']>
+}
+
+export type BannerConnection = {
+  __typename?: 'BannerConnection'
+  aggregate: Maybe<BannerAggregator>
+  groupBy: Maybe<BannerGroupBy>
+  values: Maybe<Array<Maybe<Banner>>>
+}
+
+export type BannerConnectionButton = {
+  __typename?: 'BannerConnectionButton'
+  connection: Maybe<BannerConnection>
+  key: Maybe<Scalars['ID']>
+}
+
+export type BannerConnectionCreated_At = {
+  __typename?: 'BannerConnectionCreated_at'
+  connection: Maybe<BannerConnection>
+  key: Maybe<Scalars['DateTime']>
+}
+
+export type BannerConnectionId = {
+  __typename?: 'BannerConnectionId'
+  connection: Maybe<BannerConnection>
+  key: Maybe<Scalars['ID']>
+}
+
+export type BannerConnectionImage = {
+  __typename?: 'BannerConnectionImage'
+  connection: Maybe<BannerConnection>
+  key: Maybe<Scalars['ID']>
+}
+
+export type BannerConnectionPublished_At = {
+  __typename?: 'BannerConnectionPublished_at'
+  connection: Maybe<BannerConnection>
+  key: Maybe<Scalars['DateTime']>
+}
+
+export type BannerConnectionRibbon = {
+  __typename?: 'BannerConnectionRibbon'
+  connection: Maybe<BannerConnection>
+  key: Maybe<Scalars['ID']>
+}
+
+export type BannerConnectionSubtitle = {
+  __typename?: 'BannerConnectionSubtitle'
+  connection: Maybe<BannerConnection>
+  key: Maybe<Scalars['String']>
+}
+
+export type BannerConnectionTitle = {
+  __typename?: 'BannerConnectionTitle'
+  connection: Maybe<BannerConnection>
+  key: Maybe<Scalars['String']>
+}
+
+export type BannerConnectionUpdated_At = {
+  __typename?: 'BannerConnectionUpdated_at'
+  connection: Maybe<BannerConnection>
+  key: Maybe<Scalars['DateTime']>
+}
+
+export type BannerGroupBy = {
+  __typename?: 'BannerGroupBy'
+  button: Maybe<Array<Maybe<BannerConnectionButton>>>
+  created_at: Maybe<Array<Maybe<BannerConnectionCreated_At>>>
+  id: Maybe<Array<Maybe<BannerConnectionId>>>
+  image: Maybe<Array<Maybe<BannerConnectionImage>>>
+  published_at: Maybe<Array<Maybe<BannerConnectionPublished_At>>>
+  ribbon: Maybe<Array<Maybe<BannerConnectionRibbon>>>
+  subtitle: Maybe<Array<Maybe<BannerConnectionSubtitle>>>
+  title: Maybe<Array<Maybe<BannerConnectionTitle>>>
+  updated_at: Maybe<Array<Maybe<BannerConnectionUpdated_At>>>
+}
+
+export type BannerInput = {
+  button: InputMaybe<ComponentPageButtonInput>
+  created_by: InputMaybe<Scalars['ID']>
+  image: InputMaybe<Scalars['ID']>
+  published_at: InputMaybe<Scalars['DateTime']>
+  ribbon: InputMaybe<ComponentPageRibbonInput>
+  subtitle: Scalars['String']
+  title: Scalars['String']
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type Category = {
   __typename?: 'Category'
   created_at: Scalars['DateTime']
-  games?: Maybe<Array<Maybe<Game>>>
+  games: Maybe<Array<Maybe<Game>>>
   id: Scalars['ID']
   name: Scalars['String']
   slug: Scalars['String']
@@ -53,76 +157,102 @@ export type Category = {
 }
 
 export type CategoryGamesArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type CategoryAggregator = {
   __typename?: 'CategoryAggregator'
-  count?: Maybe<Scalars['Int']>
-  totalCount?: Maybe<Scalars['Int']>
+  count: Maybe<Scalars['Int']>
+  totalCount: Maybe<Scalars['Int']>
 }
 
 export type CategoryConnection = {
   __typename?: 'CategoryConnection'
-  aggregate?: Maybe<CategoryAggregator>
-  groupBy?: Maybe<CategoryGroupBy>
-  values?: Maybe<Array<Maybe<Category>>>
+  aggregate: Maybe<CategoryAggregator>
+  groupBy: Maybe<CategoryGroupBy>
+  values: Maybe<Array<Maybe<Category>>>
 }
 
 export type CategoryConnectionCreated_At = {
   __typename?: 'CategoryConnectionCreated_at'
-  connection?: Maybe<CategoryConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<CategoryConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type CategoryConnectionId = {
   __typename?: 'CategoryConnectionId'
-  connection?: Maybe<CategoryConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<CategoryConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type CategoryConnectionName = {
   __typename?: 'CategoryConnectionName'
-  connection?: Maybe<CategoryConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<CategoryConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type CategoryConnectionSlug = {
   __typename?: 'CategoryConnectionSlug'
-  connection?: Maybe<CategoryConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<CategoryConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type CategoryConnectionUpdated_At = {
   __typename?: 'CategoryConnectionUpdated_at'
-  connection?: Maybe<CategoryConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<CategoryConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type CategoryGroupBy = {
   __typename?: 'CategoryGroupBy'
-  created_at?: Maybe<Array<Maybe<CategoryConnectionCreated_At>>>
-  id?: Maybe<Array<Maybe<CategoryConnectionId>>>
-  name?: Maybe<Array<Maybe<CategoryConnectionName>>>
-  slug?: Maybe<Array<Maybe<CategoryConnectionSlug>>>
-  updated_at?: Maybe<Array<Maybe<CategoryConnectionUpdated_At>>>
+  created_at: Maybe<Array<Maybe<CategoryConnectionCreated_At>>>
+  id: Maybe<Array<Maybe<CategoryConnectionId>>>
+  name: Maybe<Array<Maybe<CategoryConnectionName>>>
+  slug: Maybe<Array<Maybe<CategoryConnectionSlug>>>
+  updated_at: Maybe<Array<Maybe<CategoryConnectionUpdated_At>>>
 }
 
 export type CategoryInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  games?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  created_by: InputMaybe<Scalars['ID']>
+  games: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   name: Scalars['String']
   slug: Scalars['String']
-  updated_by?: InputMaybe<Scalars['ID']>
+  updated_by: InputMaybe<Scalars['ID']>
+}
+
+export type ComponentPageButton = {
+  __typename?: 'ComponentPageButton'
+  id: Scalars['ID']
+  label: Scalars['String']
+  link: Scalars['String']
+}
+
+export type ComponentPageButtonInput = {
+  label: InputMaybe<Scalars['String']>
+  link: Scalars['String']
+}
+
+export type ComponentPageRibbon = {
+  __typename?: 'ComponentPageRibbon'
+  color: Maybe<Enum_Componentpageribbon_Color>
+  id: Scalars['ID']
+  size: Maybe<Enum_Componentpageribbon_Size>
+  text: Maybe<Scalars['String']>
+}
+
+export type ComponentPageRibbonInput = {
+  color: InputMaybe<Enum_Componentpageribbon_Color>
+  size: InputMaybe<Enum_Componentpageribbon_Size>
+  text: InputMaybe<Scalars['String']>
 }
 
 export type Developer = {
   __typename?: 'Developer'
   created_at: Scalars['DateTime']
-  games?: Maybe<Array<Maybe<Game>>>
+  games: Maybe<Array<Maybe<Game>>>
   id: Scalars['ID']
   name: Scalars['String']
   slug: Scalars['String']
@@ -130,70 +260,80 @@ export type Developer = {
 }
 
 export type DeveloperGamesArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type DeveloperAggregator = {
   __typename?: 'DeveloperAggregator'
-  count?: Maybe<Scalars['Int']>
-  totalCount?: Maybe<Scalars['Int']>
+  count: Maybe<Scalars['Int']>
+  totalCount: Maybe<Scalars['Int']>
 }
 
 export type DeveloperConnection = {
   __typename?: 'DeveloperConnection'
-  aggregate?: Maybe<DeveloperAggregator>
-  groupBy?: Maybe<DeveloperGroupBy>
-  values?: Maybe<Array<Maybe<Developer>>>
+  aggregate: Maybe<DeveloperAggregator>
+  groupBy: Maybe<DeveloperGroupBy>
+  values: Maybe<Array<Maybe<Developer>>>
 }
 
 export type DeveloperConnectionCreated_At = {
   __typename?: 'DeveloperConnectionCreated_at'
-  connection?: Maybe<DeveloperConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<DeveloperConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type DeveloperConnectionId = {
   __typename?: 'DeveloperConnectionId'
-  connection?: Maybe<DeveloperConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<DeveloperConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type DeveloperConnectionName = {
   __typename?: 'DeveloperConnectionName'
-  connection?: Maybe<DeveloperConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<DeveloperConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type DeveloperConnectionSlug = {
   __typename?: 'DeveloperConnectionSlug'
-  connection?: Maybe<DeveloperConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<DeveloperConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type DeveloperConnectionUpdated_At = {
   __typename?: 'DeveloperConnectionUpdated_at'
-  connection?: Maybe<DeveloperConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<DeveloperConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type DeveloperGroupBy = {
   __typename?: 'DeveloperGroupBy'
-  created_at?: Maybe<Array<Maybe<DeveloperConnectionCreated_At>>>
-  id?: Maybe<Array<Maybe<DeveloperConnectionId>>>
-  name?: Maybe<Array<Maybe<DeveloperConnectionName>>>
-  slug?: Maybe<Array<Maybe<DeveloperConnectionSlug>>>
-  updated_at?: Maybe<Array<Maybe<DeveloperConnectionUpdated_At>>>
+  created_at: Maybe<Array<Maybe<DeveloperConnectionCreated_At>>>
+  id: Maybe<Array<Maybe<DeveloperConnectionId>>>
+  name: Maybe<Array<Maybe<DeveloperConnectionName>>>
+  slug: Maybe<Array<Maybe<DeveloperConnectionSlug>>>
+  updated_at: Maybe<Array<Maybe<DeveloperConnectionUpdated_At>>>
 }
 
 export type DeveloperInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  games?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  created_by: InputMaybe<Scalars['ID']>
+  games: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   name: Scalars['String']
   slug: Scalars['String']
-  updated_by?: InputMaybe<Scalars['ID']>
+  updated_by: InputMaybe<Scalars['ID']>
+}
+
+export enum Enum_Componentpageribbon_Color {
+  Primary = 'primary',
+  Secondary = 'secondary'
+}
+
+export enum Enum_Componentpageribbon_Size {
+  Normal = 'normal',
+  Small = 'small'
 }
 
 export enum Enum_Game_Rating {
@@ -206,228 +346,228 @@ export enum Enum_Game_Rating {
 }
 
 export type FileInfoInput = {
-  alternativeText?: InputMaybe<Scalars['String']>
-  caption?: InputMaybe<Scalars['String']>
-  name?: InputMaybe<Scalars['String']>
+  alternativeText: InputMaybe<Scalars['String']>
+  caption: InputMaybe<Scalars['String']>
+  name: InputMaybe<Scalars['String']>
 }
 
 export type FileInput = {
-  alternativeText?: InputMaybe<Scalars['String']>
-  caption?: InputMaybe<Scalars['String']>
-  created_by?: InputMaybe<Scalars['ID']>
-  ext?: InputMaybe<Scalars['String']>
-  formats?: InputMaybe<Scalars['JSON']>
+  alternativeText: InputMaybe<Scalars['String']>
+  caption: InputMaybe<Scalars['String']>
+  created_by: InputMaybe<Scalars['ID']>
+  ext: InputMaybe<Scalars['String']>
+  formats: InputMaybe<Scalars['JSON']>
   hash: Scalars['String']
-  height?: InputMaybe<Scalars['Int']>
+  height: InputMaybe<Scalars['Int']>
   mime: Scalars['String']
   name: Scalars['String']
-  previewUrl?: InputMaybe<Scalars['String']>
+  previewUrl: InputMaybe<Scalars['String']>
   provider: Scalars['String']
-  provider_metadata?: InputMaybe<Scalars['JSON']>
-  related?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  provider_metadata: InputMaybe<Scalars['JSON']>
+  related: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   size: Scalars['Float']
-  updated_by?: InputMaybe<Scalars['ID']>
+  updated_by: InputMaybe<Scalars['ID']>
   url: Scalars['String']
-  width?: InputMaybe<Scalars['Int']>
+  width: InputMaybe<Scalars['Int']>
 }
 
 export type Game = {
   __typename?: 'Game'
-  categories?: Maybe<Array<Maybe<Category>>>
-  cover?: Maybe<UploadFile>
+  categories: Maybe<Array<Maybe<Category>>>
+  cover: Maybe<UploadFile>
   created_at: Scalars['DateTime']
   description: Scalars['String']
-  developers?: Maybe<Array<Maybe<Developer>>>
-  gallery?: Maybe<Array<Maybe<UploadFile>>>
+  developers: Maybe<Array<Maybe<Developer>>>
+  gallery: Maybe<Array<Maybe<UploadFile>>>
   id: Scalars['ID']
   name: Scalars['String']
-  platforms?: Maybe<Array<Maybe<Platform>>>
+  platforms: Maybe<Array<Maybe<Platform>>>
   price: Scalars['Float']
-  publisher?: Maybe<Publisher>
+  publisher: Maybe<Publisher>
   rating: Enum_Game_Rating
-  release_date?: Maybe<Scalars['Date']>
+  release_date: Maybe<Scalars['Date']>
   short_description: Scalars['String']
   slug: Scalars['String']
   updated_at: Scalars['DateTime']
 }
 
 export type GameCategoriesArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type GameDevelopersArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type GameGalleryArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type GamePlatformsArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type GameAggregator = {
   __typename?: 'GameAggregator'
-  avg?: Maybe<GameAggregatorAvg>
-  count?: Maybe<Scalars['Int']>
-  max?: Maybe<GameAggregatorMax>
-  min?: Maybe<GameAggregatorMin>
-  sum?: Maybe<GameAggregatorSum>
-  totalCount?: Maybe<Scalars['Int']>
+  avg: Maybe<GameAggregatorAvg>
+  count: Maybe<Scalars['Int']>
+  max: Maybe<GameAggregatorMax>
+  min: Maybe<GameAggregatorMin>
+  sum: Maybe<GameAggregatorSum>
+  totalCount: Maybe<Scalars['Int']>
 }
 
 export type GameAggregatorAvg = {
   __typename?: 'GameAggregatorAvg'
-  price?: Maybe<Scalars['Float']>
+  price: Maybe<Scalars['Float']>
 }
 
 export type GameAggregatorMax = {
   __typename?: 'GameAggregatorMax'
-  price?: Maybe<Scalars['Float']>
+  price: Maybe<Scalars['Float']>
 }
 
 export type GameAggregatorMin = {
   __typename?: 'GameAggregatorMin'
-  price?: Maybe<Scalars['Float']>
+  price: Maybe<Scalars['Float']>
 }
 
 export type GameAggregatorSum = {
   __typename?: 'GameAggregatorSum'
-  price?: Maybe<Scalars['Float']>
+  price: Maybe<Scalars['Float']>
 }
 
 export type GameConnection = {
   __typename?: 'GameConnection'
-  aggregate?: Maybe<GameAggregator>
-  groupBy?: Maybe<GameGroupBy>
-  values?: Maybe<Array<Maybe<Game>>>
+  aggregate: Maybe<GameAggregator>
+  groupBy: Maybe<GameGroupBy>
+  values: Maybe<Array<Maybe<Game>>>
 }
 
 export type GameConnectionCover = {
   __typename?: 'GameConnectionCover'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type GameConnectionCreated_At = {
   __typename?: 'GameConnectionCreated_at'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type GameConnectionDescription = {
   __typename?: 'GameConnectionDescription'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type GameConnectionId = {
   __typename?: 'GameConnectionId'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type GameConnectionName = {
   __typename?: 'GameConnectionName'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type GameConnectionPrice = {
   __typename?: 'GameConnectionPrice'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['Float']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['Float']>
 }
 
 export type GameConnectionPublisher = {
   __typename?: 'GameConnectionPublisher'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type GameConnectionRating = {
   __typename?: 'GameConnectionRating'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type GameConnectionRelease_Date = {
   __typename?: 'GameConnectionRelease_date'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type GameConnectionShort_Description = {
   __typename?: 'GameConnectionShort_description'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type GameConnectionSlug = {
   __typename?: 'GameConnectionSlug'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type GameConnectionUpdated_At = {
   __typename?: 'GameConnectionUpdated_at'
-  connection?: Maybe<GameConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<GameConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type GameGroupBy = {
   __typename?: 'GameGroupBy'
-  cover?: Maybe<Array<Maybe<GameConnectionCover>>>
-  created_at?: Maybe<Array<Maybe<GameConnectionCreated_At>>>
-  description?: Maybe<Array<Maybe<GameConnectionDescription>>>
-  id?: Maybe<Array<Maybe<GameConnectionId>>>
-  name?: Maybe<Array<Maybe<GameConnectionName>>>
-  price?: Maybe<Array<Maybe<GameConnectionPrice>>>
-  publisher?: Maybe<Array<Maybe<GameConnectionPublisher>>>
-  rating?: Maybe<Array<Maybe<GameConnectionRating>>>
-  release_date?: Maybe<Array<Maybe<GameConnectionRelease_Date>>>
-  short_description?: Maybe<Array<Maybe<GameConnectionShort_Description>>>
-  slug?: Maybe<Array<Maybe<GameConnectionSlug>>>
-  updated_at?: Maybe<Array<Maybe<GameConnectionUpdated_At>>>
+  cover: Maybe<Array<Maybe<GameConnectionCover>>>
+  created_at: Maybe<Array<Maybe<GameConnectionCreated_At>>>
+  description: Maybe<Array<Maybe<GameConnectionDescription>>>
+  id: Maybe<Array<Maybe<GameConnectionId>>>
+  name: Maybe<Array<Maybe<GameConnectionName>>>
+  price: Maybe<Array<Maybe<GameConnectionPrice>>>
+  publisher: Maybe<Array<Maybe<GameConnectionPublisher>>>
+  rating: Maybe<Array<Maybe<GameConnectionRating>>>
+  release_date: Maybe<Array<Maybe<GameConnectionRelease_Date>>>
+  short_description: Maybe<Array<Maybe<GameConnectionShort_Description>>>
+  slug: Maybe<Array<Maybe<GameConnectionSlug>>>
+  updated_at: Maybe<Array<Maybe<GameConnectionUpdated_At>>>
 }
 
 export type GameInput = {
-  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  cover?: InputMaybe<Scalars['ID']>
-  created_by?: InputMaybe<Scalars['ID']>
+  categories: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  cover: InputMaybe<Scalars['ID']>
+  created_by: InputMaybe<Scalars['ID']>
   description: Scalars['String']
-  developers?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  gallery?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  developers: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  gallery: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   name: Scalars['String']
-  platforms?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  price?: InputMaybe<Scalars['Float']>
-  publisher?: InputMaybe<Scalars['ID']>
+  platforms: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  price: InputMaybe<Scalars['Float']>
+  publisher: InputMaybe<Scalars['ID']>
   rating: Enum_Game_Rating
-  release_date?: InputMaybe<Scalars['Date']>
+  release_date: InputMaybe<Scalars['Date']>
   short_description: Scalars['String']
   slug: Scalars['String']
-  updated_by?: InputMaybe<Scalars['ID']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type I18NLocale = {
   __typename?: 'I18NLocale'
-  code?: Maybe<Scalars['String']>
+  code: Maybe<Scalars['String']>
   created_at: Scalars['DateTime']
   id: Scalars['ID']
-  name?: Maybe<Scalars['String']>
+  name: Maybe<Scalars['String']>
   updated_at: Scalars['DateTime']
 }
 
@@ -436,13 +576,26 @@ export type InputId = {
 }
 
 export type LocaleInput = {
-  code?: InputMaybe<Scalars['String']>
-  created_by?: InputMaybe<Scalars['ID']>
-  name?: InputMaybe<Scalars['String']>
-  updated_by?: InputMaybe<Scalars['ID']>
+  code: InputMaybe<Scalars['String']>
+  created_by: InputMaybe<Scalars['ID']>
+  name: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type Morph =
+  | Banner
+  | BannerAggregator
+  | BannerConnection
+  | BannerConnectionButton
+  | BannerConnectionCreated_At
+  | BannerConnectionId
+  | BannerConnectionImage
+  | BannerConnectionPublished_At
+  | BannerConnectionRibbon
+  | BannerConnectionSubtitle
+  | BannerConnectionTitle
+  | BannerConnectionUpdated_At
+  | BannerGroupBy
   | Category
   | CategoryAggregator
   | CategoryConnection
@@ -452,6 +605,8 @@ export type Morph =
   | CategoryConnectionSlug
   | CategoryConnectionUpdated_At
   | CategoryGroupBy
+  | ComponentPageButton
+  | ComponentPageRibbon
   | Developer
   | DeveloperAggregator
   | DeveloperConnection
@@ -551,6 +706,7 @@ export type Morph =
   | UsersPermissionsUserConnectionUpdated_At
   | UsersPermissionsUserConnectionUsername
   | UsersPermissionsUserGroupBy
+  | CreateBannerPayload
   | CreateCategoryPayload
   | CreateDeveloperPayload
   | CreateGamePayload
@@ -558,6 +714,7 @@ export type Morph =
   | CreatePublisherPayload
   | CreateRolePayload
   | CreateUserPayload
+  | DeleteBannerPayload
   | DeleteCategoryPayload
   | DeleteDeveloperPayload
   | DeleteFilePayload
@@ -566,6 +723,7 @@ export type Morph =
   | DeletePublisherPayload
   | DeleteRolePayload
   | DeleteUserPayload
+  | UpdateBannerPayload
   | UpdateCategoryPayload
   | UpdateDeveloperPayload
   | UpdateGamePayload
@@ -576,103 +734,114 @@ export type Morph =
 
 export type Mutation = {
   __typename?: 'Mutation'
-  createCategory?: Maybe<CreateCategoryPayload>
-  createDeveloper?: Maybe<CreateDeveloperPayload>
-  createGame?: Maybe<CreateGamePayload>
-  createPlatform?: Maybe<CreatePlatformPayload>
-  createPublisher?: Maybe<CreatePublisherPayload>
+  createBanner: Maybe<CreateBannerPayload>
+  createCategory: Maybe<CreateCategoryPayload>
+  createDeveloper: Maybe<CreateDeveloperPayload>
+  createGame: Maybe<CreateGamePayload>
+  createPlatform: Maybe<CreatePlatformPayload>
+  createPublisher: Maybe<CreatePublisherPayload>
   /** Create a new role */
-  createRole?: Maybe<CreateRolePayload>
+  createRole: Maybe<CreateRolePayload>
   /** Create a new user */
-  createUser?: Maybe<CreateUserPayload>
-  deleteCategory?: Maybe<DeleteCategoryPayload>
-  deleteDeveloper?: Maybe<DeleteDeveloperPayload>
+  createUser: Maybe<CreateUserPayload>
+  deleteBanner: Maybe<DeleteBannerPayload>
+  deleteCategory: Maybe<DeleteCategoryPayload>
+  deleteDeveloper: Maybe<DeleteDeveloperPayload>
   /** Delete one file */
-  deleteFile?: Maybe<DeleteFilePayload>
-  deleteGame?: Maybe<DeleteGamePayload>
-  deletePlatform?: Maybe<DeletePlatformPayload>
-  deletePublisher?: Maybe<DeletePublisherPayload>
+  deleteFile: Maybe<DeleteFilePayload>
+  deleteGame: Maybe<DeleteGamePayload>
+  deletePlatform: Maybe<DeletePlatformPayload>
+  deletePublisher: Maybe<DeletePublisherPayload>
   /** Delete an existing role */
-  deleteRole?: Maybe<DeleteRolePayload>
+  deleteRole: Maybe<DeleteRolePayload>
   /** Delete an existing user */
-  deleteUser?: Maybe<DeleteUserPayload>
-  emailConfirmation?: Maybe<UsersPermissionsLoginPayload>
-  forgotPassword?: Maybe<UserPermissionsPasswordPayload>
+  deleteUser: Maybe<DeleteUserPayload>
+  emailConfirmation: Maybe<UsersPermissionsLoginPayload>
+  forgotPassword: Maybe<UserPermissionsPasswordPayload>
   login: UsersPermissionsLoginPayload
   multipleUpload: Array<Maybe<UploadFile>>
   register: UsersPermissionsLoginPayload
-  resetPassword?: Maybe<UsersPermissionsLoginPayload>
-  updateCategory?: Maybe<UpdateCategoryPayload>
-  updateDeveloper?: Maybe<UpdateDeveloperPayload>
+  resetPassword: Maybe<UsersPermissionsLoginPayload>
+  updateBanner: Maybe<UpdateBannerPayload>
+  updateCategory: Maybe<UpdateCategoryPayload>
+  updateDeveloper: Maybe<UpdateDeveloperPayload>
   updateFileInfo: UploadFile
-  updateGame?: Maybe<UpdateGamePayload>
-  updatePlatform?: Maybe<UpdatePlatformPayload>
-  updatePublisher?: Maybe<UpdatePublisherPayload>
+  updateGame: Maybe<UpdateGamePayload>
+  updatePlatform: Maybe<UpdatePlatformPayload>
+  updatePublisher: Maybe<UpdatePublisherPayload>
   /** Update an existing role */
-  updateRole?: Maybe<UpdateRolePayload>
+  updateRole: Maybe<UpdateRolePayload>
   /** Update an existing user */
-  updateUser?: Maybe<UpdateUserPayload>
+  updateUser: Maybe<UpdateUserPayload>
   upload: UploadFile
 }
 
+export type MutationCreateBannerArgs = {
+  input: InputMaybe<CreateBannerInput>
+}
+
 export type MutationCreateCategoryArgs = {
-  input?: InputMaybe<CreateCategoryInput>
+  input: InputMaybe<CreateCategoryInput>
 }
 
 export type MutationCreateDeveloperArgs = {
-  input?: InputMaybe<CreateDeveloperInput>
+  input: InputMaybe<CreateDeveloperInput>
 }
 
 export type MutationCreateGameArgs = {
-  input?: InputMaybe<CreateGameInput>
+  input: InputMaybe<CreateGameInput>
 }
 
 export type MutationCreatePlatformArgs = {
-  input?: InputMaybe<CreatePlatformInput>
+  input: InputMaybe<CreatePlatformInput>
 }
 
 export type MutationCreatePublisherArgs = {
-  input?: InputMaybe<CreatePublisherInput>
+  input: InputMaybe<CreatePublisherInput>
 }
 
 export type MutationCreateRoleArgs = {
-  input?: InputMaybe<CreateRoleInput>
+  input: InputMaybe<CreateRoleInput>
 }
 
 export type MutationCreateUserArgs = {
-  input?: InputMaybe<CreateUserInput>
+  input: InputMaybe<CreateUserInput>
+}
+
+export type MutationDeleteBannerArgs = {
+  input: InputMaybe<DeleteBannerInput>
 }
 
 export type MutationDeleteCategoryArgs = {
-  input?: InputMaybe<DeleteCategoryInput>
+  input: InputMaybe<DeleteCategoryInput>
 }
 
 export type MutationDeleteDeveloperArgs = {
-  input?: InputMaybe<DeleteDeveloperInput>
+  input: InputMaybe<DeleteDeveloperInput>
 }
 
 export type MutationDeleteFileArgs = {
-  input?: InputMaybe<DeleteFileInput>
+  input: InputMaybe<DeleteFileInput>
 }
 
 export type MutationDeleteGameArgs = {
-  input?: InputMaybe<DeleteGameInput>
+  input: InputMaybe<DeleteGameInput>
 }
 
 export type MutationDeletePlatformArgs = {
-  input?: InputMaybe<DeletePlatformInput>
+  input: InputMaybe<DeletePlatformInput>
 }
 
 export type MutationDeletePublisherArgs = {
-  input?: InputMaybe<DeletePublisherInput>
+  input: InputMaybe<DeletePublisherInput>
 }
 
 export type MutationDeleteRoleArgs = {
-  input?: InputMaybe<DeleteRoleInput>
+  input: InputMaybe<DeleteRoleInput>
 }
 
 export type MutationDeleteUserArgs = {
-  input?: InputMaybe<DeleteUserInput>
+  input: InputMaybe<DeleteUserInput>
 }
 
 export type MutationEmailConfirmationArgs = {
@@ -688,11 +857,11 @@ export type MutationLoginArgs = {
 }
 
 export type MutationMultipleUploadArgs = {
-  field?: InputMaybe<Scalars['String']>
+  field: InputMaybe<Scalars['String']>
   files: Array<InputMaybe<Scalars['Upload']>>
-  ref?: InputMaybe<Scalars['String']>
-  refId?: InputMaybe<Scalars['ID']>
-  source?: InputMaybe<Scalars['String']>
+  ref: InputMaybe<Scalars['String']>
+  refId: InputMaybe<Scalars['ID']>
+  source: InputMaybe<Scalars['String']>
 }
 
 export type MutationRegisterArgs = {
@@ -705,12 +874,16 @@ export type MutationResetPasswordArgs = {
   passwordConfirmation: Scalars['String']
 }
 
+export type MutationUpdateBannerArgs = {
+  input: InputMaybe<UpdateBannerInput>
+}
+
 export type MutationUpdateCategoryArgs = {
-  input?: InputMaybe<UpdateCategoryInput>
+  input: InputMaybe<UpdateCategoryInput>
 }
 
 export type MutationUpdateDeveloperArgs = {
-  input?: InputMaybe<UpdateDeveloperInput>
+  input: InputMaybe<UpdateDeveloperInput>
 }
 
 export type MutationUpdateFileInfoArgs = {
@@ -719,38 +892,38 @@ export type MutationUpdateFileInfoArgs = {
 }
 
 export type MutationUpdateGameArgs = {
-  input?: InputMaybe<UpdateGameInput>
+  input: InputMaybe<UpdateGameInput>
 }
 
 export type MutationUpdatePlatformArgs = {
-  input?: InputMaybe<UpdatePlatformInput>
+  input: InputMaybe<UpdatePlatformInput>
 }
 
 export type MutationUpdatePublisherArgs = {
-  input?: InputMaybe<UpdatePublisherInput>
+  input: InputMaybe<UpdatePublisherInput>
 }
 
 export type MutationUpdateRoleArgs = {
-  input?: InputMaybe<UpdateRoleInput>
+  input: InputMaybe<UpdateRoleInput>
 }
 
 export type MutationUpdateUserArgs = {
-  input?: InputMaybe<UpdateUserInput>
+  input: InputMaybe<UpdateUserInput>
 }
 
 export type MutationUploadArgs = {
-  field?: InputMaybe<Scalars['String']>
+  field: InputMaybe<Scalars['String']>
   file: Scalars['Upload']
-  info?: InputMaybe<FileInfoInput>
-  ref?: InputMaybe<Scalars['String']>
-  refId?: InputMaybe<Scalars['ID']>
-  source?: InputMaybe<Scalars['String']>
+  info: InputMaybe<FileInfoInput>
+  ref: InputMaybe<Scalars['String']>
+  refId: InputMaybe<Scalars['ID']>
+  source: InputMaybe<Scalars['String']>
 }
 
 export type Platform = {
   __typename?: 'Platform'
   created_at: Scalars['DateTime']
-  games?: Maybe<Array<Maybe<Game>>>
+  games: Maybe<Array<Maybe<Game>>>
   id: Scalars['ID']
   name: Scalars['String']
   slug: Scalars['String']
@@ -758,70 +931,70 @@ export type Platform = {
 }
 
 export type PlatformGamesArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type PlatformAggregator = {
   __typename?: 'PlatformAggregator'
-  count?: Maybe<Scalars['Int']>
-  totalCount?: Maybe<Scalars['Int']>
+  count: Maybe<Scalars['Int']>
+  totalCount: Maybe<Scalars['Int']>
 }
 
 export type PlatformConnection = {
   __typename?: 'PlatformConnection'
-  aggregate?: Maybe<PlatformAggregator>
-  groupBy?: Maybe<PlatformGroupBy>
-  values?: Maybe<Array<Maybe<Platform>>>
+  aggregate: Maybe<PlatformAggregator>
+  groupBy: Maybe<PlatformGroupBy>
+  values: Maybe<Array<Maybe<Platform>>>
 }
 
 export type PlatformConnectionCreated_At = {
   __typename?: 'PlatformConnectionCreated_at'
-  connection?: Maybe<PlatformConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<PlatformConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type PlatformConnectionId = {
   __typename?: 'PlatformConnectionId'
-  connection?: Maybe<PlatformConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<PlatformConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type PlatformConnectionName = {
   __typename?: 'PlatformConnectionName'
-  connection?: Maybe<PlatformConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<PlatformConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type PlatformConnectionSlug = {
   __typename?: 'PlatformConnectionSlug'
-  connection?: Maybe<PlatformConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<PlatformConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type PlatformConnectionUpdated_At = {
   __typename?: 'PlatformConnectionUpdated_at'
-  connection?: Maybe<PlatformConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<PlatformConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type PlatformGroupBy = {
   __typename?: 'PlatformGroupBy'
-  created_at?: Maybe<Array<Maybe<PlatformConnectionCreated_At>>>
-  id?: Maybe<Array<Maybe<PlatformConnectionId>>>
-  name?: Maybe<Array<Maybe<PlatformConnectionName>>>
-  slug?: Maybe<Array<Maybe<PlatformConnectionSlug>>>
-  updated_at?: Maybe<Array<Maybe<PlatformConnectionUpdated_At>>>
+  created_at: Maybe<Array<Maybe<PlatformConnectionCreated_At>>>
+  id: Maybe<Array<Maybe<PlatformConnectionId>>>
+  name: Maybe<Array<Maybe<PlatformConnectionName>>>
+  slug: Maybe<Array<Maybe<PlatformConnectionSlug>>>
+  updated_at: Maybe<Array<Maybe<PlatformConnectionUpdated_At>>>
 }
 
 export type PlatformInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  games?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  created_by: InputMaybe<Scalars['ID']>
+  games: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   name: Scalars['String']
   slug: Scalars['String']
-  updated_by?: InputMaybe<Scalars['ID']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export enum PublicationState {
@@ -832,7 +1005,7 @@ export enum PublicationState {
 export type Publisher = {
   __typename?: 'Publisher'
   created_at: Scalars['DateTime']
-  games?: Maybe<Array<Maybe<Game>>>
+  games: Maybe<Array<Maybe<Game>>>
   id: Scalars['ID']
   name: Scalars['String']
   slug: Scalars['String']
@@ -840,474 +1013,497 @@ export type Publisher = {
 }
 
 export type PublisherGamesArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type PublisherAggregator = {
   __typename?: 'PublisherAggregator'
-  count?: Maybe<Scalars['Int']>
-  totalCount?: Maybe<Scalars['Int']>
+  count: Maybe<Scalars['Int']>
+  totalCount: Maybe<Scalars['Int']>
 }
 
 export type PublisherConnection = {
   __typename?: 'PublisherConnection'
-  aggregate?: Maybe<PublisherAggregator>
-  groupBy?: Maybe<PublisherGroupBy>
-  values?: Maybe<Array<Maybe<Publisher>>>
+  aggregate: Maybe<PublisherAggregator>
+  groupBy: Maybe<PublisherGroupBy>
+  values: Maybe<Array<Maybe<Publisher>>>
 }
 
 export type PublisherConnectionCreated_At = {
   __typename?: 'PublisherConnectionCreated_at'
-  connection?: Maybe<PublisherConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<PublisherConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type PublisherConnectionId = {
   __typename?: 'PublisherConnectionId'
-  connection?: Maybe<PublisherConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<PublisherConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type PublisherConnectionName = {
   __typename?: 'PublisherConnectionName'
-  connection?: Maybe<PublisherConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<PublisherConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type PublisherConnectionSlug = {
   __typename?: 'PublisherConnectionSlug'
-  connection?: Maybe<PublisherConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<PublisherConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type PublisherConnectionUpdated_At = {
   __typename?: 'PublisherConnectionUpdated_at'
-  connection?: Maybe<PublisherConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<PublisherConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type PublisherGroupBy = {
   __typename?: 'PublisherGroupBy'
-  created_at?: Maybe<Array<Maybe<PublisherConnectionCreated_At>>>
-  id?: Maybe<Array<Maybe<PublisherConnectionId>>>
-  name?: Maybe<Array<Maybe<PublisherConnectionName>>>
-  slug?: Maybe<Array<Maybe<PublisherConnectionSlug>>>
-  updated_at?: Maybe<Array<Maybe<PublisherConnectionUpdated_At>>>
+  created_at: Maybe<Array<Maybe<PublisherConnectionCreated_At>>>
+  id: Maybe<Array<Maybe<PublisherConnectionId>>>
+  name: Maybe<Array<Maybe<PublisherConnectionName>>>
+  slug: Maybe<Array<Maybe<PublisherConnectionSlug>>>
+  updated_at: Maybe<Array<Maybe<PublisherConnectionUpdated_At>>>
 }
 
 export type PublisherInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  games?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  created_by: InputMaybe<Scalars['ID']>
+  games: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
   name: Scalars['String']
   slug: Scalars['String']
-  updated_by?: InputMaybe<Scalars['ID']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type Query = {
   __typename?: 'Query'
-  categories?: Maybe<Array<Maybe<Category>>>
-  categoriesConnection?: Maybe<CategoryConnection>
-  category?: Maybe<Category>
-  developer?: Maybe<Developer>
-  developers?: Maybe<Array<Maybe<Developer>>>
-  developersConnection?: Maybe<DeveloperConnection>
-  files?: Maybe<Array<Maybe<UploadFile>>>
-  filesConnection?: Maybe<UploadFileConnection>
-  game?: Maybe<Game>
-  games?: Maybe<Array<Maybe<Game>>>
-  gamesConnection?: Maybe<GameConnection>
-  me?: Maybe<UsersPermissionsMe>
-  platform?: Maybe<Platform>
-  platforms?: Maybe<Array<Maybe<Platform>>>
-  platformsConnection?: Maybe<PlatformConnection>
-  publisher?: Maybe<Publisher>
-  publishers?: Maybe<Array<Maybe<Publisher>>>
-  publishersConnection?: Maybe<PublisherConnection>
-  role?: Maybe<UsersPermissionsRole>
+  banner: Maybe<Banner>
+  banners: Maybe<Array<Maybe<Banner>>>
+  bannersConnection: Maybe<BannerConnection>
+  categories: Maybe<Array<Maybe<Category>>>
+  categoriesConnection: Maybe<CategoryConnection>
+  category: Maybe<Category>
+  developer: Maybe<Developer>
+  developers: Maybe<Array<Maybe<Developer>>>
+  developersConnection: Maybe<DeveloperConnection>
+  files: Maybe<Array<Maybe<UploadFile>>>
+  filesConnection: Maybe<UploadFileConnection>
+  game: Maybe<Game>
+  games: Maybe<Array<Maybe<Game>>>
+  gamesConnection: Maybe<GameConnection>
+  me: Maybe<UsersPermissionsMe>
+  platform: Maybe<Platform>
+  platforms: Maybe<Array<Maybe<Platform>>>
+  platformsConnection: Maybe<PlatformConnection>
+  publisher: Maybe<Publisher>
+  publishers: Maybe<Array<Maybe<Publisher>>>
+  publishersConnection: Maybe<PublisherConnection>
+  role: Maybe<UsersPermissionsRole>
   /** Retrieve all the existing roles. You can't apply filters on this query. */
-  roles?: Maybe<Array<Maybe<UsersPermissionsRole>>>
-  rolesConnection?: Maybe<UsersPermissionsRoleConnection>
-  user?: Maybe<UsersPermissionsUser>
-  users?: Maybe<Array<Maybe<UsersPermissionsUser>>>
-  usersConnection?: Maybe<UsersPermissionsUserConnection>
+  roles: Maybe<Array<Maybe<UsersPermissionsRole>>>
+  rolesConnection: Maybe<UsersPermissionsRoleConnection>
+  user: Maybe<UsersPermissionsUser>
+  users: Maybe<Array<Maybe<UsersPermissionsUser>>>
+  usersConnection: Maybe<UsersPermissionsUserConnection>
+}
+
+export type QueryBannerArgs = {
+  id: Scalars['ID']
+  publicationState: InputMaybe<PublicationState>
+}
+
+export type QueryBannersArgs = {
+  limit: InputMaybe<Scalars['Int']>
+  publicationState: InputMaybe<PublicationState>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
+}
+
+export type QueryBannersConnectionArgs = {
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryCategoriesArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  publicationState: InputMaybe<PublicationState>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryCategoriesConnectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryCategoryArgs = {
   id: Scalars['ID']
-  publicationState?: InputMaybe<PublicationState>
+  publicationState: InputMaybe<PublicationState>
 }
 
 export type QueryDeveloperArgs = {
   id: Scalars['ID']
-  publicationState?: InputMaybe<PublicationState>
+  publicationState: InputMaybe<PublicationState>
 }
 
 export type QueryDevelopersArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  publicationState: InputMaybe<PublicationState>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryDevelopersConnectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryFilesArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  publicationState: InputMaybe<PublicationState>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryFilesConnectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryGameArgs = {
   id: Scalars['ID']
-  publicationState?: InputMaybe<PublicationState>
+  publicationState: InputMaybe<PublicationState>
 }
 
 export type QueryGamesArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  publicationState: InputMaybe<PublicationState>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryGamesConnectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryPlatformArgs = {
   id: Scalars['ID']
-  publicationState?: InputMaybe<PublicationState>
+  publicationState: InputMaybe<PublicationState>
 }
 
 export type QueryPlatformsArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  publicationState: InputMaybe<PublicationState>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryPlatformsConnectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryPublisherArgs = {
   id: Scalars['ID']
-  publicationState?: InputMaybe<PublicationState>
+  publicationState: InputMaybe<PublicationState>
 }
 
 export type QueryPublishersArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  publicationState: InputMaybe<PublicationState>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryPublishersConnectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryRoleArgs = {
   id: Scalars['ID']
-  publicationState?: InputMaybe<PublicationState>
+  publicationState: InputMaybe<PublicationState>
 }
 
 export type QueryRolesArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  publicationState: InputMaybe<PublicationState>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryRolesConnectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryUserArgs = {
   id: Scalars['ID']
-  publicationState?: InputMaybe<PublicationState>
+  publicationState: InputMaybe<PublicationState>
 }
 
 export type QueryUsersArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  publicationState: InputMaybe<PublicationState>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type QueryUsersConnectionArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type RoleInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  description?: InputMaybe<Scalars['String']>
+  created_by: InputMaybe<Scalars['ID']>
+  description: InputMaybe<Scalars['String']>
   name: Scalars['String']
-  permissions?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  type?: InputMaybe<Scalars['String']>
-  updated_by?: InputMaybe<Scalars['ID']>
-  users?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  permissions: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  type: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
+  users: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
 }
 
 export type UploadFile = {
   __typename?: 'UploadFile'
-  alternativeText?: Maybe<Scalars['String']>
-  caption?: Maybe<Scalars['String']>
+  alternativeText: Maybe<Scalars['String']>
+  caption: Maybe<Scalars['String']>
   created_at: Scalars['DateTime']
-  ext?: Maybe<Scalars['String']>
-  formats?: Maybe<Scalars['JSON']>
+  ext: Maybe<Scalars['String']>
+  formats: Maybe<Scalars['JSON']>
   hash: Scalars['String']
-  height?: Maybe<Scalars['Int']>
+  height: Maybe<Scalars['Int']>
   id: Scalars['ID']
   mime: Scalars['String']
   name: Scalars['String']
-  previewUrl?: Maybe<Scalars['String']>
+  previewUrl: Maybe<Scalars['String']>
   provider: Scalars['String']
-  provider_metadata?: Maybe<Scalars['JSON']>
-  related?: Maybe<Array<Maybe<Morph>>>
+  provider_metadata: Maybe<Scalars['JSON']>
+  related: Maybe<Array<Maybe<Morph>>>
   size: Scalars['Float']
   updated_at: Scalars['DateTime']
   url: Scalars['String']
-  width?: Maybe<Scalars['Int']>
+  width: Maybe<Scalars['Int']>
 }
 
 export type UploadFileRelatedArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type UploadFileAggregator = {
   __typename?: 'UploadFileAggregator'
-  avg?: Maybe<UploadFileAggregatorAvg>
-  count?: Maybe<Scalars['Int']>
-  max?: Maybe<UploadFileAggregatorMax>
-  min?: Maybe<UploadFileAggregatorMin>
-  sum?: Maybe<UploadFileAggregatorSum>
-  totalCount?: Maybe<Scalars['Int']>
+  avg: Maybe<UploadFileAggregatorAvg>
+  count: Maybe<Scalars['Int']>
+  max: Maybe<UploadFileAggregatorMax>
+  min: Maybe<UploadFileAggregatorMin>
+  sum: Maybe<UploadFileAggregatorSum>
+  totalCount: Maybe<Scalars['Int']>
 }
 
 export type UploadFileAggregatorAvg = {
   __typename?: 'UploadFileAggregatorAvg'
-  height?: Maybe<Scalars['Float']>
-  size?: Maybe<Scalars['Float']>
-  width?: Maybe<Scalars['Float']>
+  height: Maybe<Scalars['Float']>
+  size: Maybe<Scalars['Float']>
+  width: Maybe<Scalars['Float']>
 }
 
 export type UploadFileAggregatorMax = {
   __typename?: 'UploadFileAggregatorMax'
-  height?: Maybe<Scalars['Float']>
-  size?: Maybe<Scalars['Float']>
-  width?: Maybe<Scalars['Float']>
+  height: Maybe<Scalars['Float']>
+  size: Maybe<Scalars['Float']>
+  width: Maybe<Scalars['Float']>
 }
 
 export type UploadFileAggregatorMin = {
   __typename?: 'UploadFileAggregatorMin'
-  height?: Maybe<Scalars['Float']>
-  size?: Maybe<Scalars['Float']>
-  width?: Maybe<Scalars['Float']>
+  height: Maybe<Scalars['Float']>
+  size: Maybe<Scalars['Float']>
+  width: Maybe<Scalars['Float']>
 }
 
 export type UploadFileAggregatorSum = {
   __typename?: 'UploadFileAggregatorSum'
-  height?: Maybe<Scalars['Float']>
-  size?: Maybe<Scalars['Float']>
-  width?: Maybe<Scalars['Float']>
+  height: Maybe<Scalars['Float']>
+  size: Maybe<Scalars['Float']>
+  width: Maybe<Scalars['Float']>
 }
 
 export type UploadFileConnection = {
   __typename?: 'UploadFileConnection'
-  aggregate?: Maybe<UploadFileAggregator>
-  groupBy?: Maybe<UploadFileGroupBy>
-  values?: Maybe<Array<Maybe<UploadFile>>>
+  aggregate: Maybe<UploadFileAggregator>
+  groupBy: Maybe<UploadFileGroupBy>
+  values: Maybe<Array<Maybe<UploadFile>>>
 }
 
 export type UploadFileConnectionAlternativeText = {
   __typename?: 'UploadFileConnectionAlternativeText'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UploadFileConnectionCaption = {
   __typename?: 'UploadFileConnectionCaption'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UploadFileConnectionCreated_At = {
   __typename?: 'UploadFileConnectionCreated_at'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type UploadFileConnectionExt = {
   __typename?: 'UploadFileConnectionExt'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UploadFileConnectionFormats = {
   __typename?: 'UploadFileConnectionFormats'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['JSON']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['JSON']>
 }
 
 export type UploadFileConnectionHash = {
   __typename?: 'UploadFileConnectionHash'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UploadFileConnectionHeight = {
   __typename?: 'UploadFileConnectionHeight'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['Int']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['Int']>
 }
 
 export type UploadFileConnectionId = {
   __typename?: 'UploadFileConnectionId'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type UploadFileConnectionMime = {
   __typename?: 'UploadFileConnectionMime'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UploadFileConnectionName = {
   __typename?: 'UploadFileConnectionName'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UploadFileConnectionPreviewUrl = {
   __typename?: 'UploadFileConnectionPreviewUrl'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UploadFileConnectionProvider = {
   __typename?: 'UploadFileConnectionProvider'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UploadFileConnectionProvider_Metadata = {
   __typename?: 'UploadFileConnectionProvider_metadata'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['JSON']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['JSON']>
 }
 
 export type UploadFileConnectionSize = {
   __typename?: 'UploadFileConnectionSize'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['Float']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['Float']>
 }
 
 export type UploadFileConnectionUpdated_At = {
   __typename?: 'UploadFileConnectionUpdated_at'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type UploadFileConnectionUrl = {
   __typename?: 'UploadFileConnectionUrl'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UploadFileConnectionWidth = {
   __typename?: 'UploadFileConnectionWidth'
-  connection?: Maybe<UploadFileConnection>
-  key?: Maybe<Scalars['Int']>
+  connection: Maybe<UploadFileConnection>
+  key: Maybe<Scalars['Int']>
 }
 
 export type UploadFileGroupBy = {
   __typename?: 'UploadFileGroupBy'
-  alternativeText?: Maybe<Array<Maybe<UploadFileConnectionAlternativeText>>>
-  caption?: Maybe<Array<Maybe<UploadFileConnectionCaption>>>
-  created_at?: Maybe<Array<Maybe<UploadFileConnectionCreated_At>>>
-  ext?: Maybe<Array<Maybe<UploadFileConnectionExt>>>
-  formats?: Maybe<Array<Maybe<UploadFileConnectionFormats>>>
-  hash?: Maybe<Array<Maybe<UploadFileConnectionHash>>>
-  height?: Maybe<Array<Maybe<UploadFileConnectionHeight>>>
-  id?: Maybe<Array<Maybe<UploadFileConnectionId>>>
-  mime?: Maybe<Array<Maybe<UploadFileConnectionMime>>>
-  name?: Maybe<Array<Maybe<UploadFileConnectionName>>>
-  previewUrl?: Maybe<Array<Maybe<UploadFileConnectionPreviewUrl>>>
-  provider?: Maybe<Array<Maybe<UploadFileConnectionProvider>>>
-  provider_metadata?: Maybe<Array<Maybe<UploadFileConnectionProvider_Metadata>>>
-  size?: Maybe<Array<Maybe<UploadFileConnectionSize>>>
-  updated_at?: Maybe<Array<Maybe<UploadFileConnectionUpdated_At>>>
-  url?: Maybe<Array<Maybe<UploadFileConnectionUrl>>>
-  width?: Maybe<Array<Maybe<UploadFileConnectionWidth>>>
+  alternativeText: Maybe<Array<Maybe<UploadFileConnectionAlternativeText>>>
+  caption: Maybe<Array<Maybe<UploadFileConnectionCaption>>>
+  created_at: Maybe<Array<Maybe<UploadFileConnectionCreated_At>>>
+  ext: Maybe<Array<Maybe<UploadFileConnectionExt>>>
+  formats: Maybe<Array<Maybe<UploadFileConnectionFormats>>>
+  hash: Maybe<Array<Maybe<UploadFileConnectionHash>>>
+  height: Maybe<Array<Maybe<UploadFileConnectionHeight>>>
+  id: Maybe<Array<Maybe<UploadFileConnectionId>>>
+  mime: Maybe<Array<Maybe<UploadFileConnectionMime>>>
+  name: Maybe<Array<Maybe<UploadFileConnectionName>>>
+  previewUrl: Maybe<Array<Maybe<UploadFileConnectionPreviewUrl>>>
+  provider: Maybe<Array<Maybe<UploadFileConnectionProvider>>>
+  provider_metadata: Maybe<Array<Maybe<UploadFileConnectionProvider_Metadata>>>
+  size: Maybe<Array<Maybe<UploadFileConnectionSize>>>
+  updated_at: Maybe<Array<Maybe<UploadFileConnectionUpdated_At>>>
+  url: Maybe<Array<Maybe<UploadFileConnectionUrl>>>
+  width: Maybe<Array<Maybe<UploadFileConnectionWidth>>>
 }
 
 export type UserInput = {
-  blocked?: InputMaybe<Scalars['Boolean']>
-  confirmationToken?: InputMaybe<Scalars['String']>
-  confirmed?: InputMaybe<Scalars['Boolean']>
-  created_by?: InputMaybe<Scalars['ID']>
+  blocked: InputMaybe<Scalars['Boolean']>
+  confirmationToken: InputMaybe<Scalars['String']>
+  confirmed: InputMaybe<Scalars['Boolean']>
+  created_by: InputMaybe<Scalars['ID']>
   email: Scalars['String']
-  password?: InputMaybe<Scalars['String']>
-  provider?: InputMaybe<Scalars['String']>
-  resetPasswordToken?: InputMaybe<Scalars['String']>
-  role?: InputMaybe<Scalars['ID']>
-  updated_by?: InputMaybe<Scalars['ID']>
+  password: InputMaybe<Scalars['String']>
+  provider: InputMaybe<Scalars['String']>
+  resetPasswordToken: InputMaybe<Scalars['String']>
+  role: InputMaybe<Scalars['ID']>
+  updated_by: InputMaybe<Scalars['ID']>
   username: Scalars['String']
 }
 
@@ -1319,31 +1515,31 @@ export type UserPermissionsPasswordPayload = {
 export type UsersPermissionsLoginInput = {
   identifier: Scalars['String']
   password: Scalars['String']
-  provider?: InputMaybe<Scalars['String']>
+  provider: InputMaybe<Scalars['String']>
 }
 
 export type UsersPermissionsLoginPayload = {
   __typename?: 'UsersPermissionsLoginPayload'
-  jwt?: Maybe<Scalars['String']>
+  jwt: Maybe<Scalars['String']>
   user: UsersPermissionsMe
 }
 
 export type UsersPermissionsMe = {
   __typename?: 'UsersPermissionsMe'
-  blocked?: Maybe<Scalars['Boolean']>
-  confirmed?: Maybe<Scalars['Boolean']>
+  blocked: Maybe<Scalars['Boolean']>
+  confirmed: Maybe<Scalars['Boolean']>
   email: Scalars['String']
   id: Scalars['ID']
-  role?: Maybe<UsersPermissionsMeRole>
+  role: Maybe<UsersPermissionsMeRole>
   username: Scalars['String']
 }
 
 export type UsersPermissionsMeRole = {
   __typename?: 'UsersPermissionsMeRole'
-  description?: Maybe<Scalars['String']>
+  description: Maybe<Scalars['String']>
   id: Scalars['ID']
   name: Scalars['String']
-  type?: Maybe<Scalars['String']>
+  type: Maybe<Scalars['String']>
 }
 
 export type UsersPermissionsPermission = {
@@ -1352,8 +1548,8 @@ export type UsersPermissionsPermission = {
   controller: Scalars['String']
   enabled: Scalars['Boolean']
   id: Scalars['ID']
-  policy?: Maybe<Scalars['String']>
-  role?: Maybe<UsersPermissionsRole>
+  policy: Maybe<Scalars['String']>
+  role: Maybe<UsersPermissionsRole>
   type: Scalars['String']
 }
 
@@ -1365,470 +1561,522 @@ export type UsersPermissionsRegisterInput = {
 
 export type UsersPermissionsRole = {
   __typename?: 'UsersPermissionsRole'
-  description?: Maybe<Scalars['String']>
+  description: Maybe<Scalars['String']>
   id: Scalars['ID']
   name: Scalars['String']
-  permissions?: Maybe<Array<Maybe<UsersPermissionsPermission>>>
-  type?: Maybe<Scalars['String']>
-  users?: Maybe<Array<Maybe<UsersPermissionsUser>>>
+  permissions: Maybe<Array<Maybe<UsersPermissionsPermission>>>
+  type: Maybe<Scalars['String']>
+  users: Maybe<Array<Maybe<UsersPermissionsUser>>>
 }
 
 export type UsersPermissionsRolePermissionsArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type UsersPermissionsRoleUsersArgs = {
-  limit?: InputMaybe<Scalars['Int']>
-  sort?: InputMaybe<Scalars['String']>
-  start?: InputMaybe<Scalars['Int']>
-  where?: InputMaybe<Scalars['JSON']>
+  limit: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<Scalars['String']>
+  start: InputMaybe<Scalars['Int']>
+  where: InputMaybe<Scalars['JSON']>
 }
 
 export type UsersPermissionsRoleAggregator = {
   __typename?: 'UsersPermissionsRoleAggregator'
-  count?: Maybe<Scalars['Int']>
-  totalCount?: Maybe<Scalars['Int']>
+  count: Maybe<Scalars['Int']>
+  totalCount: Maybe<Scalars['Int']>
 }
 
 export type UsersPermissionsRoleConnection = {
   __typename?: 'UsersPermissionsRoleConnection'
-  aggregate?: Maybe<UsersPermissionsRoleAggregator>
-  groupBy?: Maybe<UsersPermissionsRoleGroupBy>
-  values?: Maybe<Array<Maybe<UsersPermissionsRole>>>
+  aggregate: Maybe<UsersPermissionsRoleAggregator>
+  groupBy: Maybe<UsersPermissionsRoleGroupBy>
+  values: Maybe<Array<Maybe<UsersPermissionsRole>>>
 }
 
 export type UsersPermissionsRoleConnectionDescription = {
   __typename?: 'UsersPermissionsRoleConnectionDescription'
-  connection?: Maybe<UsersPermissionsRoleConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UsersPermissionsRoleConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UsersPermissionsRoleConnectionId = {
   __typename?: 'UsersPermissionsRoleConnectionId'
-  connection?: Maybe<UsersPermissionsRoleConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<UsersPermissionsRoleConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type UsersPermissionsRoleConnectionName = {
   __typename?: 'UsersPermissionsRoleConnectionName'
-  connection?: Maybe<UsersPermissionsRoleConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UsersPermissionsRoleConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UsersPermissionsRoleConnectionType = {
   __typename?: 'UsersPermissionsRoleConnectionType'
-  connection?: Maybe<UsersPermissionsRoleConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UsersPermissionsRoleConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UsersPermissionsRoleGroupBy = {
   __typename?: 'UsersPermissionsRoleGroupBy'
-  description?: Maybe<Array<Maybe<UsersPermissionsRoleConnectionDescription>>>
-  id?: Maybe<Array<Maybe<UsersPermissionsRoleConnectionId>>>
-  name?: Maybe<Array<Maybe<UsersPermissionsRoleConnectionName>>>
-  type?: Maybe<Array<Maybe<UsersPermissionsRoleConnectionType>>>
+  description: Maybe<Array<Maybe<UsersPermissionsRoleConnectionDescription>>>
+  id: Maybe<Array<Maybe<UsersPermissionsRoleConnectionId>>>
+  name: Maybe<Array<Maybe<UsersPermissionsRoleConnectionName>>>
+  type: Maybe<Array<Maybe<UsersPermissionsRoleConnectionType>>>
 }
 
 export type UsersPermissionsUser = {
   __typename?: 'UsersPermissionsUser'
-  blocked?: Maybe<Scalars['Boolean']>
-  confirmed?: Maybe<Scalars['Boolean']>
+  blocked: Maybe<Scalars['Boolean']>
+  confirmed: Maybe<Scalars['Boolean']>
   created_at: Scalars['DateTime']
   email: Scalars['String']
   id: Scalars['ID']
-  provider?: Maybe<Scalars['String']>
-  role?: Maybe<UsersPermissionsRole>
+  provider: Maybe<Scalars['String']>
+  role: Maybe<UsersPermissionsRole>
   updated_at: Scalars['DateTime']
   username: Scalars['String']
 }
 
 export type UsersPermissionsUserAggregator = {
   __typename?: 'UsersPermissionsUserAggregator'
-  count?: Maybe<Scalars['Int']>
-  totalCount?: Maybe<Scalars['Int']>
+  count: Maybe<Scalars['Int']>
+  totalCount: Maybe<Scalars['Int']>
 }
 
 export type UsersPermissionsUserConnection = {
   __typename?: 'UsersPermissionsUserConnection'
-  aggregate?: Maybe<UsersPermissionsUserAggregator>
-  groupBy?: Maybe<UsersPermissionsUserGroupBy>
-  values?: Maybe<Array<Maybe<UsersPermissionsUser>>>
+  aggregate: Maybe<UsersPermissionsUserAggregator>
+  groupBy: Maybe<UsersPermissionsUserGroupBy>
+  values: Maybe<Array<Maybe<UsersPermissionsUser>>>
 }
 
 export type UsersPermissionsUserConnectionBlocked = {
   __typename?: 'UsersPermissionsUserConnectionBlocked'
-  connection?: Maybe<UsersPermissionsUserConnection>
-  key?: Maybe<Scalars['Boolean']>
+  connection: Maybe<UsersPermissionsUserConnection>
+  key: Maybe<Scalars['Boolean']>
 }
 
 export type UsersPermissionsUserConnectionConfirmed = {
   __typename?: 'UsersPermissionsUserConnectionConfirmed'
-  connection?: Maybe<UsersPermissionsUserConnection>
-  key?: Maybe<Scalars['Boolean']>
+  connection: Maybe<UsersPermissionsUserConnection>
+  key: Maybe<Scalars['Boolean']>
 }
 
 export type UsersPermissionsUserConnectionCreated_At = {
   __typename?: 'UsersPermissionsUserConnectionCreated_at'
-  connection?: Maybe<UsersPermissionsUserConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<UsersPermissionsUserConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type UsersPermissionsUserConnectionEmail = {
   __typename?: 'UsersPermissionsUserConnectionEmail'
-  connection?: Maybe<UsersPermissionsUserConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UsersPermissionsUserConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UsersPermissionsUserConnectionId = {
   __typename?: 'UsersPermissionsUserConnectionId'
-  connection?: Maybe<UsersPermissionsUserConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<UsersPermissionsUserConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type UsersPermissionsUserConnectionProvider = {
   __typename?: 'UsersPermissionsUserConnectionProvider'
-  connection?: Maybe<UsersPermissionsUserConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UsersPermissionsUserConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UsersPermissionsUserConnectionRole = {
   __typename?: 'UsersPermissionsUserConnectionRole'
-  connection?: Maybe<UsersPermissionsUserConnection>
-  key?: Maybe<Scalars['ID']>
+  connection: Maybe<UsersPermissionsUserConnection>
+  key: Maybe<Scalars['ID']>
 }
 
 export type UsersPermissionsUserConnectionUpdated_At = {
   __typename?: 'UsersPermissionsUserConnectionUpdated_at'
-  connection?: Maybe<UsersPermissionsUserConnection>
-  key?: Maybe<Scalars['DateTime']>
+  connection: Maybe<UsersPermissionsUserConnection>
+  key: Maybe<Scalars['DateTime']>
 }
 
 export type UsersPermissionsUserConnectionUsername = {
   __typename?: 'UsersPermissionsUserConnectionUsername'
-  connection?: Maybe<UsersPermissionsUserConnection>
-  key?: Maybe<Scalars['String']>
+  connection: Maybe<UsersPermissionsUserConnection>
+  key: Maybe<Scalars['String']>
 }
 
 export type UsersPermissionsUserGroupBy = {
   __typename?: 'UsersPermissionsUserGroupBy'
-  blocked?: Maybe<Array<Maybe<UsersPermissionsUserConnectionBlocked>>>
-  confirmed?: Maybe<Array<Maybe<UsersPermissionsUserConnectionConfirmed>>>
-  created_at?: Maybe<Array<Maybe<UsersPermissionsUserConnectionCreated_At>>>
-  email?: Maybe<Array<Maybe<UsersPermissionsUserConnectionEmail>>>
-  id?: Maybe<Array<Maybe<UsersPermissionsUserConnectionId>>>
-  provider?: Maybe<Array<Maybe<UsersPermissionsUserConnectionProvider>>>
-  role?: Maybe<Array<Maybe<UsersPermissionsUserConnectionRole>>>
-  updated_at?: Maybe<Array<Maybe<UsersPermissionsUserConnectionUpdated_At>>>
-  username?: Maybe<Array<Maybe<UsersPermissionsUserConnectionUsername>>>
+  blocked: Maybe<Array<Maybe<UsersPermissionsUserConnectionBlocked>>>
+  confirmed: Maybe<Array<Maybe<UsersPermissionsUserConnectionConfirmed>>>
+  created_at: Maybe<Array<Maybe<UsersPermissionsUserConnectionCreated_At>>>
+  email: Maybe<Array<Maybe<UsersPermissionsUserConnectionEmail>>>
+  id: Maybe<Array<Maybe<UsersPermissionsUserConnectionId>>>
+  provider: Maybe<Array<Maybe<UsersPermissionsUserConnectionProvider>>>
+  role: Maybe<Array<Maybe<UsersPermissionsUserConnectionRole>>>
+  updated_at: Maybe<Array<Maybe<UsersPermissionsUserConnectionUpdated_At>>>
+  username: Maybe<Array<Maybe<UsersPermissionsUserConnectionUsername>>>
+}
+
+export type CreateBannerInput = {
+  data: InputMaybe<BannerInput>
+}
+
+export type CreateBannerPayload = {
+  __typename?: 'createBannerPayload'
+  banner: Maybe<Banner>
 }
 
 export type CreateCategoryInput = {
-  data?: InputMaybe<CategoryInput>
+  data: InputMaybe<CategoryInput>
 }
 
 export type CreateCategoryPayload = {
   __typename?: 'createCategoryPayload'
-  category?: Maybe<Category>
+  category: Maybe<Category>
 }
 
 export type CreateDeveloperInput = {
-  data?: InputMaybe<DeveloperInput>
+  data: InputMaybe<DeveloperInput>
 }
 
 export type CreateDeveloperPayload = {
   __typename?: 'createDeveloperPayload'
-  developer?: Maybe<Developer>
+  developer: Maybe<Developer>
 }
 
 export type CreateGameInput = {
-  data?: InputMaybe<GameInput>
+  data: InputMaybe<GameInput>
 }
 
 export type CreateGamePayload = {
   __typename?: 'createGamePayload'
-  game?: Maybe<Game>
+  game: Maybe<Game>
 }
 
 export type CreatePlatformInput = {
-  data?: InputMaybe<PlatformInput>
+  data: InputMaybe<PlatformInput>
 }
 
 export type CreatePlatformPayload = {
   __typename?: 'createPlatformPayload'
-  platform?: Maybe<Platform>
+  platform: Maybe<Platform>
 }
 
 export type CreatePublisherInput = {
-  data?: InputMaybe<PublisherInput>
+  data: InputMaybe<PublisherInput>
 }
 
 export type CreatePublisherPayload = {
   __typename?: 'createPublisherPayload'
-  publisher?: Maybe<Publisher>
+  publisher: Maybe<Publisher>
 }
 
 export type CreateRoleInput = {
-  data?: InputMaybe<RoleInput>
+  data: InputMaybe<RoleInput>
 }
 
 export type CreateRolePayload = {
   __typename?: 'createRolePayload'
-  role?: Maybe<UsersPermissionsRole>
+  role: Maybe<UsersPermissionsRole>
 }
 
 export type CreateUserInput = {
-  data?: InputMaybe<UserInput>
+  data: InputMaybe<UserInput>
 }
 
 export type CreateUserPayload = {
   __typename?: 'createUserPayload'
-  user?: Maybe<UsersPermissionsUser>
+  user: Maybe<UsersPermissionsUser>
+}
+
+export type DeleteBannerInput = {
+  where: InputMaybe<InputId>
+}
+
+export type DeleteBannerPayload = {
+  __typename?: 'deleteBannerPayload'
+  banner: Maybe<Banner>
 }
 
 export type DeleteCategoryInput = {
-  where?: InputMaybe<InputId>
+  where: InputMaybe<InputId>
 }
 
 export type DeleteCategoryPayload = {
   __typename?: 'deleteCategoryPayload'
-  category?: Maybe<Category>
+  category: Maybe<Category>
 }
 
 export type DeleteDeveloperInput = {
-  where?: InputMaybe<InputId>
+  where: InputMaybe<InputId>
 }
 
 export type DeleteDeveloperPayload = {
   __typename?: 'deleteDeveloperPayload'
-  developer?: Maybe<Developer>
+  developer: Maybe<Developer>
 }
 
 export type DeleteFileInput = {
-  where?: InputMaybe<InputId>
+  where: InputMaybe<InputId>
 }
 
 export type DeleteFilePayload = {
   __typename?: 'deleteFilePayload'
-  file?: Maybe<UploadFile>
+  file: Maybe<UploadFile>
 }
 
 export type DeleteGameInput = {
-  where?: InputMaybe<InputId>
+  where: InputMaybe<InputId>
 }
 
 export type DeleteGamePayload = {
   __typename?: 'deleteGamePayload'
-  game?: Maybe<Game>
+  game: Maybe<Game>
 }
 
 export type DeletePlatformInput = {
-  where?: InputMaybe<InputId>
+  where: InputMaybe<InputId>
 }
 
 export type DeletePlatformPayload = {
   __typename?: 'deletePlatformPayload'
-  platform?: Maybe<Platform>
+  platform: Maybe<Platform>
 }
 
 export type DeletePublisherInput = {
-  where?: InputMaybe<InputId>
+  where: InputMaybe<InputId>
 }
 
 export type DeletePublisherPayload = {
   __typename?: 'deletePublisherPayload'
-  publisher?: Maybe<Publisher>
+  publisher: Maybe<Publisher>
 }
 
 export type DeleteRoleInput = {
-  where?: InputMaybe<InputId>
+  where: InputMaybe<InputId>
 }
 
 export type DeleteRolePayload = {
   __typename?: 'deleteRolePayload'
-  role?: Maybe<UsersPermissionsRole>
+  role: Maybe<UsersPermissionsRole>
 }
 
 export type DeleteUserInput = {
-  where?: InputMaybe<InputId>
+  where: InputMaybe<InputId>
 }
 
 export type DeleteUserPayload = {
   __typename?: 'deleteUserPayload'
-  user?: Maybe<UsersPermissionsUser>
+  user: Maybe<UsersPermissionsUser>
+}
+
+export type EditBannerInput = {
+  button: InputMaybe<EditComponentPageButtonInput>
+  created_by: InputMaybe<Scalars['ID']>
+  image: InputMaybe<Scalars['ID']>
+  published_at: InputMaybe<Scalars['DateTime']>
+  ribbon: InputMaybe<EditComponentPageRibbonInput>
+  subtitle: InputMaybe<Scalars['String']>
+  title: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type EditCategoryInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  games?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  name?: InputMaybe<Scalars['String']>
-  slug?: InputMaybe<Scalars['String']>
-  updated_by?: InputMaybe<Scalars['ID']>
+  created_by: InputMaybe<Scalars['ID']>
+  games: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  name: InputMaybe<Scalars['String']>
+  slug: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
+}
+
+export type EditComponentPageButtonInput = {
+  id: InputMaybe<Scalars['ID']>
+  label: InputMaybe<Scalars['String']>
+  link: InputMaybe<Scalars['String']>
+}
+
+export type EditComponentPageRibbonInput = {
+  color: InputMaybe<Enum_Componentpageribbon_Color>
+  id: InputMaybe<Scalars['ID']>
+  size: InputMaybe<Enum_Componentpageribbon_Size>
+  text: InputMaybe<Scalars['String']>
 }
 
 export type EditDeveloperInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  games?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  name?: InputMaybe<Scalars['String']>
-  slug?: InputMaybe<Scalars['String']>
-  updated_by?: InputMaybe<Scalars['ID']>
+  created_by: InputMaybe<Scalars['ID']>
+  games: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  name: InputMaybe<Scalars['String']>
+  slug: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type EditFileInput = {
-  alternativeText?: InputMaybe<Scalars['String']>
-  caption?: InputMaybe<Scalars['String']>
-  created_by?: InputMaybe<Scalars['ID']>
-  ext?: InputMaybe<Scalars['String']>
-  formats?: InputMaybe<Scalars['JSON']>
-  hash?: InputMaybe<Scalars['String']>
-  height?: InputMaybe<Scalars['Int']>
-  mime?: InputMaybe<Scalars['String']>
-  name?: InputMaybe<Scalars['String']>
-  previewUrl?: InputMaybe<Scalars['String']>
-  provider?: InputMaybe<Scalars['String']>
-  provider_metadata?: InputMaybe<Scalars['JSON']>
-  related?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  size?: InputMaybe<Scalars['Float']>
-  updated_by?: InputMaybe<Scalars['ID']>
-  url?: InputMaybe<Scalars['String']>
-  width?: InputMaybe<Scalars['Int']>
+  alternativeText: InputMaybe<Scalars['String']>
+  caption: InputMaybe<Scalars['String']>
+  created_by: InputMaybe<Scalars['ID']>
+  ext: InputMaybe<Scalars['String']>
+  formats: InputMaybe<Scalars['JSON']>
+  hash: InputMaybe<Scalars['String']>
+  height: InputMaybe<Scalars['Int']>
+  mime: InputMaybe<Scalars['String']>
+  name: InputMaybe<Scalars['String']>
+  previewUrl: InputMaybe<Scalars['String']>
+  provider: InputMaybe<Scalars['String']>
+  provider_metadata: InputMaybe<Scalars['JSON']>
+  related: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  size: InputMaybe<Scalars['Float']>
+  updated_by: InputMaybe<Scalars['ID']>
+  url: InputMaybe<Scalars['String']>
+  width: InputMaybe<Scalars['Int']>
 }
 
 export type EditGameInput = {
-  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  cover?: InputMaybe<Scalars['ID']>
-  created_by?: InputMaybe<Scalars['ID']>
-  description?: InputMaybe<Scalars['String']>
-  developers?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  gallery?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  name?: InputMaybe<Scalars['String']>
-  platforms?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  price?: InputMaybe<Scalars['Float']>
-  publisher?: InputMaybe<Scalars['ID']>
-  rating?: InputMaybe<Enum_Game_Rating>
-  release_date?: InputMaybe<Scalars['Date']>
-  short_description?: InputMaybe<Scalars['String']>
-  slug?: InputMaybe<Scalars['String']>
-  updated_by?: InputMaybe<Scalars['ID']>
+  categories: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  cover: InputMaybe<Scalars['ID']>
+  created_by: InputMaybe<Scalars['ID']>
+  description: InputMaybe<Scalars['String']>
+  developers: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  gallery: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  name: InputMaybe<Scalars['String']>
+  platforms: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  price: InputMaybe<Scalars['Float']>
+  publisher: InputMaybe<Scalars['ID']>
+  rating: InputMaybe<Enum_Game_Rating>
+  release_date: InputMaybe<Scalars['Date']>
+  short_description: InputMaybe<Scalars['String']>
+  slug: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type EditLocaleInput = {
-  code?: InputMaybe<Scalars['String']>
-  created_by?: InputMaybe<Scalars['ID']>
-  name?: InputMaybe<Scalars['String']>
-  updated_by?: InputMaybe<Scalars['ID']>
+  code: InputMaybe<Scalars['String']>
+  created_by: InputMaybe<Scalars['ID']>
+  name: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type EditPlatformInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  games?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  name?: InputMaybe<Scalars['String']>
-  slug?: InputMaybe<Scalars['String']>
-  updated_by?: InputMaybe<Scalars['ID']>
+  created_by: InputMaybe<Scalars['ID']>
+  games: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  name: InputMaybe<Scalars['String']>
+  slug: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type EditPublisherInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  games?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  name?: InputMaybe<Scalars['String']>
-  slug?: InputMaybe<Scalars['String']>
-  updated_by?: InputMaybe<Scalars['ID']>
+  created_by: InputMaybe<Scalars['ID']>
+  games: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  name: InputMaybe<Scalars['String']>
+  slug: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
 }
 
 export type EditRoleInput = {
-  created_by?: InputMaybe<Scalars['ID']>
-  description?: InputMaybe<Scalars['String']>
-  name?: InputMaybe<Scalars['String']>
-  permissions?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
-  type?: InputMaybe<Scalars['String']>
-  updated_by?: InputMaybe<Scalars['ID']>
-  users?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  created_by: InputMaybe<Scalars['ID']>
+  description: InputMaybe<Scalars['String']>
+  name: InputMaybe<Scalars['String']>
+  permissions: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  type: InputMaybe<Scalars['String']>
+  updated_by: InputMaybe<Scalars['ID']>
+  users: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
 }
 
 export type EditUserInput = {
-  blocked?: InputMaybe<Scalars['Boolean']>
-  confirmationToken?: InputMaybe<Scalars['String']>
-  confirmed?: InputMaybe<Scalars['Boolean']>
-  created_by?: InputMaybe<Scalars['ID']>
-  email?: InputMaybe<Scalars['String']>
-  password?: InputMaybe<Scalars['String']>
-  provider?: InputMaybe<Scalars['String']>
-  resetPasswordToken?: InputMaybe<Scalars['String']>
-  role?: InputMaybe<Scalars['ID']>
-  updated_by?: InputMaybe<Scalars['ID']>
-  username?: InputMaybe<Scalars['String']>
+  blocked: InputMaybe<Scalars['Boolean']>
+  confirmationToken: InputMaybe<Scalars['String']>
+  confirmed: InputMaybe<Scalars['Boolean']>
+  created_by: InputMaybe<Scalars['ID']>
+  email: InputMaybe<Scalars['String']>
+  password: InputMaybe<Scalars['String']>
+  provider: InputMaybe<Scalars['String']>
+  resetPasswordToken: InputMaybe<Scalars['String']>
+  role: InputMaybe<Scalars['ID']>
+  updated_by: InputMaybe<Scalars['ID']>
+  username: InputMaybe<Scalars['String']>
+}
+
+export type UpdateBannerInput = {
+  data: InputMaybe<EditBannerInput>
+  where: InputMaybe<InputId>
+}
+
+export type UpdateBannerPayload = {
+  __typename?: 'updateBannerPayload'
+  banner: Maybe<Banner>
 }
 
 export type UpdateCategoryInput = {
-  data?: InputMaybe<EditCategoryInput>
-  where?: InputMaybe<InputId>
+  data: InputMaybe<EditCategoryInput>
+  where: InputMaybe<InputId>
 }
 
 export type UpdateCategoryPayload = {
   __typename?: 'updateCategoryPayload'
-  category?: Maybe<Category>
+  category: Maybe<Category>
 }
 
 export type UpdateDeveloperInput = {
-  data?: InputMaybe<EditDeveloperInput>
-  where?: InputMaybe<InputId>
+  data: InputMaybe<EditDeveloperInput>
+  where: InputMaybe<InputId>
 }
 
 export type UpdateDeveloperPayload = {
   __typename?: 'updateDeveloperPayload'
-  developer?: Maybe<Developer>
+  developer: Maybe<Developer>
 }
 
 export type UpdateGameInput = {
-  data?: InputMaybe<EditGameInput>
-  where?: InputMaybe<InputId>
+  data: InputMaybe<EditGameInput>
+  where: InputMaybe<InputId>
 }
 
 export type UpdateGamePayload = {
   __typename?: 'updateGamePayload'
-  game?: Maybe<Game>
+  game: Maybe<Game>
 }
 
 export type UpdatePlatformInput = {
-  data?: InputMaybe<EditPlatformInput>
-  where?: InputMaybe<InputId>
+  data: InputMaybe<EditPlatformInput>
+  where: InputMaybe<InputId>
 }
 
 export type UpdatePlatformPayload = {
   __typename?: 'updatePlatformPayload'
-  platform?: Maybe<Platform>
+  platform: Maybe<Platform>
 }
 
 export type UpdatePublisherInput = {
-  data?: InputMaybe<EditPublisherInput>
-  where?: InputMaybe<InputId>
+  data: InputMaybe<EditPublisherInput>
+  where: InputMaybe<InputId>
 }
 
 export type UpdatePublisherPayload = {
   __typename?: 'updatePublisherPayload'
-  publisher?: Maybe<Publisher>
+  publisher: Maybe<Publisher>
 }
 
 export type UpdateRoleInput = {
-  data?: InputMaybe<EditRoleInput>
-  where?: InputMaybe<InputId>
+  data: InputMaybe<EditRoleInput>
+  where: InputMaybe<InputId>
 }
 
 export type UpdateRolePayload = {
   __typename?: 'updateRolePayload'
-  role?: Maybe<UsersPermissionsRole>
+  role: Maybe<UsersPermissionsRole>
 }
 
 export type UpdateUserInput = {
-  data?: InputMaybe<EditUserInput>
-  where?: InputMaybe<InputId>
+  data: InputMaybe<EditUserInput>
+  where: InputMaybe<InputId>
 }
 
 export type UpdateUserPayload = {
   __typename?: 'updateUserPayload'
-  user?: Maybe<UsersPermissionsUser>
+  user: Maybe<UsersPermissionsUser>
 }
 
 export type GetGamesQueryVariables = Exact<{
@@ -1837,13 +2085,13 @@ export type GetGamesQueryVariables = Exact<{
 
 export type GetGamesQuery = {
   __typename?: 'Query'
-  games?: Array<{
+  games: Array<{
     __typename?: 'Game'
     name: string
     slug: string
     price: number
-    cover?: { __typename?: 'UploadFile'; url: string } | null
-    developers?: Array<{ __typename?: 'Developer'; name: string } | null> | null
+    cover: { __typename?: 'UploadFile'; url: string } | null
+    developers: Array<{ __typename?: 'Developer'; name: string } | null> | null
   } | null> | null
 }
 
@@ -1853,24 +2101,47 @@ export type GetGameBySlugQueryVariables = Exact<{
 
 export type GetGameBySlugQuery = {
   __typename?: 'Query'
-  games?: Array<{
+  games: Array<{
     __typename?: 'Game'
     name: string
     short_description: string
     description: string
     price: number
     rating: Enum_Game_Rating
-    release_date?: any | null
-    gallery?: Array<{
+    release_date: any | null
+    gallery: Array<{
       __typename?: 'UploadFile'
       src: string
-      label?: string | null
+      label: string | null
     } | null> | null
-    cover?: { __typename?: 'UploadFile'; src: string } | null
-    developers?: Array<{ __typename?: 'Developer'; name: string } | null> | null
-    publisher?: { __typename?: 'Publisher'; name: string } | null
-    categories?: Array<{ __typename?: 'Category'; name: string } | null> | null
-    platforms?: Array<{ __typename?: 'Platform'; name: string } | null> | null
+    cover: { __typename?: 'UploadFile'; src: string } | null
+    developers: Array<{ __typename?: 'Developer'; name: string } | null> | null
+    publisher: { __typename?: 'Publisher'; name: string } | null
+    categories: Array<{ __typename?: 'Category'; name: string } | null> | null
+    platforms: Array<{ __typename?: 'Platform'; name: string } | null> | null
+  } | null> | null
+}
+
+export type GetHomeQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetHomeQuery = {
+  __typename?: 'Query'
+  banners: Array<{
+    __typename?: 'Banner'
+    title: string
+    subtitle: string
+    image: { __typename?: 'UploadFile'; url: string } | null
+    button: {
+      __typename?: 'ComponentPageButton'
+      label: string
+      link: string
+    } | null
+    ribbon: {
+      __typename?: 'ComponentPageRibbon'
+      text: string | null
+      color: Enum_Componentpageribbon_Color | null
+      size: Enum_Componentpageribbon_Size | null
+    } | null
   } | null> | null
 }
 
@@ -2016,4 +2287,64 @@ export type GetGameBySlugLazyQueryHookResult = ReturnType<
 export type GetGameBySlugQueryResult = Apollo.QueryResult<
   GetGameBySlugQuery,
   GetGameBySlugQueryVariables
+>
+export const GetHomeDocument = gql`
+  query GetHome {
+    banners {
+      image {
+        url
+      }
+      title
+      subtitle
+      button {
+        label
+        link
+      }
+      ribbon {
+        text
+        color
+        size
+      }
+    }
+  }
+`
+
+/**
+ * __useGetHomeQuery__
+ *
+ * To run a query within a React component, call `useGetHomeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetHomeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetHomeQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetHomeQuery(
+  baseOptions?: Apollo.QueryHookOptions<GetHomeQuery, GetHomeQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<GetHomeQuery, GetHomeQueryVariables>(
+    GetHomeDocument,
+    options
+  )
+}
+export function useGetHomeLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<GetHomeQuery, GetHomeQueryVariables>
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<GetHomeQuery, GetHomeQueryVariables>(
+    GetHomeDocument,
+    options
+  )
+}
+export type GetHomeQueryHookResult = ReturnType<typeof useGetHomeQuery>
+export type GetHomeLazyQueryHookResult = ReturnType<typeof useGetHomeLazyQuery>
+export type GetHomeQueryResult = Apollo.QueryResult<
+  GetHomeQuery,
+  GetHomeQueryVariables
 >

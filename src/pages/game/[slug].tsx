@@ -49,7 +49,9 @@ export async function getStaticPaths() {
 // Vai gerar em build time
 // É preciso dizer que existem as rotas /game/bla, /game/foo e etc
 // Para isso utilizamos o getStaticPaths
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<GameTemplateProps> = async ({
+  params
+}) => {
   const { data } = await apolloClient.query<
     GetGameBySlugQuery,
     GetGameBySlugQueryVariables
@@ -81,34 +83,30 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     ? game.categories.map((category) => category?.name || 'Unknown')
     : []
 
-  const gameTemplateProps: GameTemplateProps = {
-    cover: `http://localhost:1337${game?.cover?.src}`,
-    gameInfo: {
-      title: game?.name || '',
-      price: game?.price || 0,
-      description: game?.short_description || ''
-    },
-    gallery,
-    description: game?.description || '',
-    details: {
-      developer: game?.developers
-        ? game?.developers[0]?.name || 'Unknown'
-        : 'Unknown',
-      releaseDate: game?.release_date,
-      platforms,
-      publisher: game?.publisher?.name || 'Unknown',
-      rating: game?.rating || 'BR0',
-      genres
-    },
-    upcomingGames: mockGames,
-    upcomingHighlight: mockHighLight[2],
-    recommendedGames: mockGames
-  }
-
   return {
+    revalidate: 60,
     props: {
-      revalidate: 60,
-      ...gameTemplateProps
+      cover: `http://localhost:1337${game?.cover?.src}`,
+      gameInfo: {
+        title: game?.name || '',
+        price: game?.price || 0,
+        description: game?.short_description || ''
+      },
+      gallery,
+      description: game?.description || '',
+      details: {
+        developer: game?.developers
+          ? game?.developers[0]?.name || 'Unknown'
+          : 'Unknown',
+        releaseDate: game?.release_date,
+        platforms,
+        publisher: game?.publisher?.name || 'Unknown',
+        rating: game?.rating || 'BR0',
+        genres
+      },
+      upcomingGames: mockGames,
+      upcomingHighlight: mockHighLight[2],
+      recommendedGames: mockGames
     }
   }
 }

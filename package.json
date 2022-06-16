@@ -13,7 +13,7 @@
     "generate": "yarn plop --plopfile ./generators/plopfile.js",
     "storybook": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook -s ./public",
-    "compile:gql": "graphql-codegen --config codegen.yml"
+    "types:gql": "graphql-codegen --config codegen.yml"
   },
   "lint-staged": {
     "src/**/*": [
