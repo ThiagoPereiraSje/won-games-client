@@ -2097,6 +2097,15 @@ export type BannerFragmentFragment = {
   } | null
 }
 
+export type GameFragmentFragment = {
+  __typename?: 'Game'
+  name: string
+  slug: string
+  price: number
+  cover: { __typename?: 'UploadFile'; url: string } | null
+  developers: Array<{ __typename?: 'Developer'; name: string } | null> | null
+}
+
 export type GetGamesQueryVariables = Exact<{
   limit: Scalars['Int']
 }>
@@ -2140,7 +2149,11 @@ export type GetGameBySlugQuery = {
   } | null> | null
 }
 
-export type GetHomeQueryVariables = Exact<{ [key: string]: never }>
+export type GetHomeQueryVariables = Exact<{
+  release_date: Scalars['Date']
+  price: Scalars['Float']
+  limit: Scalars['Int']
+}>
 
 export type GetHomeQuery = {
   __typename?: 'Query'
@@ -2161,6 +2174,30 @@ export type GetHomeQuery = {
       size: Enum_Componentpageribbon_Size | null
     } | null
   } | null> | null
+  newGames: Array<{
+    __typename?: 'Game'
+    name: string
+    slug: string
+    price: number
+    cover: { __typename?: 'UploadFile'; url: string } | null
+    developers: Array<{ __typename?: 'Developer'; name: string } | null> | null
+  } | null> | null
+  upcomingGames: Array<{
+    __typename?: 'Game'
+    name: string
+    slug: string
+    price: number
+    cover: { __typename?: 'UploadFile'; url: string } | null
+    developers: Array<{ __typename?: 'Developer'; name: string } | null> | null
+  } | null> | null
+  freeGames: Array<{
+    __typename?: 'Game'
+    name: string
+    slug: string
+    price: number
+    cover: { __typename?: 'UploadFile'; url: string } | null
+    developers: Array<{ __typename?: 'Developer'; name: string } | null> | null
+  } | null> | null
 }
 
 export const BannerFragmentFragmentDoc = gql`
@@ -2179,6 +2216,19 @@ export const BannerFragmentFragmentDoc = gql`
       color
       size
     }
+  }
+`
+export const GameFragmentFragmentDoc = gql`
+  fragment gameFragment on Game {
+    name
+    slug
+    cover {
+      url
+    }
+    developers {
+      name
+    }
+    price
   }
 `
 export const GetGamesDocument = gql`
@@ -2325,12 +2375,34 @@ export type GetGameBySlugQueryResult = Apollo.QueryResult<
   GetGameBySlugQueryVariables
 >
 export const GetHomeDocument = gql`
-  query GetHome {
+  query GetHome($release_date: Date!, $price: Float!, $limit: Int!) {
     banners {
       ...bannerFragment
     }
+    newGames: games(
+      where: { release_date_lte: $release_date }
+      sort: "release_date:desc"
+      limit: $limit
+    ) {
+      ...gameFragment
+    }
+    upcomingGames: games(
+      where: { release_date_gt: $release_date }
+      sort: "release_date:asc"
+      limit: $limit
+    ) {
+      ...gameFragment
+    }
+    freeGames: games(
+      where: { price_lte: $price }
+      sort: "release_date:desc"
+      limit: $limit
+    ) {
+      ...gameFragment
+    }
   }
   ${BannerFragmentFragmentDoc}
+  ${GameFragmentFragmentDoc}
 `
 
 /**
@@ -2345,11 +2417,14 @@ export const GetHomeDocument = gql`
  * @example
  * const { data, loading, error } = useGetHomeQuery({
  *   variables: {
+ *      release_date: // value for 'release_date'
+ *      price: // value for 'price'
+ *      limit: // value for 'limit'
  *   },
  * });
  */
 export function useGetHomeQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetHomeQuery, GetHomeQueryVariables>
+  baseOptions: Apollo.QueryHookOptions<GetHomeQuery, GetHomeQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions }
   return Apollo.useQuery<GetHomeQuery, GetHomeQueryVariables>(
